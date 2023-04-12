@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://nodes/label.tscn" type="PackedScene" id=1]
+[ext_resource path="res://fonts/Lingo.tres" type="DynamicFont" id=2]
+[ext_resource path="res://nodes/button.tscn" type="PackedScene" id=3]
+[ext_resource path="user://maps/Archipelago/settings_buttons.gd" type="Script" id=4]
+[ext_resource path="user://maps/Archipelago/settings_screen.gd" type="Script" id=5]
+[ext_resource path="res://fonts/Lingo35.tres" type="DynamicFont" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 0, 1 )
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[node name="settings_screen" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="title" parent="Panel" instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_top = 75.0
+margin_right = 1920.0
+margin_bottom = 225.0
+custom_fonts/font = ExtResource( 2 )
+text = "ARCHIPELAGO"
+valign = 1
+
+[node name="credit" parent="Panel" instance=ExtResource( 1 )]
+visible = false
+margin_left = 1278.0
+margin_top = 974.0
+margin_right = 1868.0
+margin_bottom = 1034.0
+custom_fonts/font = ExtResource( 2 )
+text = "Brenton Wildes"
+
+[node name="connect_button" parent="Panel" instance=ExtResource( 3 )]
+margin_left = 255.0
+margin_top = 875.0
+margin_right = 891.0
+margin_bottom = 1025.0
+custom_colors/font_color_hover = Color( 1, 0.501961, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "CONNECT"
+script = ExtResource( 4 )
+
+[node name="quit_button" parent="Panel" instance=ExtResource( 3 )]
+margin_left = 1102.0
+margin_top = 875.0
+margin_right = 1738.0
+margin_bottom = 1025.0
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "BACK"
+script = ExtResource( 4 )
+
+[node name="credit2" parent="Panel" instance=ExtResource( 1 )]
+margin_left = 267.0
+margin_top = 347.0
+margin_right = 857.0
+margin_bottom = 411.0
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 1 )
+text = "SERVER"
+
+[node name="credit3" parent="Panel" instance=ExtResource( 1 )]
+margin_left = 263.0
+margin_top = 515.0
+margin_right = 853.0
+margin_bottom = 579.0
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 1 )
+text = "PLAYER"
+
+[node name="credit4" parent="Panel" instance=ExtResource( 1 )]
+margin_left = 199.0
+margin_top = 691.0
+margin_right = 789.0
+margin_bottom = 755.0
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 1 )
+text = "PASSWORD"
+
+[node name="server_box" type="LineEdit" parent="Panel"]
+margin_left = 682.0
+margin_top = 295.0
+margin_right = 1324.0
+margin_bottom = 445.0
+custom_colors/selection_color = Color( 0.482353, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_styles/focus = SubResource( 2 )
+align = 1
+
+[node name="player_box" type="LineEdit" parent="Panel"]
+margin_left = 682.0
+margin_top = 477.0
+margin_right = 1324.0
+margin_bottom = 627.0
+custom_colors/selection_color = Color( 0.482353, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_styles/focus = SubResource( 2 )
+align = 1
+
+[node name="password_box" type="LineEdit" parent="Panel"]
+margin_left = 682.0
+margin_top = 659.0
+margin_right = 1324.0
+margin_bottom = 809.0
+custom_colors/selection_color = Color( 0.482353, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_styles/focus = SubResource( 2 )
+align = 1
+
+[connection signal="pressed" from="Panel/connect_button" to="Panel/connect_button" method="_connect_pressed"]
+[connection signal="pressed" from="Panel/quit_button" to="Panel/quit_button" method="_back_pressed"]
