@@ -12,6 +12,8 @@ func _connect_pressed():
 	apclient.ap_pass = self.get_parent().get_node("password_box").text
 	apclient.saveSettings()
 
+	apclient.connectToServer()
+
 
 func _back_pressed():
 	fader._fade_start("main_menu")
