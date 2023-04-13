@@ -23,6 +23,8 @@ var _players = []
 var _checked_locations = []
 var _slot_data = {}
 
+signal client_connected
+
 
 func _init():
 	global._print("Instantiated APClient")
@@ -101,6 +103,8 @@ func _on_data():
 			_players = message["players"]
 			_checked_locations = message["checked_locations"]
 			_slot_data = message["slot_data"]
+
+			emit_signal("client_connected")
 
 		elif cmd == "ConnectionRefused":
 			global._print("Connection to AP refused")
