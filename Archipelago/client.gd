@@ -4,6 +4,8 @@ var ap_server = ""
 var ap_user = ""
 var ap_pass = ""
 
+const ap_version = {"major": 0, "minor": 4, "build": 0, "class": "Version"}
+
 var _client = WebSocketClient.new()
 var _last_state = WebSocketPeer.STATE_CLOSED
 var _should_process = false
@@ -11,6 +13,15 @@ var _should_process = false
 var _datapackage_checksum = ""
 var _item_name_to_id = {}
 var _location_name_to_id = {}
+
+const uuid_util = preload("user://maps/Archipelago/vendor/uuid.gd")
+
+var _authenticated = false
+var _team = 0
+var _slot = 0
+var _players = []
+var _checked_locations = []
+var _slot_data = {}
 
 
 func _init():
@@ -47,6 +58,7 @@ func _ready():
 func _closed(was_clean = false):
 	global._print("Closed, clean: " + was_clean)
 	_should_process = false
+	_authenticated = false
 
 
 func _connected(_proto = ""):
@@ -69,6 +81,9 @@ func _on_data():
 			if message["datapackage_checksums"].has("Lingo"):
 				if _datapackage_checksum != message["datapackage_checksums"]["Lingo"]:
 					requestDatapackage()
+				else:
+					connectToRoom()
+
 		elif cmd == "DataPackage":
 			if message["data"]["games"].has("Lingo"):
 				var lingo_pkg = message["data"]["games"]["Lingo"]
@@ -76,6 +91,20 @@ func _on_data():
 				_item_name_to_id = lingo_pkg["item_name_to_id"]
 				_location_name_to_id = lingo_pkg["location_name_to_id"]
 				saveSettings()
+
+				connectToRoom()
+
+		elif cmd == "Connected":
+			_authenticated = true
+			_team = message["team"]
+			_slot = message["slot"]
+			_players = message["players"]
+			_checked_locations = message["checked_locations"]
+			_slot_data = message["slot_data"]
+
+		elif cmd == "ConnectionRefused":
+			global._print("Connection to AP refused")
+			global._print(message)
 
 
 func _process(_delta):
@@ -119,3 +148,21 @@ func sendMessage(msg):
 
 func requestDatapackage():
 	sendMessage([{"cmd": "GetDataPackage", "games": ["Lingo"]}])
+
+
+func connectToRoom():
+	sendMessage(
+		[
+			{
+				"cmd": "Connect",
+				"password": ap_pass,
+				"game": "Lingo",
+				"name": ap_user,
+				"uuid": uuid_util.v4(),
+				"version": ap_version,
+				"items_handling": 0b111,  # always receive our items
+				"tags": [],
+				"slot_data": true
+			}
+		]
+	)
