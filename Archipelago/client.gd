@@ -16,12 +16,21 @@ var _location_name_to_id = {}
 
 const uuid_util = preload("user://maps/Archipelago/vendor/uuid.gd")
 
+# TODO: caching per MW/slot, reset between connections
 var _authenticated = false
 var _team = 0
 var _slot = 0
 var _players = []
 var _checked_locations = []
 var _slot_data = {}
+var _door_ids_by_item = {}
+var _mentioned_doors = []
+var _painting_ids_by_item = {}
+var _mentioned_paintings = []
+var _panel_ids_by_location = {}
+
+var _map_loaded = false
+var _held_items = []
 
 signal client_connected
 
@@ -104,11 +113,35 @@ func _on_data():
 			_checked_locations = message["checked_locations"]
 			_slot_data = message["slot_data"]
 
+			if _slot_data.has("door_ids_by_item_id"):
+				_door_ids_by_item = _slot_data["door_ids_by_item_id"]
+
+				_mentioned_doors = []
+				for item in _door_ids_by_item.values():
+					for door in item:
+						_mentioned_doors.append(door)
+			if _slot_data.has("painting_ids_by_item_id"):
+				_painting_ids_by_item = _slot_data["painting_ids_by_item_id"]
+
+				_mentioned_paintings = []
+				for item in _painting_ids_by_item.values():
+					for painting in item:
+						_mentioned_paintings.append(painting)
+			if _slot_data.has("panel_ids_by_location_id"):
+				_panel_ids_by_location = _slot_data["panel_ids_by_location_id"]
+
 			emit_signal("client_connected")
 
 		elif cmd == "ConnectionRefused":
 			global._print("Connection to AP refused")
 			global._print(message)
+
+		elif cmd == "ReceivedItems":
+			for item in message["items"]:
+				if _map_loaded:
+					processItem(item["item"])
+				else:
+					_held_items.append(item["item"])
 
 
 func _process(_delta):
@@ -170,3 +203,40 @@ func connectToRoom():
 			}
 		]
 	)
+
+
+func sendLocation(loc_id):
+	sendMessage([{"cmd": "LocationChecks", "locations": [loc_id]}])
+
+
+func mapFinishedLoading():
+	if !_map_loaded:
+		_map_loaded = true
+
+		for item in _held_items:
+			processItem(item)
+
+		_held_items = []
+
+
+func processItem(item):
+	global._print(item)
+
+	var stringified = String(item)
+	if _door_ids_by_item.has(stringified):
+		var doorsNode = get_tree().get_root().get_node("Spatial/Doors")
+		for door_id in _door_ids_by_item[stringified]:
+			doorsNode.get_node(door_id).openDoor()
+
+	if _painting_ids_by_item.has(stringified):
+		var paintingsNode = get_tree().get_root().get_node("Spatial/Decorations/Paintings")
+		for painting_id in _painting_ids_by_item[stringified]:
+			paintingsNode.get_node(painting_id).movePainting()
+
+
+func doorIsVanilla(door):
+	return !_mentioned_doors.has(door)
+
+
+func paintingIsVanilla(painting):
+	return !_mentioned_paintings.has(painting)
