@@ -148,6 +148,7 @@ func _on_data():
 				# We are being sent all of our items, so lets reset any progress
 				# on progressive items.
 				_tower_floors = 0
+				_held_items = []
 
 			for item in message["items"]:
 				if _map_loaded:
@@ -260,7 +261,9 @@ func processItem(item):
 
 	# Handle progressively opening up the tower.
 	if _item_name_to_id["Progressive Orange Tower"] == item and _tower_floors < orange_tower.size():
-		processItem(_item_name_to_id["Orange Tower - %s Floor" % orange_tower[_tower_floors]])
+		var subitem_name = "Orange Tower - %s Floor" % orange_tower[_tower_floors]
+		global._print(subitem_name)
+		processItem(_item_name_to_id[subitem_name])
 		_tower_floors += 1
 
 
