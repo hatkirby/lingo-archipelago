@@ -30,10 +30,12 @@ var _mentioned_doors = []
 var _painting_ids_by_item = {}
 var _mentioned_paintings = []
 var _panel_ids_by_location = {}
+var _localdata_file = ""
 
 var _map_loaded = false
 var _held_items = []
 var _held_locations = []
+var _last_new_item = -1
 var _tower_floors = 0
 
 signal client_connected
@@ -135,6 +137,18 @@ func _on_data():
 			if _slot_data.has("panel_ids_by_location_id"):
 				_panel_ids_by_location = _slot_data["panel_ids_by_location_id"]
 
+			_localdata_file = "user://archipelago/%s_%d" % [_seed, _slot]
+			var ap_file = File.new()
+			if ap_file.file_exists(_localdata_file):
+				ap_file.open(_localdata_file, File.READ)
+				var localdata = ap_file.get_var(true)
+				ap_file.close()
+
+				if localdata.size() > 0:
+					_last_new_item = localdata[0]
+				else:
+					_last_new_item = -1
+
 			requestSync()
 
 			emit_signal("client_connected")
@@ -150,11 +164,19 @@ func _on_data():
 				_tower_floors = 0
 				_held_items = []
 
+			var i = 0
 			for item in message["items"]:
 				if _map_loaded:
-					processItem(item["item"])
+					processItem(item["item"], message["index"] + i, item["player"])
 				else:
-					_held_items.append(item["item"])
+					_held_items.append(
+						{
+							"item": item["item"],
+							"index": message["index"] + i,
+							"from": item["player"]
+						}
+					)
+				i += 1
 
 
 func _process(_delta):
@@ -177,6 +199,23 @@ func saveSettings():
 	var data = [
 		ap_server, ap_user, ap_pass, _datapackage_checksum, _item_name_to_id, _location_name_to_id
 	]
+	file.store_var(data, true)
+	file.close()
+
+
+func saveLocaldata():
+	# Save the MW/slot specific settings to disk.
+	var dir = Directory.new()
+	var path = "user://archipelago"
+	if dir.dir_exists(path):
+		pass
+	else:
+		dir.make_dir(path)
+
+	var file = File.new()
+	file.open(_localdata_file, File.WRITE)
+
+	var data = [_last_new_item]
 	file.store_var(data, true)
 	file.close()
 
@@ -229,6 +268,9 @@ func requestSync():
 func sendLocation(loc_id):
 	if _map_loaded:
 		sendMessage([{"cmd": "LocationChecks", "locations": [loc_id]}])
+
+		var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
+		messages_node.showMessage("Sent %d" % loc_id)
 	else:
 		_held_locations.append(loc_id)
 
@@ -240,7 +282,7 @@ func completedGoal():
 func mapFinishedLoading():
 	if !_map_loaded:
 		for item in _held_items:
-			processItem(item)
+			processItem(item["item"], item["index"], item["from"])
 
 		sendMessage([{"cmd": "LocationChecks", "locations": _held_locations}])
 
@@ -249,7 +291,7 @@ func mapFinishedLoading():
 		_held_locations = []
 
 
-func processItem(item):
+func processItem(item, index, from):
 	global._print(item)
 
 	var stringified = String(item)
@@ -269,6 +311,17 @@ func processItem(item):
 		global._print(subitem_name)
 		processItem(_item_name_to_id[subitem_name])
 		_tower_floors += 1
+
+	# Show a message about the item if it's new.
+	if index > _last_new_item:
+		_last_new_item = index
+		saveLocaldata()
+
+		var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
+		if from == _slot:
+			messages_node.showMessage("Found %d" % item)
+		else:
+			messages_node.showMessage("Received %d from %d" % [item, from])
 
 
 func doorIsVanilla(door):

@@ -38,11 +38,17 @@ func _load():
 				"answer_correct", location, "handle_correct"
 			)
 
-		# Hardcode THE END as the goal for now.
-		var the_end = self.get_node("Decorations/EndPanel/Panel_end_end")
-		the_end.get_node("Viewport/GUI/Panel/TextEdit").connect(
-			"answer_correct", apclient, "completedGoal"
-		)
+	# Hardcode THE END as the goal for now.
+	var the_end = self.get_node("Decorations/EndPanel/Panel_end_end")
+	the_end.get_node("Viewport/GUI/Panel/TextEdit").connect(
+		"answer_correct", apclient, "completedGoal"
+	)
+
+	# Create the messages node.
+	var messages_script = ResourceLoader.load("user://maps/Archipelago/messages.gd")
+	var messages = messages_script.new()
+	messages.set_name("AP_Messages")
+	self.add_child(messages)
 
 	# Proceed with the rest of the load.
 	global._print("Hooked Load End")
