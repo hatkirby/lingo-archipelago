@@ -5,6 +5,7 @@ var ap_user = ""
 var ap_pass = ""
 
 const ap_version = {"major": 0, "minor": 4, "build": 0, "class": "Version"}
+const orange_tower = ["Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh"]
 
 var _client = WebSocketClient.new()
 var _last_state = WebSocketPeer.STATE_CLOSED
@@ -33,6 +34,7 @@ var _panel_ids_by_location = {}
 var _map_loaded = false
 var _held_items = []
 var _held_locations = []
+var _tower_floors = 0
 
 signal client_connected
 
@@ -142,6 +144,11 @@ func _on_data():
 			global._print(message)
 
 		elif cmd == "ReceivedItems":
+			if message["index"] == 0:
+				# We are being sent all of our items, so lets reset any progress
+				# on progressive items.
+				_tower_floors = 0
+
 			for item in message["items"]:
 				if _map_loaded:
 					processItem(item["item"])
@@ -250,6 +257,11 @@ func processItem(item):
 		var paintingsNode = get_tree().get_root().get_node("Spatial/Decorations/Paintings")
 		for painting_id in _painting_ids_by_item[stringified]:
 			paintingsNode.get_node(painting_id).movePainting()
+
+	# Handle progressively opening up the tower.
+	if _item_name_to_id["Progressive Orange Tower"] == item and _tower_floors < orange_tower.size():
+		processItem(_item_name_to_id["Orange Tower - %s Floor" % orange_tower[_tower_floors]])
+		_tower_floors += 1
 
 
 func doorIsVanilla(door):
