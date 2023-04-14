@@ -6,7 +6,17 @@ func _load():
 
 	var apclient = global.get_node("Archipelago")
 
-	# TODO: Override the YOU panel with the AP slot name
+	# Override the YOU panel with the AP slot name.
+	if self.get_node_or_null("Panels/Color Arrow Room/Panel_you") != null:
+		self.get_node("Panels/Color Arrow Room/Panel_you").answer = apclient.ap_user
+	for node in get_tree().get_nodes_in_group("text_you"):
+		if "text" in node:
+			node.text = apclient.ap_user
+		elif "value" in node:
+			node.value = apclient.ap_user
+	for node in get_tree().get_nodes_in_group("answer_you"):
+		if "answer" in node:
+			node.answer = apclient.ap_user
 
 	# This is the best time to create the location nodes, since the map is now
 	# loaded but the panels haven't been solved from the save file yet.
