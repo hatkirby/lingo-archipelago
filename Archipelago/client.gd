@@ -31,6 +31,7 @@ var _panel_ids_by_location = {}
 
 var _map_loaded = false
 var _held_items = []
+var _held_locations = []
 
 signal client_connected
 
@@ -130,6 +131,8 @@ func _on_data():
 			if _slot_data.has("panel_ids_by_location_id"):
 				_panel_ids_by_location = _slot_data["panel_ids_by_location_id"]
 
+			requestSync()
+
 			emit_signal("client_connected")
 
 		elif cmd == "ConnectionRefused":
@@ -205,18 +208,27 @@ func connectToRoom():
 	)
 
 
+func requestSync():
+	sendMessage([{"cmd": "Sync"}])
+
+
 func sendLocation(loc_id):
-	sendMessage([{"cmd": "LocationChecks", "locations": [loc_id]}])
+	if _map_loaded:
+		sendMessage([{"cmd": "LocationChecks", "locations": [loc_id]}])
+	else:
+		_held_locations.append(loc_id)
 
 
 func mapFinishedLoading():
 	if !_map_loaded:
-		_map_loaded = true
-
 		for item in _held_items:
 			processItem(item)
 
+		sendMessage([{"cmd": "LocationChecks", "locations": _held_locations}])
+
+		_map_loaded = true
 		_held_items = []
+		_held_locations = []
 
 
 func processItem(item):

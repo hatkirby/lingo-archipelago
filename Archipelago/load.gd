@@ -28,9 +28,10 @@ func _load():
 				"answer_correct", location, "handle_correct"
 			)
 
-	# Process any items received while the map was loading.
-	apclient.mapFinishedLoading()
-
 	# Proceed with the rest of the load.
 	global._print("Hooked Load End")
 	._load()
+
+	# Process any items received while the map was loading, and send the checks
+	# from the save load.
+	apclient.mapFinishedLoading()
