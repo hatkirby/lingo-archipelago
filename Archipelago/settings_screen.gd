@@ -48,7 +48,10 @@ func installScriptExtension(childScriptPath: String):
 
 
 func connectionSuccessful():
+	var apclient = global.get_node("Archipelago")
+
 	# Switch to LL1
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	global.map = "level1"
+	global.save_file = apclient.getSaveFileName()
 	var _discard = get_tree().change_scene("res://scenes/load_screen.tscn")

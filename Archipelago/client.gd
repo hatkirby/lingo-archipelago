@@ -18,6 +18,7 @@ const uuid_util = preload("user://maps/Archipelago/vendor/uuid.gd")
 
 # TODO: caching per MW/slot, reset between connections
 var _authenticated = false
+var _seed = ""
 var _team = 0
 var _slot = 0
 var _players = []
@@ -90,6 +91,7 @@ func _on_data():
 		global._print("Received command: " + cmd)
 
 		if cmd == "RoomInfo":
+			_seed = message["seed_name"]
 			if message["datapackage_checksums"].has("Lingo"):
 				if _datapackage_checksum != message["datapackage_checksums"]["Lingo"]:
 					requestDatapackage()
@@ -169,6 +171,10 @@ func saveSettings():
 	]
 	file.store_var(data, true)
 	file.close()
+
+
+func getSaveFileName():
+	return "zzAP_%s_%d" % [_seed, _slot]
 
 
 func connectToServer():
