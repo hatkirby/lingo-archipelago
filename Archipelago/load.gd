@@ -38,6 +38,12 @@ func _load():
 				"answer_correct", location, "handle_correct"
 			)
 
+		# Hardcode THE END as the goal for now.
+		var the_end = self.get_node("Decorations/EndPanel/Panel_end_end")
+		the_end.get_node("Viewport/GUI/Panel/TextEdit").connect(
+			"answer_correct", apclient, "completedGoal"
+		)
+
 	# Proceed with the rest of the load.
 	global._print("Hooked Load End")
 	._load()

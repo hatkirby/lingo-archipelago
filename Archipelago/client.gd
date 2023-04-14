@@ -233,6 +233,10 @@ func sendLocation(loc_id):
 		_held_locations.append(loc_id)
 
 
+func completedGoal():
+	sendMessage([{"cmd": "StatusUpdate", "status": 30}])  # CLIENT_GOAL
+
+
 func mapFinishedLoading():
 	if !_map_loaded:
 		for item in _held_items:
