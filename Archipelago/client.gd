@@ -34,6 +34,7 @@ var _painting_ids_by_item = {}
 var _mentioned_paintings = []
 var _panel_ids_by_location = {}
 var _localdata_file = ""
+var _death_link = false
 
 var _map_loaded = false
 var _held_items = []
@@ -146,6 +147,10 @@ func _on_data():
 			if _slot_data.has("panel_ids_by_location_id"):
 				_panel_ids_by_location = _slot_data["panel_ids_by_location_id"]
 
+			_death_link = _slot_data.has("death_link") and _slot_data["death_link"]
+			if _death_link:
+				sendConnectUpdate(["DeathLink"])
+
 			_localdata_file = "user://archipelago/%s_%d" % [_seed, _slot]
 			var ap_file = File.new()
 			if ap_file.file_exists(_localdata_file):
@@ -219,6 +224,25 @@ func _on_data():
 			else:
 				if message["receiving"] != _slot:
 					messages_node.showMessage("Sent %s to %s" % [item_name, player_name])
+
+		elif cmd == "Bounced":
+			if (
+				_death_link
+				and message.has("tags")
+				and message.has("data")
+				and message["tags"].has("DeathLink")
+			):
+				var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
+				var first_sentence = "Received Death"
+				var second_sentence = ""
+				if message["data"].has("source"):
+					first_sentence = "Received Death from %s" % message["data"]["source"]
+				if message["data"].has("cause"):
+					second_sentence = ". Reason: %s" % message["data"]["cause"]
+				messages_node.showMessage(first_sentence + second_sentence)
+
+				# Return the player home.
+				get_tree().get_root().get_node("Spatial/player/pause_menu")._reload()
 
 
 func _process(_delta):
@@ -314,6 +338,10 @@ func connectToRoom():
 			}
 		]
 	)
+
+
+func sendConnectUpdate(tags):
+	sendMessage([{"cmd": "ConnectUpdate", "tags": tags}])
 
 
 func requestSync():
