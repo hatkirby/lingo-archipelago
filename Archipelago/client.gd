@@ -321,7 +321,7 @@ func processItem(item, index, from):
 	if _item_name_to_id["Progressive Orange Tower"] == item and _tower_floors < orange_tower.size():
 		var subitem_name = "Orange Tower - %s Floor" % orange_tower[_tower_floors]
 		global._print(subitem_name)
-		processItem(_item_name_to_id[subitem_name], null)
+		processItem(_item_name_to_id[subitem_name], null, null)
 		_tower_floors += 1
 
 	# Show a message about the item if it's new.
