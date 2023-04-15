@@ -11,9 +11,10 @@ var _client = WebSocketClient.new()
 var _last_state = WebSocketPeer.STATE_CLOSED
 var _should_process = false
 
-var _datapackage_checksum = ""
-var _item_name_to_id = {}
-var _location_name_to_id = {}
+var _datapackages = {}
+var _item_id_to_name = {}  # All games
+var _item_name_to_id = {}  # LINGO only
+var _location_name_to_id = {}  # LINGO only
 
 const uuid_util = preload("user://maps/Archipelago/vendor/uuid.gd")
 
@@ -58,11 +59,9 @@ func _init():
 		if data.size() > 2:
 			ap_pass = data[2]
 		if data.size() > 3:
-			_datapackage_checksum = data[3]
-		if data.size() > 4:
-			_item_name_to_id = data[4]
-		if data.size() > 5:
-			_location_name_to_id = data[5]
+			_datapackages = data[3]
+
+		processDatapackages()
 
 
 func _ready():
@@ -96,21 +95,25 @@ func _on_data():
 
 		if cmd == "RoomInfo":
 			_seed = message["seed_name"]
-			if message["datapackage_checksums"].has("Lingo"):
-				if _datapackage_checksum != message["datapackage_checksums"]["Lingo"]:
-					requestDatapackage()
-				else:
-					connectToRoom()
+
+			var needed_games = []
+			for game in message["datapackage_checksums"].keys():
+				if (
+					!_datapackages.has(game)
+					or _datapackages[game]["checksum"] != message["datapackage_checksums"][game]
+				):
+					needed_games.append(game)
+
+			if !needed_games.empty():
+				requestDatapackages(needed_games)
+			else:
+				connectToRoom()
 
 		elif cmd == "DataPackage":
-			if message["data"]["games"].has("Lingo"):
-				var lingo_pkg = message["data"]["games"]["Lingo"]
-				_datapackage_checksum = lingo_pkg["checksum"]
-				_item_name_to_id = lingo_pkg["item_name_to_id"]
-				_location_name_to_id = lingo_pkg["location_name_to_id"]
-				saveSettings()
-
-				connectToRoom()
+			_datapackages = message["data"]["games"]
+			saveSettings()
+			processDatapackages()
+			connectToRoom()
 
 		elif cmd == "Connected":
 			_authenticated = true
@@ -196,9 +199,7 @@ func saveSettings():
 	var file = File.new()
 	file.open("user://settings/archipelago", File.WRITE)
 
-	var data = [
-		ap_server, ap_user, ap_pass, _datapackage_checksum, _item_name_to_id, _location_name_to_id
-	]
+	var data = [ap_server, ap_user, ap_pass, _datapackages]
 	file.store_var(data, true)
 	file.close()
 
@@ -239,8 +240,19 @@ func sendMessage(msg):
 	_client.get_peer(1).put_packet(payload.to_utf8())
 
 
-func requestDatapackage():
-	sendMessage([{"cmd": "GetDataPackage", "games": ["Lingo"]}])
+func requestDatapackages(games):
+	sendMessage([{"cmd": "GetDataPackage", "games": games}])
+
+
+func processDatapackages():
+	_item_id_to_name = {}
+	for package in _datapackages.values():
+		for name in package["item_name_to_id"].keys():
+			_item_id_to_name[package["item_name_to_id"][name]] = name
+
+	if _datapackages.has("Lingo"):
+		_item_name_to_id = _datapackages["Lingo"]["item_name_to_id"]
+		_location_name_to_id = _datapackages["Lingo"]["location_name_to_id"]
 
 
 func connectToRoom():
@@ -309,19 +321,23 @@ func processItem(item, index, from):
 	if _item_name_to_id["Progressive Orange Tower"] == item and _tower_floors < orange_tower.size():
 		var subitem_name = "Orange Tower - %s Floor" % orange_tower[_tower_floors]
 		global._print(subitem_name)
-		processItem(_item_name_to_id[subitem_name])
+		processItem(_item_name_to_id[subitem_name], null)
 		_tower_floors += 1
 
 	# Show a message about the item if it's new.
-	if index > _last_new_item:
+	if index != null and index > _last_new_item:
 		_last_new_item = index
 		saveLocaldata()
 
+		var item_name = "Unknown"
+		if _item_id_to_name.has(item):
+			item_name = _item_id_to_name[item]
+
 		var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
 		if from == _slot:
-			messages_node.showMessage("Found %d" % item)
+			messages_node.showMessage("Found %s" % item_name)
 		else:
-			messages_node.showMessage("Received %d from %d" % [item, from])
+			messages_node.showMessage("Received %s from %d" % [item_name, from])
 
 
 func doorIsVanilla(door):
