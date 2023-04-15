@@ -13,6 +13,7 @@ var _should_process = false
 
 var _datapackages = {}
 var _item_id_to_name = {}  # All games
+var _location_id_to_name = {}  # All games
 var _item_name_to_id = {}  # LINGO only
 var _location_name_to_id = {}  # LINGO only
 
@@ -24,6 +25,7 @@ var _seed = ""
 var _team = 0
 var _slot = 0
 var _players = []
+var _player_name_by_slot = {}
 var _checked_locations = []
 var _slot_data = {}
 var _door_ids_by_item = {}
@@ -110,7 +112,8 @@ func _on_data():
 				connectToRoom()
 
 		elif cmd == "DataPackage":
-			_datapackages = message["data"]["games"]
+			for game in message["data"]["games"].keys():
+				_datapackages[game] = message["data"]["games"][game]
 			saveSettings()
 			processDatapackages()
 			connectToRoom()
@@ -122,6 +125,9 @@ func _on_data():
 			_players = message["players"]
 			_checked_locations = message["checked_locations"]
 			_slot_data = message["slot_data"]
+
+			for player in _players:
+				_player_name_by_slot[player["slot"]] = player["alias"]
 
 			if _slot_data.has("door_ids_by_item_id"):
 				_door_ids_by_item = _slot_data["door_ids_by_item_id"]
@@ -180,6 +186,39 @@ func _on_data():
 						}
 					)
 				i += 1
+
+		elif cmd == "PrintJSON":
+			if (
+				!message.has("receiving")
+				or !message.has("item")
+				or message["item"]["player"] != _slot
+			):
+				continue
+
+			var item_name = "Unknown"
+			if _item_id_to_name.has(message["item"]["item"]):
+				item_name = _item_id_to_name[message["item"]["item"]]
+
+			var location_name = "Unknown"
+			if _location_id_to_name.has(message["item"]["location"]):
+				location_name = _location_id_to_name[message["item"]["location"]]
+
+			var player_name = "Unknown"
+			if _player_name_by_slot.has(message["receiving"]):
+				player_name = _player_name_by_slot[message["receiving"]]
+
+			var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
+			if message["type"] == "Hint":
+				var is_for = ""
+				if message["receiving"] != _slot:
+					is_for = " for %s" % player_name
+				if !message.has("found") || !message["found"]:
+					messages_node.showMessage(
+						"Hint: %s%s is on %s" % [item_name, is_for, location_name]
+					)
+			else:
+				if message["receiving"] != _slot:
+					messages_node.showMessage("Sent %s to %s" % [item_name, player_name])
 
 
 func _process(_delta):
@@ -246,9 +285,13 @@ func requestDatapackages(games):
 
 func processDatapackages():
 	_item_id_to_name = {}
+	_location_id_to_name = {}
 	for package in _datapackages.values():
 		for name in package["item_name_to_id"].keys():
 			_item_id_to_name[package["item_name_to_id"][name]] = name
+
+		for name in package["location_name_to_id"].keys():
+			_location_id_to_name[package["location_name_to_id"][name]] = name
 
 	if _datapackages.has("Lingo"):
 		_item_name_to_id = _datapackages["Lingo"]["item_name_to_id"]
@@ -280,9 +323,6 @@ func requestSync():
 func sendLocation(loc_id):
 	if _map_loaded:
 		sendMessage([{"cmd": "LocationChecks", "locations": [loc_id]}])
-
-		var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
-		messages_node.showMessage("Sent %d" % loc_id)
 	else:
 		_held_locations.append(loc_id)
 
@@ -333,11 +373,15 @@ func processItem(item, index, from):
 		if _item_id_to_name.has(item):
 			item_name = _item_id_to_name[item]
 
+		var player_name = "Unknown"
+		if _player_name_by_slot.has(from):
+			player_name = _player_name_by_slot[from]
+
 		var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
 		if from == _slot:
 			messages_node.showMessage("Found %s" % item_name)
 		else:
-			messages_node.showMessage("Received %s from %d" % [item_name, from])
+			messages_node.showMessage("Received %s from %s" % [item_name, player_name])
 
 
 func doorIsVanilla(door):
