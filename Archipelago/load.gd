@@ -38,6 +38,18 @@ func _load():
 				"answer_correct", location, "handle_correct"
 			)
 
+	# Attach a script to every panel so that we can do things like conditionally
+	# disable them.
+	var gamedata = apclient.get_node("Gamedata")
+	var panel_script = ResourceLoader.load("user://maps/Archipelago/panel.gd")
+	for panel in gamedata.panels:
+		var panel_node = panels_parent.get_node(panel["id"])
+		var script_instance = panel_script.new()
+		script_instance.name = "AP_Panel"
+		script_instance.data = panel
+		panel_node.add_child(script_instance)
+		apclient.connect("evaluate_solvability", script_instance, "evaluate_solvability")
+
 	# Hook up the goal panel.
 	if apclient._victory_condition == 1:
 		var the_master = self.get_node("Panels/Countdown Panels/Panel_master_master")

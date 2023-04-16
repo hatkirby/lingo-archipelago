@@ -13,6 +13,11 @@ func _ready():
 		apclient_instance.name = "Archipelago"
 		global.add_child(apclient_instance)
 
+		var apdata = ResourceLoader.load("user://maps/Archipelago/gamedata.gd")
+		var apdata_instance = apdata.new()
+		apdata_instance.name = "Gamedata"
+		apclient_instance.add_child(apdata_instance)
+
 		# Let's also inject any scripts we need to inject now.
 		installScriptExtension("user://maps/Archipelago/doorControl.gd")
 		installScriptExtension("user://maps/Archipelago/load.gd")

@@ -1,0 +1,2739 @@
+---
+- id: Entry Room/Panel_hi_hi
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_type_type
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_this_this
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_write_write
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_same_same
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_hidden_hidden
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_hi_high
+  color: white
+  tag: topwhite
+- id: Entry Room/Panel_low_low
+  color: white
+  tag: botwhite
+- id: Entry Room/Panel_forward_forward
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_between_between
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_backward_backward
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_return_return
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_secret_secret
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_size_small
+  color: gray
+  tag: forbid
+- id: Entry Room/Panel_size_big
+  color: gray
+  tag: forbid
+- id: Entry Room/Panel_summer_summer
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_autumn_autumn
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_spring_spring
+  color: white
+  tag: midwhite
+- id: Entry Room/Panel_advance
+  color: white
+  tag: topwhite
+- id: Synonym Room/Panel_open_open
+  color: white
+  tag: midwhite
+- id: Synonym Room/Panel_close_near
+  color: white
+  tag: botwhite
+- id: Synonym Room/Panel_compose_write
+  color: white
+  tag: double botwhite
+  link: syn WRITE
+- id: Synonym Room/Panel_record_write
+  color: white
+  tag: double botwhite
+  link: syn WRITE
+- id: Synonym Room/Panel_category_type
+  color: white
+  tag: botwhite
+- id: Synonym Room/Panel_hello_hi
+  color: white
+  tag: botwhite
+- id: Synonym Room/Panel_duplicate_same
+  color: white
+  tag: double botwhite
+  link: syn SAME
+- id: Synonym Room/Panel_identical_same
+  color: white
+  tag: double botwhite
+  link: syn SAME
+- id: Synonym Room/Panel_distant_far
+  color: white
+  tag: botwhite
+- id: Synonym Room/Panel_hay_straw
+  color: white
+  tag: botwhite
+- id: Synonym Room/Panel_giggle_laugh
+  color: white
+  tag: double botwhite
+  link: syn LAUGH
+- id: Synonym Room/Panel_chuckle_laugh
+  color: white
+  tag: double botwhite
+  link: syn LAUGH
+- id: Synonym Room/Panel_snitch_rat
+  color: white
+  tag: botwhite
+- id: Synonym Room/Panel_concealed_hidden
+  color: white
+  tag: botwhite
+- id: Synonym Room/Panel_plunge_fall
+  color: white
+  tag: double botwhite
+  link: syn FALL
+- id: Synonym Room/Panel_autumn_fall
+  color: white
+  tag: double botwhite
+  link: syn FALL
+- id: Synonym Room/Panel_growths_warts
+  color: white
+  tag: botwhite
+- id: Antonym Room/Panel_close_open
+  color: black
+  tag: botblack
+- id: Antonym Room/Panel_retool_looter
+  color: black
+  tag: midblack
+- id: Antonym Room/Panel_drawer_reward
+  color: black
+  tag: midblack
+- id: Antonym Room/Panel_read_write
+  color: black
+  tag: botblack
+- id: Antonym Room/Panel_different_same
+  color: black
+  tag: botblack
+- id: Antonym Room/Panel_bye_hi
+  color: black
+  tag: botblack
+- id: Antonym Room/Panel_low_high
+  color: black
+  tag: botblack
+- id: Antonym Room/Panel_alive_dead
+  color: black
+  tag: botblack
+- id: Antonym Room/Panel_that_this
+  color: black
+  tag: botblack
+- id: Antonym Room/Panel_stressed_desserts
+  color: black
+  tag: midblack
+- id: Antonym Room/Panel_star_rats
+  color: black
+  tag: midblack
+- id: Antonym Room/Panel_tame_mate
+  color: black
+  tag: topblack
+- id: Antonym Room/Panel_cat_tack
+  color: black
+  tag: topblack
+- id: Heteronym Room/Panel_entrance_entrance
+  color: white
+  tag: midwhite
+- id: Heteronym Room/Panel_bear_bear
+  color: white
+  tag: midwhite
+- id: Heteronym Room/Panel_mine_mine
+  color: white
+  tag: double midwhite
+  link: exact MINE
+- id: Heteronym Room/Panel_mine_mine_2
+  color: white
+  tag: double midwhite
+  link: exact MINE
+- id: Heteronym Room/Panel_bow_bow
+  color: white
+  tag: midwhite
+- id: Heteronym Room/Panel_does_does
+  color: white
+  tag: midwhite
+- id: Heteronym Room/Panel_mobile_mobile
+  color: white
+  tag: double midwhite
+  link: exact MOBILE
+- id: Heteronym Room/Panel_mobile_mobile_2
+  color: white
+  tag: double midwhite
+  link: exact MOBILE
+- id: Heteronym Room/Panel_desert_desert
+  color: white
+  tag: topmid white stack
+  subtag: mid
+  link: topmid DESERT
+- id: Heteronym Room/Panel_desert_dessert
+  color: white
+  tag: topmid white stack
+  subtag: top
+  link: topmid DESERT
+- id: Heteronym Room/Panel_sow_sow
+  color: white
+  tag: topmid white stack
+  subtag: mid
+  link: topmid SOW
+- id: Heteronym Room/Panel_sow_so
+  color: white
+  tag: topmid white stack
+  subtag: top
+  link: topmid SOW
+- id: Heteronym Room/Panel_two_to
+  color: white
+  tag: double topwhite
+  link: hp TWO
+- id: Heteronym Room/Panel_two_too
+  color: white
+  tag: double topwhite
+  link: hp TWO
+- id: Heteronym Room/Panel_write_right
+  color: white
+  tag: topwhite
+- id: Heteronym Room/Panel_you_ewe
+  color: white
+  tag: topwhite
+- id: Heteronym Room/Panel_not_knot
+  color: white
+  tag: double topwhite
+  link: hp NOT
+- id: Heteronym Room/Panel_not_naught
+  color: white
+  tag: double topwhite
+  link: hp NOT
+- id: Heteronym Room/Panel_bear_bare
+  color: white
+  tag: topwhite
+- id: Symmetry Room/Panel_leaf_feel
+  color: black
+  tag: topblack
+- id: Symmetry Room/Panel_feel_leaf
+  color: black
+  tag: topblack
+- id: Symmetry Room/Panel_warts_straw
+  color: black
+  tag: midblack
+- id: Symmetry Room/Panel_straw_warts
+  color: black
+  tag: midblack
+- id: Symmetry Room/Panel_near_far
+  color: black
+  tag: botblack
+- id: Symmetry Room/Panel_far_near
+  color: black
+  tag: botblack
+- id: Symmetry Room/Panel_left_wrong
+  color: black
+  tag: bot black black
+- id: Symmetry Room/Panel_black_white
+  color: black
+  tag: botblack
+- id: Symmetry Room/Panel_left_right
+  color: black
+  tag: botblack
+- id: Symmetry Room/Panel_right_left
+  color: black
+  tag: botblack
+- id: Palindrome Room/Panel_slaughter_laughter
+  color: red
+  tag: midred
+- id: Palindrome Room/Panel_dread_dead
+  color: red
+  tag: midred
+- id: Palindrome Room/Panel_massacred_sacred
+  color: red
+  tag: midred
+- id: Palindrome Room/Panel_decay_day
+  color: red
+  tag: midred
+- id: Palindrome Room/Panel_solos_solos
+  color: black
+  tag: midblack
+- id: Palindrome Room/Panel_solos_solos_2
+  color: white
+  tag: midwhite
+- id: Palindrome Room/Panel_racecar_racecar
+  color: black
+  tag: forbid # The signs make this and LEVEL too hard for now
+- id: Palindrome Room/Panel_racecar_racecar_2
+  color: white
+  tag: midwhite
+- id: Palindrome Room/Panel_level_level
+  color: black
+  tag: forbid
+- id: Palindrome Room/Panel_level_level_2
+  color: white
+  tag: midwhite
+- id: Truncate Room/Panel_unopened_open
+  color: red
+  tag: midred
+- id: Truncate Room/Panel_foot_toe
+  color: red
+  tag: botred
+- id: Truncate Room/Panel_needle_eye
+  color: red
+  tag: double botred
+  link: mero EYE
+- id: Truncate Room/Panel_face_eye
+  color: red
+  tag: double botred
+  link: mero EYE
+- id: Truncate Room/Panel_sign_sigh
+  color: red
+  tag: topred
+- id: Truncate Room/Panel_heartbreak_brake
+  color: red
+  tag: topred
+- id: Truncate Room/Panel_undead_dead
+  color: red
+  tag: midred
+  link: trunc DEAD
+- id: Truncate Room/Panel_deadline_dead
+  color: red
+  tag: midred
+  link: trunc DEAD
+- id: Truncate Room/Panel_sushi_hi
+  color: red
+  tag: midred
+- id: Truncate Room/Panel_thistle_this
+  color: red
+  tag: midred
+- id: Truncate Room/Panel_landmass_mass
+  color: red
+  tag: midred
+  link: trunc MASS
+- id: Truncate Room/Panel_massacred_mass
+  color: red
+  tag: midred
+  link: trunc MASS
+- id: Truncate Room/Panel_airplane_plain
+  color: red
+  tag: topred
+- id: Truncate Room/Panel_nightmare_knight
+  color: red
+  tag: topred
+- id: Truncate Room/Panel_mouth_teeth
+  color: red
+  tag: double botred
+  link: mero TEETH
+- id: Truncate Room/Panel_saw_teeth
+  color: red
+  tag: double botred
+  link: mero TEETH
+- id: Truncate Room/Panel_hand_finger
+  color: red
+  tag: botred
+- id: Rock Room/Panel_begin_begin
+  color: white
+  tag: midwhite
+- id: Rock Room/Panel_red_red
+  color: white
+  tag: midwhite
+- id: Rock Room/Panel_soar_rose
+  color: black
+  tag: topblack
+- id: Rock Room/Panel_incarnation_carnation
+  color: red
+  tag: midred
+- id: Rock Room/Panel_sun_sunflower
+  color: blue
+  tag: midblue
+- id: Rock Room/Panel_bury_ruby
+  color: yellow
+  tag: midyellow
+- id: Rock Room/Panel_lump_plum
+  color: yellow
+  tag: midyellow
+- id: Rock Room/Panel_limelight_lime
+  color: red
+  tag: midred
+- id: Rock Room/Panel_melon_lemon
+  color: yellow
+  tag: midyellow
+- id: Rock Room/Panel_top_topaz
+  color: blue
+  tag: midblue
+- id: Rock Room/Panel_blue_orange
+  color: black
+  tag: botblack
+- id: Rock Room/Panel_sap_sapphire
+  color: blue
+  tag: midblue
+- id: Rock Room/Panel_blue_blueberry
+  color: blue
+  tag: midblue
+- id: Rock Room/Panel_antechamber_amber
+  color: red
+  tag: midred
+- id: Rock Room/Panel_herald_emerald
+  color: purple
+  tag: midpurp
+- id: Rock Room/Panel_thistle_amethyst
+  color: purple
+  tag: toppurp
+- id: Rock Room/Panel_lielack_lilac
+  color: white
+  tag: topwhite
+- id: Rock Room/Panel_hairy_cherry
+  color: blue
+  tag: topblue
+- id: Blue Room/Panel_pen_open
+  color: blue
+  tag: midblue
+- id: Blue Room/Panel_bone_skeleton
+  color: blue
+  tag: botblue
+- id: Blue Room/Panel_mouth_face
+  color: blue
+  tag: double botblue
+  link: holo FACE
+- id: Blue Room/Panel_eye_face
+  color: blue
+  tag: double botblue
+  link: holo FACE
+- id: Blue Room/Panel_toucan_bird
+  color: blue
+  tag: botblue
+- id: Blue Room/Panel_two_toucan
+  color: blue
+  tag: topblue
+- id: Blue Room/Panel_ice_eyesight
+  color: blue
+  tag: double topblue
+  link: hex EYESIGHT
+- id: Blue Room/Panel_height_eyesight
+  color: blue
+  tag: double topblue
+  link: hex EYESIGHT
+- id: Blue Room/Panel_eye_hi
+  color: blue
+  tag: topblue
+- id: Blue Room/Panel_not_notice
+  color: blue
+  tag: midblue
+- id: Blue Room/Panel_just_readjust
+  color: blue
+  tag: double midblue
+  link: exp READJUST
+- id: Blue Room/Panel_read_readjust
+  color: blue
+  tag: double midblue
+  link: exp READJUST
+- id: Blue Room/Panel_ate_primate
+  color: blue
+  tag: midblue
+- id: Blue Room/Panel_primate_mammal
+  color: blue
+  tag: botblue
+- id: Blue Room/Panel_continent_planet
+  color: blue
+  tag: double botblue
+  link: holo PLANET
+- id: Blue Room/Panel_ocean_planet
+  color: blue
+  tag: double botblue
+  link: holo PLANET
+- id: Blue Room/Panel_wall_room
+  color: blue
+  tag: botblue
+- id: Sun Room/Panel_nope_open
+  color: yellow
+  tag: midyellow
+- id: Sun Room/Panel_hits_this
+  color: yellow
+  tag: midyellow
+- id: Sun Room/Panel_warred_drawer
+  color: yellow
+  tag: double midyellow
+  link: ana DRAWER
+- id: Sun Room/Panel_redraw_drawer
+  color: yellow
+  tag: double midyellow
+  link: ana DRAWER
+- id: Sun Room/Panel_adder_dread
+  color: yellow
+  tag: midyellow
+- id: Sun Room/Panel_laughters_slaughter
+  color: yellow
+  tag: midyellow
+- id: Sun Room/Panel_stone_notes
+  color: yellow
+  tag: double midyellow
+  link: ana NOTES
+- id: Sun Room/Panel_onset_notes
+  color: yellow
+  tag: double midyellow
+  link: ana NOTES
+- id: Sun Room/Panel_rat_art
+  color: yellow
+  tag: midyellow
+- id: Sun Room/Panel_dusty_study
+  color: yellow
+  tag: midyellow
+- id: Sun Room/Panel_arts_star
+  color: yellow
+  tag: double midyellow
+  link: ana STAR
+- id: Sun Room/Panel_tsar_star
+  color: yellow
+  tag: double midyellow
+  link: ana STAR
+- id: Sun Room/Panel_state_taste
+  color: yellow
+  tag: midyellow
+- id: Sun Room/Panel_react_trace
+  color: yellow
+  tag: midyellow
+- id: Sun Room/Panel_dear_read
+  color: yellow
+  tag: double midyellow
+  link: ana READ
+- id: Sun Room/Panel_dare_read
+  color: yellow
+  tag: double midyellow
+  link: ana READ
+- id: Sun Room/Panel_seam_same
+  color: yellow
+  tag: midyellow
+- id: Shuffle Room/Panel_sword_words
+  color: yellow
+  tag: midyellow
+- id: Shuffle Room/Panel_words_sword
+  color: yellow
+  tag: midyellow
+- id: Shuffle Room/Panel_turn_runt
+  color: yellow
+  tag: midyellow
+- id: Shuffle Room/Panel_turn_runt2
+  color: yellow
+  tag: midyellow
+- id: Shuffle Room/Panel_runt3
+  color:
+    - yellow
+    - blue
+  tag: mid yellow blue
+- id: Shuffle Room/Panel_corner
+  color: yellow
+  tag: topyellow
+- id: Shuffle Room/Panel_order_chaos
+  color: black
+  tag: botblack
+- id: Shuffle Room/Panel_swap_wasp
+  color: yellow
+  tag: midyellow
+- id: Shuffle Room/Panel_lost_lots
+  color: yellow
+  tag: midyellow
+- id: Shuffle Room/Panel_lost_slot
+  color: yellow
+  tag: midyellow
+- id: Shuffle Room/Panel_gel
+  color: yellow
+  tag: topyellow
+- id: Shuffle Room/Panel_though
+  color: yellow
+  tag: topyellow
+- id: Shuffle Room/Panel_eyes_see_shuffle
+  color: yellow
+  tag: midyellow
+- id: Shuffle Room/Panel_theeyes_theeyes
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_amen_mean
+  color: yellow
+  tag: double midyellow
+  link: ana MEAN
+- id: Shuffle Room/Panel_behind
+  color: yellow
+  tag: midyellow
+- id: Shuffle Room/Panel_name_mean
+  color: yellow
+  tag: double midyellow
+  link: ana MEAN
+- id: Shuffle Room/Panel_crossroads_crossroads
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_corner_corner
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_hollow_hollow
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_far_far
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_near_near
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_lost_found
+  color: black
+  tag: botblack
+- id: Shuffle Room/Panel_secret_secret
+  color: white
+  tag: midwhite # This one is... weird because it's actually on the bottom
+- id: Shuffle Room/Panel_clockwise_counterclockwise
+  color: black
+  tag: botblack
+- id: Shuffle Room/Panel_past_present
+  color: brown
+  tag: botbrown
+- id: Shuffle Room/Panel_future_present
+  color:
+    - brown
+    - black
+  tag: bot brown black
+- id: Shuffle Room/Panel_future_past
+  color: black
+  tag: botblack
+- id: Shuffle Room/Panel_past_future
+  color: black
+  tag: botblack
+- id: Shuffle Room/Panel_past_past
+  color:
+    - brown
+    - black
+  tag: bot brown black
+- id: Shuffle Room/Panel_pinecone_pine
+  color: brown
+  tag: botbrown
+- id: Shuffle Room/Panel_acorn_oak
+  color: brown
+  tag: botbrown
+- id: Shuffle Room/Panel_left_left
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_right_right
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_middle_middle
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_left_left_2
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_right_right_2
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_middle_middle_2
+  color: white
+  tag: midwhite
+- id: Shuffle Room/Panel_shortcuts
+  color: yellow
+  tag: midyellow
+- id: Shuffle Room/Panel_tower
+  color: yellow
+  tag: midyellow
+- id: Maze Room/Panel_trace_trace
+  color: white
+  tag: midwhite
+- id: Maze Room/Panel_path_lock
+  color: green
+  tag: forbid
+- id: Maze Room/Panel_path_knot
+  color: green
+  tag: forbid
+- id: Maze Room/Panel_path_lost
+  color: green
+  tag: forbid
+- id: Maze Room/Panel_look_look
+  color: white
+  tag: botwhite
+- id: Maze Room/Panel_path_open
+  color: green
+  tag: forbid
+- id: Maze Room/Panel_path_help
+  color: green
+  tag: forbid
+- id: Maze Room/Panel_path_hunt
+  color: green
+  tag: forbid
+- id: Maze Room/Panel_path_nest
+  color: green
+  tag: forbid
+- id: Maze Room/Panel_path_look
+  color: green
+  tag: forbid
+- id: Maze Room/Panel_down_up
+  color: black
+  tag: botblack
+- id: Maze Room/Panel_strays_maze
+  color: purple
+  tag: toppurp
+- id: Maze Room/Panel_daze_maze
+  color: purple
+  tag: midpurp
+- id: Maze Room/Panel_reflow_flower
+  color: yellow
+  tag: midyellow
+- id: Maze Room/Panel_leap_jump
+  color: white
+  tag: botwhite
+- id: Maze Room/Panel_hide_seek
+  color: black
+  tag: botblack
+- id: Maze Room/Panel_hide_seek_2
+  color: black
+  tag: botblack
+- id: Maze Room/Panel_hide_seek_3
+  color: black
+  tag: botblack
+- id: Maze Room/Panel_hide_seek_4
+  color: black
+  tag: botblack
+- id: Look Room/Panel_four_back
+  color: green
+  tag: forbid
+- id: Look Room/Panel_four_side
+  color: green
+  tag: forbid
+- id: Look Room/Panel_four_ways
+  color: green
+  tag: forbid
+- id: Look Room/Panel_two_on
+  color: green
+  tag: forbid
+- id: Look Room/Panel_two_up
+  color: green
+  tag: forbid
+- id: Look Room/Panel_six_stairs
+  color: green
+  tag: forbid
+- id: Look Room/Panel_five_swims
+  color: green
+  tag: forbid
+- id: Look Room/Panel_eight_upstairs
+  color: green
+  tag: forbid
+- id: Look Room/Panel_blue_toil
+  color: green
+  tag: forbid
+- id: Look Room/Panel_four_stop
+  color: green
+  tag: forbid
+- id: Look Room/Panel_aqua_top
+  color: green
+  tag: forbid
+- id: Look Room/Panel_blue_hi
+  color: green
+  tag: forbid
+- id: Look Room/Panel_blue_hi2
+  color: green
+  tag: forbid
+- id: Look Room/Panel_numbers_31
+  color: green
+  tag: forbid
+- id: Look Room/Panel_numbers_52
+  color: green
+  tag: forbid
+- id: Look Room/Panel_aqua_oil
+  color: green
+  tag: forbid
+- id: Look Room/Panel_eight_backside
+  color: green
+  tag: forbid
+- id: Look Room/Panel_eight_sideways
+  color: green
+  tag: forbid
+- id: Appendix Room/Panel_rat_tar
+  color: black
+  tag: midblack
+- id: Appendix Room/Panel_discover_recover
+  color: purple
+  tag: midpurp
+- id: Appendix Room/Panel_deadend_deadened
+  color: white
+  tag: topwhite
+- id: Appendix Room/Panel_deadend_deadend
+  color: white
+  tag: midwhite
+- id: Appendix Room/Panel_warner_corner
+  color: purple
+  tag: toppurp
+- id: Appendix Room/Panel_lies_lies
+  color: white
+  tag: midwhite
+- id: Appendix Room/Panel_night_knight
+  color: blue
+  tag: homophone midblue
+  copy_to_sign: sign7
+- id: Appendix Room/Panel_knight_night
+  color: red
+  tag: homophone midred
+  copy_to_sign: sign8
+- id: Appendix Room/Panel_bee_be
+  color: red
+  tag: homophone midred
+  copy_to_sign: sign9
+- id: Appendix Room/Panel_new_knew
+  color: blue
+  tag: homophone midblue
+  copy_to_sign: sign11
+- id: Appendix Room/Panel_fore_for
+  color: red
+  tag: homophone midred
+  copy_to_sign: sign10
+- id: Appendix Room/Panel_trusted_trust
+  color: red
+  tag: midred
+- id: Appendix Room/Panel_trusted_rusted
+  color: red
+  tag: midred
+- id: Appendix Room/Panel_encrusted_rust
+  color: red
+  tag: midred
+- id: Appendix Room/Panel_rust_trust
+  color: blue
+  tag: midblue
+- id: Appendix Room/Panel_rust_crust
+  color: blue
+  tag: midblue
+- id: Appendix Room/Panel_adjust_readjust
+  color: blue
+  tag: midblue and phone
+- id: Appendix Room/Panel_adjust_adjusted
+  color: blue
+  tag: midblue and phone
+- id: Appendix Room/Panel_adjust_readjusted
+  color: blue
+  tag: midblue
+- id: Appendix Room/Panel_before_fore
+  color: red
+  tag: midred and phone
+- id: Appendix Room/Panel_be_before
+  color: blue
+  tag: midblue and phone
+- id: Appendix Room/Panel_left_left
+  color: white
+  tag: midwhite
+- id: Appendix Room/Panel_right_right
+  color: white
+  tag: midwhite
+- id: Appendix Room/Panel_trust_crust
+  color:
+    - red
+    - blue
+  tag: mid red blue
+- id: Appendix Room/Panel_trust_crust_2
+  color: purple
+  tag: midpurp
+- id: Appendix Room/Panel_trusted_readjusted
+  color: purple
+  tag: midpurp
+- id: Rhyme Room/Panel_locked_knocked
+  color: purple
+  tag: midpurp
+- id: Rhyme Room/Panel_daughter_laughter
+  color: purple
+  tag: midpurp
+- id: Rhyme Room/Panel_move_love
+  color: purple
+  tag: double midpurp
+  link: change STARS
+- id: Rhyme Room/Panel_stove_love
+  color: purple
+  tag: double midpurp
+  link: change STARS
+- id: Rhyme Room/Panel_scope_type
+  color: purple
+  tag: midpurp and rhyme
+  copy_to_sign: sign16
+- id: Rhyme Room/Panel_abyss_this
+  color: purple
+  tag: toppurp
+- id: Rhyme Room/Panel_sweat_great
+  color: purple
+  tag: double midpurp
+  link: change GREAT
+- id: Rhyme Room/Panel_beat_great
+  color: purple
+  tag: double midpurp
+  link: change GREAT
+- id: Rhyme Room/Panel_alumni_hi
+  color: purple
+  tag: midpurp and rhyme
+  copy_to_sign: sign14
+- id: Rhyme Room/Panel_wrath_path
+  color: purple
+  tag: midpurp and rhyme
+  copy_to_sign: sign15
+- id: Rhyme Room/Panel_knight_write
+  color: purple
+  tag: double toppurp
+  link: change WRITE
+- id: Rhyme Room/Panel_byte_write
+  color: purple
+  tag: double toppurp
+  link: change WRITE
+- id: Rhyme Room/Panel_maim_same
+  color: purple
+  tag: toppurp
+- id: Rhyme Room/Panel_chair_bear
+  color: purple
+  tag: purple rhyme change stack
+  subtag: top
+  link: prcs CYBORG
+- id: Rhyme Room/Panel_bare_bear
+  color: purple
+  tag: toppurp
+- id: Rhyme Room/Panel_cost_most
+  color: purple
+  tag: purple rhyme change stack
+  subtag: bot
+  link: prcs CYBORG
+- id: Rhyme Room/Panel_bed_dead
+  color: purple
+  tag: toppurp
+# We will figure out what to do with these later.
+- id: Cross Room/Panel_north_missing
+  color: green
+  tag: forbid
+- id: Cross Room/Panel_diamonds_missing
+  color: green
+  tag: forbid
+- id: Cross Room/Panel_fire_missing
+  color: green
+  tag: forbid
+- id: Cross Room/Panel_winter_missing
+  color: green
+  tag: forbid
+- id: Cross Room/Panel_shortcut_shortcut
+  color: white
+  tag: midwhite
+- id: Cross Room/Panel_north_north
+  color: blue
+  tag: forbid
+- id: Cross Room/Panel_mouth_south
+  color: purple
+  tag: midpurp
+- id: Cross Room/Panel_yeast_east
+  color: red
+  tag: midred
+- id: Cross Room/Panel_wet_west
+  color: blue
+  tag: midblue
+- id: Cross Room/Panel_fire_fire
+  color: blue
+  tag: forbid
+- id: Cross Room/Panel_earth_earth
+  color: white
+  tag: midwhite
+- id: Cross Room/Panel_water_water
+  color: white
+  tag: midwhite
+- id: Cross Room/Panel_air_air
+  color: white
+  tag: midwhite
+- id: Cross Room/Panel_winter_winter
+  color: blue
+  tag: forbid
+- id: Cross Room/Panel_diamonds_diamonds
+  color: blue
+  tag: forbid
+- id: Cross Room/Panel_spades_spades
+  color: white
+  tag: midwhite
+- id: Cross Room/Panel_clubs_clubs
+  color: white
+  tag: midwhite
+- id: Cross Room/Panel_hearts_hearts
+  color: white
+  tag: midwhite
+- id: Cross Room/Panel_part_rap
+  color:
+    - red
+    - yellow
+  tag: mid red yellow
+- id: Cross Room/Panel_heart_tar
+  color:
+    - red
+    - yellow
+  tag: mid red yellow
+- id: Cross Room/Panel_smile_lime
+  color:
+    - red
+    - yellow
+  tag: mid yellow red
+- id: Cross Room/Panel_snow_won
+  color:
+    - red
+    - yellow
+  tag: mid red yellow
+- id: Cross Room/Panel_warts_star
+  color:
+    - red
+    - yellow
+  tag: mid red yellow
+- id: Cross Room/Panel_pots_top
+  color:
+    - red
+    - yellow
+  tag: mid yellow red
+- id: Cross Room/Panel_silent_list
+  color:
+    - red
+    - yellow
+  tag: mid red yellow
+- id: Cross Room/Panel_silent_list_2
+  color:
+    - red
+    - yellow
+  tag: mid yellow red
+- id: Cross Room/Panel_tent_net
+  color:
+    - red
+    - yellow
+  tag: mid red yellow
+- id: Cross Room/Panel_peace_ape
+  color:
+    - red
+    - yellow
+  tag: mid red yellow
+- id: Cross Room/Panel_space_cape
+  color:
+    - red
+    - yellow
+  tag: mid red yellow
+- id: Cross Room/Panel_bowl_low
+  color:
+    - red
+    - yellow
+  tag: mid red yellow
+- id: Orange Room/Panel_lust
+  color: orange
+  tag: midorange
+- id: Orange Room/Panel_read
+  color: orange
+  tag: midorange
+- id: Orange Room/Panel_sew
+  color: orange
+  tag: midorange
+- id: Orange Room/Panel_dead
+  color: orange
+  tag: midorange
+- id: Orange Room/Panel_learn
+  color: orange
+  tag: midorange
+- id: Orange Room/Panel_dust
+  color: orange
+  tag: midorange
+- id: Orange Room/Panel_star
+  color: orange
+  tag: midorange
+- id: Orange Room/Panel_wander
+  color: orange
+  tag: midorange
+- id: Tower Room/Panel_1234567890_wanderlust
+  color: orange
+  tag: midorange
+- id: Tower Room/Panel_wanderlust_1234567890
+  color: orange
+  tag: midorange
+- id: Tower Room/Panel_dads_ale_dead_1
+  color: orange
+  tag: midorange
+- id: Tower Room/Panel_art_art_eat_2
+  color: orange
+  tag: midorange
+- id: Tower Room/Panel_deer_wren_rats_3
+  color: orange
+  tag: midorange
+- id: Tower Room/Panel_learns_unsew_unrest_4
+  color: orange
+  tag: midorange
+- id: Tower Room/Panel_drawl_runs_enter_5
+  color: orange
+  tag: midorange
+- id: Tower Room/Panel_reads_rust_lawns_6
+  color: orange
+  tag: midorange
+- id: Tower Room/Panel_waded_wee_warts_7
+  color: orange
+  tag: midorange
+- id: Tower Room/Panel_834283054_undaunted
+  color: orange
+  tag: midorange
+- id: Clock Room/Panel_kitten_cat
+  color: brown
+  tag: botbrown
+- id: Clock Room/Panel_cat_kitten
+  color:
+    - brown
+    - black
+  tag: bot brown black
+- id: Clock Room/Panel_puppy_dog
+  color: brown
+  tag: botbrown
+- id: Clock Room/Panel_adult_child
+  color:
+    - brown
+    - black
+  tag: bot brown black
+- id: Clock Room/Panel_bread_mold
+  color: brown
+  tag: botbrown
+- id: Clock Room/Panel_dinosaur_fossil
+  color: brown
+  tag: botbrown
+- id: Clock Room/Panel_oak_acorn
+  color:
+    - brown
+    - black
+  tag: bot brown black
+- id: Clock Room/Panel_corpse_skeleton
+  color: brown
+  tag: botbrown
+- id: Clock Room/Panel_before_ere
+  color:
+    - brown
+    - black
+  tag: mid brown black
+- id: Clock Room/Panel_your_thy
+  color:
+    - brown
+    - black
+  tag: mid brown black
+- id: Clock Room/Panel_betwixt_between
+  color: brown
+  tag: midbrown
+- id: Clock Room/Panel_nigh_near
+  color: brown
+  tag: midbrown
+- id: Clock Room/Panel_connexion_connection
+  color: brown
+  tag: midbrown
+- id: Clock Room/Panel_thou_you
+  color: brown
+  tag: midbrown
+- id: Painting Room/Panel_eon_one
+  color: yellow
+  tag: forbid # because of ORDER
+- id: Painting Room/Panel_to_two
+  color: red
+  tag: midred
+- id: Painting Room/Panel_free_three
+  color: purple
+  tag: midpurp
+- id: Painting Room/Panel_our_four
+  color: blue
+  tag: midblue
+- id: Painting Room/Panel_house_neighborhood
+  color: blue
+  tag: botblue
+- id: Painting Room/Panel_path_road
+  color: brown
+  tag: forbid # because of ORDER
+- id: Painting Room/Panel_park_drive
+  color: black
+  tag: botblack
+- id: Painting Room/Panel_carriage_horse
+  color: red
+  tag: botred
+- id: Painting Room/Panel_an_many
+  color: blue
+  tag: midblue
+- id: Painting Room/Panel_may_many
+  color: blue
+  tag: midblue
+- id: Painting Room/Panel_any_many
+  color: blue
+  tag: forbid # because of ORDER
+- id: Painting Room/Panel_man_many
+  color: blue
+  tag: midblue
+- id: Painting Room/Panel_urns_turns
+  color: blue
+  tag: midblue
+- id: Painting Room/Panel_learns_turns
+  color: purple
+  tag: midpurp
+- id: Painting Room/Panel_runts_turns
+  color: yellow
+  tag: midyellow
+- id: Painting Room/Panel_send_use_turns
+  color: orange
+  tag: forbid # because of ORDER
+- id: Painting Room/Panel_trust_06890
+  color: orange
+  tag: midorange
+- id: Painting Room/Panel_06890_trust
+  color: orange
+  tag: midorange
+- id: Painting Room/Panel_order_onepathmanyturns
+  color: gray
+  tag: forbid
+- id: Double Room/Panel_ascend_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme ASCEND
+- id: Double Room/Panel_ascend_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme ASCEND
+- id: Double Room/Panel_double_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme DOUBLE
+- id: Double Room/Panel_double_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme DOUBLE
+- id: Double Room/Panel_blocked_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme BLOCKED
+- id: Double Room/Panel_blocked_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme BLOCKED
+- id: Double Room/Panel_rise_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme RISE
+- id: Double Room/Panel_rise_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme RISE
+- id: Double Room/Panel_crystal_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme CRYSTAL
+- id: Double Room/Panel_crystal_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme CRYSTAL
+- id: Double Room/Panel_creative_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme CREATIVE
+- id: Double Room/Panel_creative_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme CREATIVE
+- id: Double Room/Panel_child_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme CHILD
+- id: Double Room/Panel_child_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme CHILD
+- id: Double Room/Panel_hidden_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme HIDDEN
+- id: Double Room/Panel_hidden_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme HIDDEN
+- id: Double Room/Panel_word_rhyme
+  color: purple
+  tag: whole rhyme
+  subtag: top
+  link: rhyme WORD
+- id: Double Room/Panel_word_whole
+  color: blue
+  tag: whole rhyme
+  subtag: bot
+  link: rhyme WORD
+- id: Double Room/Panel_silent_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme SILENT
+- id: Double Room/Panel_silent_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme SILENT
+- id: Double Room/Panel_bones_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme BONES
+- id: Double Room/Panel_bones_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme BONES
+- id: Double Room/Panel_sentence_rhyme
+  color: purple
+  tag: whole rhyme
+  subtag: top
+  link: rhyme SENTENCE
+- id: Double Room/Panel_sentence_whole
+  color: blue
+  tag: whole rhyme
+  subtag: bot
+  link: rhyme SENTENCE
+- id: Double Room/Panel_dream_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme DREAM
+- id: Double Room/Panel_dream_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme DREAM
+- id: Double Room/Panel_mystery_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme MYSTERY
+- id: Double Room/Panel_mystery_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme MYSTERY
+- id: Double Room/Panel_jump_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme JUMP
+- id: Double Room/Panel_jump_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme JUMP
+- id: Double Room/Panel_fall_rhyme
+  color: purple
+  tag: syn rhyme
+  subtag: top
+  link: rhyme FALL
+- id: Double Room/Panel_fall_syn
+  color: white
+  tag: syn rhyme
+  subtag: bot
+  link: rhyme FALL
+- id: Double Room/Panel_return_rhyme
+  color: purple
+  tag: ant rhyme
+  subtag: top
+  link: rhyme RETURN
+- id: Double Room/Panel_return_ant
+  color: black
+  tag: ant rhyme
+  subtag: bot
+  link: rhyme RETURN
+- id: Double Room/Panel_descend_rhyme
+  color: purple
+  tag: ant rhyme
+  subtag: top
+  link: rhyme DESCEND
+- id: Double Room/Panel_descend_ant
+  color: black
+  tag: ant rhyme
+  subtag: bot
+  link: rhyme DESCEND
+- id: Double Room/Panel_leap_leap
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_backside_1
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_backside_2
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_backside_3
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_backside_4
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_backside_5
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_farther_far
+  color: red
+  tag: midred
+# We will forbid these four for now because the fourth is hidden
+- id: Backside Room/Panel_first_first
+  color: white
+  tag: forbid
+- id: Backside Room/Panel_second_second
+  color: white
+  tag: forbid
+- id: Backside Room/Panel_third_third
+  color: white
+  tag: forbid
+- id: Backside Room/Panel_fourth_fourth
+  color: white
+  tag: forbid
+# We will forbid this one because it is hidden
+- id: Backside Room/Panel_zero_zero
+  color: white
+  tag: forbid
+- id: Backside Room/Panel_one_one
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_two_two
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_two_two_2
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_three_three
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_three_three_2
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_three_three_3
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_four_four
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_four_four_2
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_four_four_3
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_four_four_4
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_five_five
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_five_five_2
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_five_five_3
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_five_five_4
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_five_five_5
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_six_six
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_six_six_2
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_six_six_3
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_six_six_4
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_six_six_5
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_six_six_6
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_seven_seven
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_seven_seven_2
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_seven_seven_3
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_seven_seven_4
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_seven_seven_5
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_seven_seven_6
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_seven_seven_7
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_eight_eight
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_eight_eight_2
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_eight_eight_3
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_eight_eight_4
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_eight_eight_5
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_eight_eight_6
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_eight_eight_7
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_eight_eight_8
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_nine_nine
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_nine_nine_2
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_nine_nine_3
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_nine_nine_4
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_nine_nine_5
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_nine_nine_6
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_nine_nine_7
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_nine_nine_8
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_nine_nine_9
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_paranoid_paranoid
+  color: white
+  tag: midwhite
+- id: Backside Room/Panel_salt_pepper
+  color: black
+  tag: botblack
+- id: Backside Room/Panel_pepper_salt
+  color: black
+  tag: botblack
+- id: Backside Room/Panel_ward_forward
+  color: blue
+  tag: midblue
+- id: Backside Room/Panel_hind_behind
+  color: blue
+  tag: midblue
+- id: Backside Room/Panel_rig_right
+  color: blue
+  tag: midblue
+- id: Backside Room/Panel_windward_forward
+  color: purple
+  tag: midpurp
+- id: Backside Room/Panel_light_right
+  color: purple
+  tag: midpurp
+- id: Backside Room/Panel_rewind_behind
+  color: purple
+  tag: midpurp
+- id: Backside Room/Panel_learn_return
+  color: purple
+  tag: midpurp
+- id: Backside Room/Panel_turn_return
+  color: blue
+  tag: midblue
+- id: Hallway Room/Panel_castle_1
+  color: blue
+  tag: quad bot blue
+  link: qbb CASTLE
+- id: Hallway Room/Panel_castle_2
+  color: blue
+  tag: quad bot blue
+  link: qbb CASTLE
+- id: Hallway Room/Panel_castle_3
+  color: blue
+  tag: quad bot blue
+  link: qbb CASTLE
+- id: Hallway Room/Panel_castle_4
+  color: blue
+  tag: quad bot blue
+  link: qbb CASTLE
+- id: Hallway Room/Panel_counterclockwise_1
+  color: blue
+  tag: quad mid blue
+  link: qmb COUNTERCLOCKWISE
+- id: Hallway Room/Panel_counterclockwise_2
+  color: blue
+  tag: quad mid blue
+  link: qmb COUNTERCLOCKWISE
+- id: Hallway Room/Panel_counterclockwise_3
+  color: blue
+  tag: quad mid blue
+  link: qmb COUNTERCLOCKWISE
+- id: Hallway Room/Panel_counterclockwise_4
+  color: blue
+  tag: quad mid blue
+  link: qmb COUNTERCLOCKWISE
+- id: Hallway Room/Panel_transformation_1
+  color: blue
+  tag: quad top blue
+  link: qtb TRANSFORMATION
+- id: Hallway Room/Panel_transformation_2
+  color: blue
+  tag: quad top blue
+  link: qtb TRANSFORMATION
+- id: Hallway Room/Panel_transformation_3
+  color: blue
+  tag: quad top blue
+  link: qtb TRANSFORMATION
+- id: Hallway Room/Panel_transformation_4
+  color: blue
+  tag: quad top blue
+  link: qtb TRANSFORMATION
+- id: Hallway Room/Panel_room_5
+  color: blue
+  tag: full stack blue
+- id: Hallway Room/Panel_hollow_hollow
+  color: white
+  tag: midwhite
+- id: Hallway Room/Panel_out_out
+  color: white
+  tag: midwhite
+- id: Wonderland Room/Panel_shrink_shrink
+  color: white
+  tag: midwhite
+- id: Wonderland Room/Panel_brooknod_doorknob
+  color: yellow
+  tag: midyellow
+- id: Wonderland Room/Panel_case_bookcase
+  color: blue
+  tag: midblue
+- id: Wonderland Room/Panel_candleheir_chandelier
+  color: yellow
+  tag: midyellow
+- id: Wonderland Room/Panel_glass_window
+  color: brown
+  tag: botbrown
+- id: Wonderland Room/Panel_wood_table
+  color: brown
+  tag: midbrown
+- id: Wonderland Room/Panel_fireplace_fire
+  color: red
+  tag: mid bot red
+- id: Panel Room/Panel_broomed_bedroom
+  color: yellow
+  tag: midyellow
+- id: Panel Room/Panel_lays_maze
+  color: purple
+  tag: toppurp
+- id: Panel Room/Panel_base_basement
+  color: blue
+  tag: midblue
+- id: Panel Room/Panel_room_door_1
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_door_2
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_window_1
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_stairs_1
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_painting_1
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_floor_1
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_floor_2
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_floor_3
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_floor_4
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_floor_5
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_floor_7
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_floor_8
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_floor_9
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_floor_10
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_ceiling_1
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_ceiling_2
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_ceiling_3
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_ceiling_4
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_ceiling_5
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_1
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_2
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_3
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_4
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_5
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_6
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_7
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_8
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_9
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_10
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_11
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_12
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_13
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_14
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_15
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_16
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_17
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_18
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_19
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_20
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_room_wall_21
+  color: gray
+  tag: forbid
+- id: Panel Room/Panel_painting_flower
+  color: green
+  tag: forbid
+- id: Panel Room/Panel_painting_eye
+  color: green
+  tag: forbid
+- id: Panel Room/Panel_painting_snowman
+  color: green
+  tag: forbid
+- id: Panel Room/Panel_painting_owl
+  color: green
+  tag: forbid
+- id: Panel Room/Panel_painting_panda
+  color: green
+  tag: forbid
+- id: Panel Room/Panel_room_stairs
+  color: gray
+  tag: forbid
+- id: Doorways Room/Panel_begin_start
+  color: white
+  tag: botwhite
+- id: Doorways Room/Panel_found_lost
+  color: black
+  tag: botblack
+- id: Doorways Room/Panel_loaf_crust
+  color: red
+  tag: botred
+- id: Doorways Room/Panel_eggs_breakfast
+  color: yellow
+  tag: botyellow
+- id: Doorways Room/Panel_sun_sky
+  color: blue
+  tag: botblue
+- id: Doorways Room/Panel_teacher_substitute
+  color: purple
+  tag: botpurple
+- id: Doorways Room/Panel_walnuts_orange
+  color: orange
+  tag: botorange
+- id: Doorways Room/Panel_path_i
+  color: green
+  tag: forbid
+- id: Doorways Room/Panel_iron_rust
+  color: brown
+  tag: botbrown
+- id: Doorways Room/Panel_obstacle_door
+  color: gray
+  tag: forbid
+- id: Color Arrow Room/Panel_hues_colors
+  color: white
+  tag: botwhite
+- id: Color Arrow Room/Panel_red_near
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_red_afar
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_blue_near
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_blue_afar
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_yellow_near
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_yellow_afar
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_purple_near
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_purple_afar
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_orange_near
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_orange_afar
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_green_near
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_green_afar
+  color: white
+  tag: midwhite
+- id: Color Arrow Room/Panel_you
+  color: gray
+  tag: forbid
+- id: Color Arrow Room/Panel_me
+  color: gray
+  tag: forbid
+- id: Color Arrow Room/Panel_secret_blue
+  color: gray
+  tag: forbid
+- id: Color Arrow Room/Panel_secret_yellow
+  color: gray
+  tag: forbid
+- id: Color Arrow Room/Panel_secret_red
+  color: gray
+  tag: forbid
+- id: Naps Room/Panel_naps_span
+  color: black
+  tag: midblack
+- id: Naps Room/Panel_funny_enough
+  color: black
+  tag: topblack
+- id: Naps Room/Panel_easy_soft
+  color: black
+  tag: bot black black
+- id: Naps Room/Panel_sometimes_always
+  color: black
+  tag: bot black black
+- id: Naps Room/Panel_dark_extinguish
+  color: black
+  tag: bot black black
+- id: Naps Room/Panel_impatient_doctor
+  color: black
+  tag: bot black black
+- id: Naps Room/Panel_even_ordinary
+  color: black
+  tag: bot black black
+- id: Naps Room/Panel_one_none
+  color:
+    - white
+    - black
+  tag: top white bot black
+- id: Naps Room/Panel_one_many
+  color:
+    - white
+    - black
+  tag: bot black top white
+- id: Naps Room/Panel_team_meet
+  color: black
+  tag: topblack
+- id: Naps Room/Panel_teem_meat
+  color: black
+  tag: topblack
+- id: Naps Room/Panel_eat_tea
+  color: black
+  tag: topblack
+- id: Naps Room/Panel_came_make
+  color: black
+  tag: topblack
+- id: Naps Room/Panel_same_mace
+  color: black
+  tag: topblack
+- id: Naps Room/Panel_safe_face
+  color: black
+  tag: topblack
+- id: Naps Room/Panel_might_time
+  color: black
+  tag: topblack
+- id: Strand Room/Panel_blank_a
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_a_an
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_a_and
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_a_sand
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_a_stand
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_a_strand
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_a_strands
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_blank_i
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_i_in
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_i_sin
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_i_sing
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_i_sting
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_i_string
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_i_strings
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_i_staring
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_i_starling
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_i_starting
+  color: blue
+  tag: forbid
+- id: Strand Room/Panel_i_startling
+  color: blue
+  tag: forbid
+- id: Smiley Room/Panel_soundgram_1
+  color: yellow
+  tag: topyellow
+- id: Smiley Room/Panel_soundgram_2
+  color: yellow
+  tag: topyellow
+- id: Smiley Room/Panel_scrambled_1
+  color: yellow
+  tag: botyellow
+- id: Smiley Room/Panel_scrambled_2
+  color: yellow
+  tag: botyellow
+- id: Smiley Room/Panel_anagram_6_1
+  color: yellow
+  tag: midyellow
+- id: Smiley Room/Panel_anagram_6_2
+  color: yellow
+  tag: midyellow
+- id: Smiley Room/Panel_anagram_7_1
+  color: yellow
+  tag: midyellow
+- id: Smiley Room/Panel_anagram_7_2
+  color: yellow
+  tag: midyellow
+- id: Smiley Room/Panel_anagram_7_3
+  color: yellow
+  tag: midyellow
+- id: Smiley Room/Panel_anagram_7_4
+  color: yellow
+  tag: midyellow
+- id: Smiley Room/Panel_anagram_8_1
+  color: yellow
+  tag: midyellow
+- id: Smiley Room/Panel_anagram_8_2
+  color: yellow
+  tag: midyellow
+- id: Smiley Room/Panel_anagram_8_3
+  color: yellow
+  tag: midyellow
+- id: Smiley Room/Panel_anagram_9_1
+  color: yellow
+  tag: midyellow
+- id: Hangry Room/Panel_red_top_1
+  color: red
+  tag: topred
+- id: Hangry Room/Panel_red_top_2
+  color: red
+  tag: topred
+- id: Hangry Room/Panel_red_top_3
+  color: red
+  tag: topred
+- id: Hangry Room/Panel_red_top_4
+  color: red
+  tag: topred
+- id: Hangry Room/Panel_red_mid_1
+  color: red
+  tag: midred
+- id: Hangry Room/Panel_red_mid_2
+  color:
+    - red
+    - black
+  tag: red top red mid black bot
+- id: Hangry Room/Panel_red_mid_3
+  color: red
+  tag: midred
+- id: Hangry Room/Panel_red_mid_4
+  color: red
+  tag: red mid bot
+  subtag: mid
+  link: rmb FORE
+- id: Hangry Room/Panel_red_mid_5
+  color: red
+  tag: red mid bot
+  subtag: mid
+  link: rmb AFT
+- id: Hangry Room/Panel_red_bot_1
+  color: red
+  tag: botred
+- id: Hangry Room/Panel_red_bot_2
+  color: red
+  tag: botred
+- id: Hangry Room/Panel_red_bot_3
+  color: red
+  tag: botred
+- id: Hangry Room/Panel_red_bot_4
+  color: red
+  tag: red mid bot
+  subtag: bot
+  link: rmb FORE
+- id: Hangry Room/Panel_red_bot_5
+  color: red
+  tag: red mid bot
+  subtag: bot
+  link: rmb AFT
+- id: Hangry Room/Panel_red_bot_6
+  color: red
+  tag: botred
+- id: Ceiling Room/Panel_blue_top_1
+  color: blue
+  tag: blue top red bot
+  subtag: top
+  link: uxr IRIS
+- id: Ceiling Room/Panel_red_bot_1
+  color: red
+  tag: blue top red bot
+  subtag: bot
+  link: uxr IRIS
+- id: Ceiling Room/Panel_red_mid_2
+  color: red
+  tag: red mid blue bot
+  subtag: mid
+  link: xru LAKE
+- id: Ceiling Room/Panel_blue_bot_2
+  color: blue
+  tag: red mid blue bot
+  subtag: bot
+  link: xru LAKE
+- id: Ceiling Room/Panel_red_bot_3
+  color: blue
+  tag: blue mid red bot
+  subtag: mid
+  link: xur HOURS
+- id: Ceiling Room/Panel_blue_mid_3
+  color: red
+  tag: blue mid red bot
+  subtag: bot
+  link: xur HOURS
+- id: Ceiling Room/Panel_red_top_4
+  color: red
+  tag: red top mid blue
+  subtag: top
+  link: rux KNIGHT
+- id: Ceiling Room/Panel_blue_mid_4
+  color: blue
+  tag: red top mid blue
+  subtag: mid
+  link: rux KNIGHT
+- id: Ceiling Room/Panel_blue_bot_5
+  color: blue
+  tag: yellow top blue bot
+  subtag: bot
+  link: yxu KNIFE
+- id: Ceiling Room/Panel_yellow_top_5
+  color: yellow
+  tag: yellow top blue bot
+  subtag: top
+  link: yxu KNIFE
+- id: Ceiling Room/Panel_yellow_mid_6
+  color: yellow
+  tag: blue top yellow mid
+  subtag: mid
+  link: uyx BREAD
+- id: Ceiling Room/Panel_blue_top_6
+  color: blue
+  tag: blue top yellow mid
+  subtag: top
+  link: uyx BREAD
+- id: Ceiling Room/Panel_blue_mid_7
+  color: blue
+  tag: blue mid yellow bot
+  subtag: mid
+  link: xuy SPICE
+- id: Ceiling Room/Panel_yellow_bot_7
+  color: yellow
+  tag: blue mid yellow bot
+  subtag: bot
+  link: xuy SPICE
+- id: Ceiling Room/Panel_black_bot_8
+  color: black
+  tag: yellow mid black bot
+  subtag: bot
+  link: xyb GRIPS
+- id: Ceiling Room/Panel_yellow_mid_8
+  color: yellow
+  tag: yellow mid black bot
+  subtag: mid
+  link: xyb GRIPS
+- id: Ceiling Room/Panel_black_top_9
+  color: black
+  tag: black top yellow bot
+  subtag: top
+  link: bxy CHUM
+- id: Ceiling Room/Panel_yellow_bot_9
+  color: yellow
+  tag: black top yellow bot
+  subtag: bot
+  link: bxy CHUM
+- id: Ceiling Room/Panel_yellow_top_10
+  color: yellow
+  tag: yellow top black bot
+  subtag: top
+  link: yxb CHASM
+- id: Ceiling Room/Panel_black_bot_10
+  color: black
+  tag: yellow top black bot
+  subtag: bot
+  link: yxb CHASM
+- id: Ceiling Room/Panel_black_top_11
+  color: black
+  tag: black top yellow mid
+  subtag: top
+  link: byx NIGHT
+- id: Ceiling Room/Panel_yellow_mid_11
+  color: yellow
+  tag: black top yellow mid
+  subtag: mid
+  link: byx NIGHT
+- id: Ceiling Room/Panel_black_top_12
+  color: black
+  tag: black top red bot
+  subtag: top
+  link: bxr SHOP
+- id: Ceiling Room/Panel_red_bot_12
+  color: red
+  tag: black top red bot
+  subtag: bot
+  link: bxr SHOP
+- id: Ceiling Room/Panel_black_bot_13
+  color: black
+  tag: red top black bot
+  subtag: bot
+  link: rxb DECIDE
+- id: Ceiling Room/Panel_red_top_13
+  color: red
+  tag: red top black bot
+  subtag: top
+  link: rxb DECIDE
+- id: Ceiling Room/Panel_black_mid_14
+  color: black
+  tag: black mid red bot
+  subtag: mid
+  link: xbr DIAPER
+- id: Ceiling Room/Panel_red_bot_14
+  color: red
+  tag: black mid red bot
+  subtag: bot
+  link: xbr DIAPER
+- id: Ceiling Room/Panel_black_top_15
+  color: black
+  tag: black top red mid
+  subtag: top
+  link: brx BOWL
+- id: Ceiling Room/Panel_red_mid_15
+  color: red
+  tag: black top red mid
+  subtag: mid
+  link: brx BOWL
+- id: Ceiling Room/Panel_answer_1
+  color: red
+  tag: botred
+- id: Ceiling Room/Panel_answer_2
+  color: black
+  tag: topblack
+- id: Ceiling Room/Panel_answer_3
+  color: blue
+  tag: midblue
+- id: Ceiling Room/Panel_answer_4
+  color: yellow
+  tag: topyellow
+# Forbid these three for now because one is hidden
+- id: Chemistry Room/Panel_open
+  color: black
+  tag: forbid
+- id: Chemistry Room/Panel_close
+  color: black
+  tag: forbid
+- id: Chemistry Room/Panel_ahead
+  color: black
+  tag: forbid
+- id: Chemistry Room/Panel_yellow_bot_1
+  color: yellow
+  tag: botyellow
+- id: Chemistry Room/Panel_brown_bot_1
+  color: brown
+  tag: botbrown
+- id: Chemistry Room/Panel_blue_bot_2
+  color: blue
+  tag: tri botblue
+  link: tbb WATER
+- id: Chemistry Room/Panel_sugar_1
+  color: red
+  tag: botred
+- id: Chemistry Room/Panel_sugar_2
+  color: red
+  tag: botred
+- id: Chemistry Room/Panel_sugar_3
+  color: red
+  tag: botred
+- id: Chemistry Room/Panel_blue_bot_3
+  color: blue
+  tag: tri botblue
+  link: tbb WATER
+- id: Chemistry Room/Panel_blue_bot_4
+  color: blue
+  tag: tri botblue
+  link: tbb WATER
+- id: Chemistry Room/Panel_blue_bot_5
+  color: blue
+  tag: double botblue
+  link: holo SALT
+- id: Chemistry Room/Panel_blue_bot_6
+  color: blue
+  tag: double botblue
+  link: holo SALT
+- id: Chemistry Room/Panel_blue_top_1
+  color: blue
+  tag: double topblue
+  link: exp CHEMISTRY
+- id: Chemistry Room/Panel_blue_top_2
+  color: blue
+  tag: double topblue
+  link: exp CHEMISTRY
+- id: Chemistry Room/Panel_long_bot_1
+  color:
+    - red
+    - blue
+  tag: chain red bot blue top
+- id: Chemistry Room/Panel_black_bot_1
+  color: black
+  tag: botblack
+- id: Chemistry Room/Panel_black_bot_2
+  color: black
+  tag: botblack
+- id: Chemistry Room/Panel_long_top_1
+  color:
+    - blue
+    - red
+  tag: chain blue mid red bot
+- id: Chemistry Room/Panel_anagram_1
+  color: yellow
+  tag: midyellow
+- id: Chemistry Room/Panel_anagram_2
+  color: yellow
+  tag: midyellow
+- id: Chemistry Room/Panel_anagram_3
+  color: yellow
+  tag: midyellow
+- id: Chemistry Room/Panel_anagram_4
+  color: yellow
+  tag: midyellow
+- id: Chemistry Room/Panel_anagram_5
+  color: yellow
+  tag: midyellow
+- id: Chemistry Room/Panel_physics_1
+  color: red
+  tag: blue mid red bot
+  subtag: bot
+  link: xur PARTICLE
+- id: Chemistry Room/Panel_physics_2
+  color: blue
+  tag: blue mid red bot
+  subtag: mid
+  link: xur PARTICLE
+- id: Chemistry Room/Panel_physics_3
+  color: red
+  tag: purple mid red bot
+  subtag: bot
+  link: xpr ELECTRON
+- id: Chemistry Room/Panel_physics_4
+  color: red
+  tag: purple mid red bot
+  subtag: bot
+  link: xpr NEUTRON
+- id: Chemistry Room/Panel_physics_5
+  color: red
+  tag: purple mid red bot
+  subtag: bot
+  link: xpr PROTON
+- id: Chemistry Room/Panel_physics_6
+  color: purple
+  tag: purple mid red bot
+  subtag: mid
+  link: xpr ELECTRON
+- id: Chemistry Room/Panel_physics_7
+  color: purple
+  tag: purple mid red bot
+  subtag: mid
+  link: xpr NEUTRON
+- id: Chemistry Room/Panel_physics_8
+  color: purple
+  tag: purple mid red bot
+  subtag: mid
+  link: xpr PROTON
+- id: Chemistry Room/Panel_physics_9
+  color: purple
+  tag: double midpurp
+  link: change GRAVITY
+- id: Chemistry Room/Panel_physics_10
+  color: yellow
+  tag: midyellow
+- id: Chemistry Room/Panel_physics_11
+  color: brown
+  tag: botbrown
+- id: Chemistry Room/Panel_biology_1
+  color: red
+  tag: botred
+- id: Chemistry Room/Panel_biology_2
+  color: red
+  tag: botred
+- id: Chemistry Room/Panel_biology_3
+  color: red
+  tag: botred
+- id: Chemistry Room/Panel_biology_4
+  color: red
+  tag: double botred
+  link: mero SPINE
+- id: Chemistry Room/Panel_biology_5
+  color: red
+  tag: botred
+- id: Chemistry Room/Panel_biology_6
+  color: red
+  tag: botred
+- id: Chemistry Room/Panel_biology_7
+  color: red
+  tag: botred
+- id: Chemistry Room/Panel_biology_8
+  color: red
+  tag: double botred
+  link: mero SPINE
+- id: Chemistry Room/Panel_biology_9
+  color: purple
+  tag: midpurp
+- id: Chemistry Room/Panel_biology_10
+  color: purple
+  tag: double midpurp
+  link: change GRAVITY
+- id: Challenge Room/Panel_challenge_challenge
+  color: white
+  tag: midwhite
+- id: Challenge Room/Panel_welcome_welcome
+  color: white
+  tag: midwhite
+- id: Challenge Room/Panel_open_nepotism
+  color:
+    - black
+    - blue
+  tag: chain mid black !!! blue
+- id: Challenge Room/Panel_singed_singsong
+  color:
+    - red
+    - blue
+  tag: chain mid red blue
+- id: Challenge Room/Panel_nevertrusted_maladjusted
+  color: purple
+  tag: midpurp
+- id: Challenge Room/Panel_corner_corn
+  color: red
+  tag: midred
+- id: Challenge Room/Panel_strawberries_mold
+  color: brown
+  tag: double botbrown
+  link: time MOLD
+- id: Challenge Room/Panel_grub_burger
+  color:
+    - black
+    - blue
+  tag: chain mid black blue
+- id: Challenge Room/Panel_bread_mold
+  color: brown
+  tag: double botbrown
+  link: time MOLD
+- id: Challenge Room/Panel_color_gray
+  color: gray
+  tag: forbid
+- id: Challenge Room/Panel_writer_songwriter
+  color: blue
+  tag: midblue
+- id: Challenge Room/Panel_tales_stale
+  color:
+    - orange
+    - yellow
+  tag: chain mid orange yellow
+- id: Challenge Room/Panel_realeyes_realize
+  color: white
+  tag: topwhite
+- id: Challenge Room/Panel_lobs_lobster
+  color: blue
+  tag: midblue
+- id: Challenge Room/Panel_double_anagram_1
+  color: yellow
+  tag: midyellow
+- id: Challenge Room/Panel_double_anagram_2
+  color: yellow
+  tag: midyellow
+- id: Challenge Room/Panel_double_anagram_3
+  color: yellow
+  tag: midyellow
+- id: Challenge Room/Panel_double_anagram_4
+  color: yellow
+  tag: midyellow
+- id: Challenge Room/Panel_double_anagram_5
+  color: yellow
+  tag: midyellow
+- id: Challenge Room/Panel_facts
+  color:
+    - white
+    - red
+    - blue
+  tag: forbid
+- id: Challenge Room/Panel_facts2
+  color: red
+  tag: forbid
+- id: Challenge Room/Panel_facts3
+  color: white
+  tag: forbid
+- id: Challenge Room/Panel_facts4
+  color: blue
+  tag: forbid
+- id: Challenge Room/Panel_facts5
+  color: blue
+  tag: forbid
+- id: Challenge Room/Panel_facts6
+  color: blue
+  tag: forbid
+- id: Challenge Room/Panel_double_anagram_6
+  color: yellow
+  tag: midyellow
+- id: Open Areas/Panel_staircase
+  color: white
+  tag: midwhite
+- id: Open Areas/Panel_rise_horizon
+  color: blue
+  tag: double topblue
+  link: expand HORIZON
+- id: Open Areas/Panel_rise_sunrise
+  color: blue
+  tag: double topblue
+  link: expand SUNRISE
+- id: Open Areas/Panel_son_horizon
+  color: blue
+  tag: double topblue
+  link: expand HORIZON
+- id: Open Areas/Panel_son_sunrise
+  color: blue
+  tag: double topblue
+  link: expand SUNRISE
+- id: Open Areas/Panel_smile_smile
+  color: white
+  tag: midwhite
+- id: Open Areas/Panel_undistracted
+  color: white
+  tag: midwhite
+- id: Open Areas/Panel_stargazer_stargazer
+  color: white
+  tag: midwhite
+- id: Open Areas/Panel_hustling_sunlight
+  color: yellow
+  tag: midyellow
+- id: Open Areas/Panel_sunlight_light
+  color: red
+  tag: midred
+- id: Open Areas/Panel_light_bright
+  color: purple
+  tag: midpurp
+- id: Open Areas/Panel_bright_sunny
+  color: white
+  tag: botwhite
+- id: Open Areas/Panel_sunny_rainy
+  color: black
+  tag: botblack
+- id: Open Areas/Panel_rainy_rainbow
+  color: brown
+  tag: botbrown
+- id: Open Areas/Panel_rainy_rainbow2
+  color: white
+  tag: midwhite
+- id: Open Areas/Panel_angered_enraged
+  color:
+    - yellow
+    - white
+  tag: syn anagram
+  copy_to_sign: sign18
+- id: Open Areas/Panel_vote_veto
+  color:
+    - yellow
+    - black
+  tag: ant anagram
+  copy_to_sign: sign17
+- id: Countdown Panels/Panel_traveled_traveled
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_disagreeable_agreeable
+  color: black
+  tag: forbid
+- id: Countdown Panels/Panel_seeker_seeker
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_tenacious_tenacious
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_perceptive_perceptive
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_emboldened_bold
+  color: red
+  tag: forbid
+- id: Countdown Panels/Panel_deterred_undeterred
+  color: blue
+  tag: forbid
+- id: Countdown Panels/Panel_illuminated_initiated
+  color: purple
+  tag: forbid
+- id: Countdown Panels/Panel_discerning_scramble
+  color: yellow
+  tag: forbid
+- id: Countdown Panels/Panel_intelligent_wise
+  color: brown
+  tag: forbid
+- id: Countdown Panels/Panel_optimistic_optimistic
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_wondrous_wondrous
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_steady_steady
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_bearer_bearer
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_colorful_colorful
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_observant_observant
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_master_master
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_grandfathered_red
+  color: red
+  tag: forbid
+- id: Countdown Panels/Panel_ecstatic_ecstatic
+  color: yellow
+  tag: forbid
+- id: Countdown Panels/Panel_artistic_artistic
+  color: blue
+  tag: forbid
+- id: Countdown Panels/Panel_incomparable_incomparable
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_fearless_fearless
+  color: white
+  tag: forbid
+- id: Countdown Panels/Panel_scientific_scientific
+  color: purple
+  tag: forbid
+- id: Countdown Panels/Panel_challenged_unchallenged
+  color: black
+  tag: forbid
+- id: Master Room/Panel_mastery_mastery
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery2
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery3
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery4
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery5
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery6
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery7
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery8
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery9
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery10
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery11
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery12
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery13
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery14
+  color: white
+  tag: midwhite
+- id: Master Room/Panel_mastery_mastery15
+  color: white
+  tag: midwhite
+- id: Lingo Room/Panel_pilgrim
+  color: blue
+  tag: midblue
+- id: Lingo Room/Panel_shortcut
+  color: yellow
+  tag: midyellow
+- id: Lingo Room/Panel_lingo_1
+  color: purple
+  tag: toppurp
+- id: Lingo Room/Panel_lingo_2
+  color: white
+  tag: botwhite
+- id: Lingo Room/Panel_lingo_3
+  color: white
+  tag: botwhite
+- id: Lingo Room/Panel_lingo_4
+  color:
+    - white
+    - purple
+  tag: forbid
+- id: Lingo Room/Panel_lingo_5
+  color: yellow
+  tag: midyellow
+- id: Lingo Room/Panel_lingo_6
+  color:
+    - black
+    - white
+  tag: forbid
+- id: Lingo Room/Panel_lingo_7
+  color:
+    - orange
+    - blue
+  tag: forbid
+- id: Lingo Room/Panel_lingo_8
+  color: black
+  tag: midblack
+- id: Lingo Room/Panel_lingo_9
+  color: gray
+  tag: forbid
+- id: Lingo Room/Panel_lingo_10
+  color:
+    - red
+    - blue
+  tag: forbid
+- id: Lingo Room/Panel_lingo_11
+  color: yellow
+  tag: midyellow
+- id: Lingo Room/Panel_lingo_12
+  color:
+    - purple
+    - red
+  tag: forbid
+- id: Lingo Room/Panel_lingo_13
+  color:
+    - purple
+    - brown
+  tag: forbid

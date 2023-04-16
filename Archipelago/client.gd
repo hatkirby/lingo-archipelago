@@ -6,6 +6,9 @@ var ap_pass = ""
 
 const ap_version = {"major": 0, "minor": 4, "build": 0, "class": "Version"}
 const orange_tower = ["Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh"]
+const color_items = [
+	"White", "Black", "Red", "Blue", "Green", "Brown", "Gray", "Orange", "Purple", "Yellow"
+]
 
 var _client = WebSocketClient.new()
 var _last_state = WebSocketPeer.STATE_CLOSED
@@ -36,14 +39,18 @@ var _panel_ids_by_location = {}
 var _localdata_file = ""
 var _death_link = false
 var _victory_condition = 0  # THE END, THE MASTER
+var _door_shuffle = false
+var _color_shuffle = false
 
 var _map_loaded = false
 var _held_items = []
 var _held_locations = []
 var _last_new_item = -1
 var _tower_floors = 0
+var _has_colors = ["white"]
 
 signal client_connected
+signal evaluate_solvability
 
 
 func _init():
@@ -154,6 +161,10 @@ func _on_data():
 
 			if _slot_data.has("victory_condition"):
 				_victory_condition = _slot_data["victory_condition"]
+			if _slot_data.has("shuffle_colors"):
+				_color_shuffle = _slot_data["shuffle_colors"]
+			if _slot_data.has("shuffle_doors"):
+				_door_shuffle = (_slot_data["shuffle_doors"] > 0)
 
 			_localdata_file = "user://archipelago/%s_%d" % [_seed, _slot]
 			var ap_file = File.new()
@@ -365,6 +376,9 @@ func completedGoal():
 
 func mapFinishedLoading():
 	if !_map_loaded:
+		_has_colors = ["white"]
+		emit_signal("evaluate_solvability")
+
 		for item in _held_items:
 			processItem(item["item"], item["index"], item["from"])
 
@@ -395,6 +409,12 @@ func processItem(item, index, from):
 		global._print(subitem_name)
 		processItem(_item_name_to_id[subitem_name], null, null)
 		_tower_floors += 1
+
+	if _color_shuffle and color_items.has(_item_id_to_name[item]):
+		var lcol = _item_id_to_name[item].to_lower()
+		if not _has_colors.has(lcol):
+			_has_colors.append(lcol)
+			emit_signal("evaluate_solvability")
 
 	# Show a message about the item if it's new.
 	if index != null and index > _last_new_item:
