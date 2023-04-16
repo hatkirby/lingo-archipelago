@@ -38,11 +38,17 @@ func _load():
 				"answer_correct", location, "handle_correct"
 			)
 
-	# Hardcode THE END as the goal for now.
-	var the_end = self.get_node("Decorations/EndPanel/Panel_end_end")
-	the_end.get_node("Viewport/GUI/Panel/TextEdit").connect(
-		"answer_correct", apclient, "completedGoal"
-	)
+	# Hook up the goal panel.
+	if apclient._victory_condition == 1:
+		var the_master = self.get_node("Panels/Countdown Panels/Panel_master_master")
+		the_master.get_node("Viewport/GUI/Panel/TextEdit").connect(
+			"answer_correct", apclient, "completedGoal"
+		)
+	else:
+		var the_end = self.get_node("Decorations/EndPanel/Panel_end_end")
+		the_end.get_node("Viewport/GUI/Panel/TextEdit").connect(
+			"answer_correct", apclient, "completedGoal"
+		)
 
 	# Create the messages node.
 	var messages_script = ResourceLoader.load("user://maps/Archipelago/messages.gd")

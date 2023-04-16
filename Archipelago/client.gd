@@ -35,6 +35,7 @@ var _mentioned_paintings = []
 var _panel_ids_by_location = {}
 var _localdata_file = ""
 var _death_link = false
+var _victory_condition = 0  # THE END, THE MASTER
 
 var _map_loaded = false
 var _held_items = []
@@ -150,6 +151,9 @@ func _on_data():
 			_death_link = _slot_data.has("death_link") and _slot_data["death_link"]
 			if _death_link:
 				sendConnectUpdate(["DeathLink"])
+
+			if _slot_data.has("victory_condition"):
+				_victory_condition = _slot_data["victory_condition"]
 
 			_localdata_file = "user://archipelago/%s_%d" % [_seed, _slot]
 			var ap_file = File.new()
