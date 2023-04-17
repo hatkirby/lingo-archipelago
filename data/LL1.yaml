@@ -65,10 +65,12 @@
 - id: Synonym Room/Panel_compose_write
   color: white
   tag: double botwhite
+  subtag: left
   link: syn WRITE
 - id: Synonym Room/Panel_record_write
   color: white
   tag: double botwhite
+  subtag: right
   link: syn WRITE
 - id: Synonym Room/Panel_category_type
   color: white
@@ -79,10 +81,12 @@
 - id: Synonym Room/Panel_duplicate_same
   color: white
   tag: double botwhite
+  subtag: left
   link: syn SAME
 - id: Synonym Room/Panel_identical_same
   color: white
   tag: double botwhite
+  subtag: right
   link: syn SAME
 - id: Synonym Room/Panel_distant_far
   color: white
@@ -93,10 +97,12 @@
 - id: Synonym Room/Panel_giggle_laugh
   color: white
   tag: double botwhite
+  subtag: left
   link: syn LAUGH
 - id: Synonym Room/Panel_chuckle_laugh
   color: white
   tag: double botwhite
+  subtag: right
   link: syn LAUGH
 - id: Synonym Room/Panel_snitch_rat
   color: white
@@ -107,10 +113,12 @@
 - id: Synonym Room/Panel_plunge_fall
   color: white
   tag: double botwhite
+  subtag: left
   link: syn FALL
 - id: Synonym Room/Panel_autumn_fall
   color: white
   tag: double botwhite
+  subtag: right
   link: syn FALL
 - id: Synonym Room/Panel_growths_warts
   color: white
@@ -163,10 +171,12 @@
 - id: Heteronym Room/Panel_mine_mine
   color: white
   tag: double midwhite
+  subtag: left
   link: exact MINE
 - id: Heteronym Room/Panel_mine_mine_2
   color: white
   tag: double midwhite
+  subtag: right
   link: exact MINE
 - id: Heteronym Room/Panel_bow_bow
   color: white
@@ -177,10 +187,12 @@
 - id: Heteronym Room/Panel_mobile_mobile
   color: white
   tag: double midwhite
+  subtag: left
   link: exact MOBILE
 - id: Heteronym Room/Panel_mobile_mobile_2
   color: white
   tag: double midwhite
+  subtag: right
   link: exact MOBILE
 - id: Heteronym Room/Panel_desert_desert
   color: white
@@ -205,10 +217,12 @@
 - id: Heteronym Room/Panel_two_to
   color: white
   tag: double topwhite
+  subtag: left
   link: hp TWO
 - id: Heteronym Room/Panel_two_too
   color: white
   tag: double topwhite
+  subtag: right
   link: hp TWO
 - id: Heteronym Room/Panel_write_right
   color: white
@@ -219,10 +233,12 @@
 - id: Heteronym Room/Panel_not_knot
   color: white
   tag: double topwhite
+  subtag: left
   link: hp NOT
 - id: Heteronym Room/Panel_not_naught
   color: white
   tag: double topwhite
+  subtag: right
   link: hp NOT
 - id: Heteronym Room/Panel_bear_bare
   color: white
@@ -296,10 +312,12 @@
 - id: Truncate Room/Panel_needle_eye
   color: red
   tag: double botred
+  subtag: left
   link: mero EYE
 - id: Truncate Room/Panel_face_eye
   color: red
   tag: double botred
+  subtag: right
   link: mero EYE
 - id: Truncate Room/Panel_sign_sigh
   color: red
@@ -309,11 +327,13 @@
   tag: topred
 - id: Truncate Room/Panel_undead_dead
   color: red
-  tag: midred
+  tag: double midred
+  subtag: left
   link: trunc DEAD
 - id: Truncate Room/Panel_deadline_dead
   color: red
-  tag: midred
+  tag: double midred
+  subtag: right
   link: trunc DEAD
 - id: Truncate Room/Panel_sushi_hi
   color: red
@@ -323,11 +343,13 @@
   tag: midred
 - id: Truncate Room/Panel_landmass_mass
   color: red
-  tag: midred
+  tag: double midred
+  subtag: left
   link: trunc MASS
 - id: Truncate Room/Panel_massacred_mass
   color: red
-  tag: midred
+  tag: double midred
+  subtag: right
   link: trunc MASS
 - id: Truncate Room/Panel_airplane_plain
   color: red
@@ -338,10 +360,12 @@
 - id: Truncate Room/Panel_mouth_teeth
   color: red
   tag: double botred
+  subtag: left
   link: mero TEETH
 - id: Truncate Room/Panel_saw_teeth
   color: red
   tag: double botred
+  subtag: right
   link: mero TEETH
 - id: Truncate Room/Panel_hand_finger
   color: red
@@ -409,10 +433,12 @@
 - id: Blue Room/Panel_mouth_face
   color: blue
   tag: double botblue
+  subtag: left
   link: holo FACE
 - id: Blue Room/Panel_eye_face
   color: blue
   tag: double botblue
+  subtag: right
   link: holo FACE
 - id: Blue Room/Panel_toucan_bird
   color: blue
@@ -423,10 +449,12 @@
 - id: Blue Room/Panel_ice_eyesight
   color: blue
   tag: double topblue
+  subtag: left
   link: hex EYESIGHT
 - id: Blue Room/Panel_height_eyesight
   color: blue
   tag: double topblue
+  subtag: right
   link: hex EYESIGHT
 - id: Blue Room/Panel_eye_hi
   color: blue
@@ -437,10 +465,12 @@
 - id: Blue Room/Panel_just_readjust
   color: blue
   tag: double midblue
+  subtag: left
   link: exp READJUST
 - id: Blue Room/Panel_read_readjust
   color: blue
   tag: double midblue
+  subtag: right
   link: exp READJUST
 - id: Blue Room/Panel_ate_primate
   color: blue
@@ -451,10 +481,12 @@
 - id: Blue Room/Panel_continent_planet
   color: blue
   tag: double botblue
+  subtag: left
   link: holo PLANET
 - id: Blue Room/Panel_ocean_planet
   color: blue
   tag: double botblue
+  subtag: right
   link: holo PLANET
 - id: Blue Room/Panel_wall_room
   color: blue
@@ -468,10 +500,12 @@
 - id: Sun Room/Panel_warred_drawer
   color: yellow
   tag: double midyellow
+  subtag: left
   link: ana DRAWER
 - id: Sun Room/Panel_redraw_drawer
   color: yellow
   tag: double midyellow
+  subtag: right
   link: ana DRAWER
 - id: Sun Room/Panel_adder_dread
   color: yellow
@@ -482,10 +516,12 @@
 - id: Sun Room/Panel_stone_notes
   color: yellow
   tag: double midyellow
+  subtag: left
   link: ana NOTES
 - id: Sun Room/Panel_onset_notes
   color: yellow
   tag: double midyellow
+  subtag: right
   link: ana NOTES
 - id: Sun Room/Panel_rat_art
   color: yellow
@@ -496,10 +532,12 @@
 - id: Sun Room/Panel_arts_star
   color: yellow
   tag: double midyellow
+  subtag: left
   link: ana STAR
 - id: Sun Room/Panel_tsar_star
   color: yellow
   tag: double midyellow
+  subtag: right
   link: ana STAR
 - id: Sun Room/Panel_state_taste
   color: yellow
@@ -510,10 +548,12 @@
 - id: Sun Room/Panel_dear_read
   color: yellow
   tag: double midyellow
+  subtag: left
   link: ana READ
 - id: Sun Room/Panel_dare_read
   color: yellow
   tag: double midyellow
+  subtag: right
   link: ana READ
 - id: Sun Room/Panel_seam_same
   color: yellow
@@ -565,6 +605,7 @@
 - id: Shuffle Room/Panel_amen_mean
   color: yellow
   tag: double midyellow
+  subtag: left
   link: ana MEAN
 - id: Shuffle Room/Panel_behind
   color: yellow
@@ -572,6 +613,7 @@
 - id: Shuffle Room/Panel_name_mean
   color: yellow
   tag: double midyellow
+  subtag: right
   link: ana MEAN
 - id: Shuffle Room/Panel_crossroads_crossroads
   color: white
@@ -851,10 +893,12 @@
 - id: Rhyme Room/Panel_move_love
   color: purple
   tag: double midpurp
+  subtag: left
   link: change STARS
 - id: Rhyme Room/Panel_stove_love
   color: purple
   tag: double midpurp
+  subtag: right
   link: change STARS
 - id: Rhyme Room/Panel_scope_type
   color: purple
@@ -866,10 +910,12 @@
 - id: Rhyme Room/Panel_sweat_great
   color: purple
   tag: double midpurp
+  subtag: left
   link: change GREAT
 - id: Rhyme Room/Panel_beat_great
   color: purple
   tag: double midpurp
+  subtag: right
   link: change GREAT
 - id: Rhyme Room/Panel_alumni_hi
   color: purple
@@ -882,10 +928,12 @@
 - id: Rhyme Room/Panel_knight_write
   color: purple
   tag: double toppurp
+  subtag: left
   link: change WRITE
 - id: Rhyme Room/Panel_byte_write
   color: purple
   tag: double toppurp
+  subtag: right
   link: change WRITE
 - id: Rhyme Room/Panel_maim_same
   color: purple
@@ -1644,7 +1692,7 @@
   tag: botbrown
 - id: Wonderland Room/Panel_wood_table
   color: brown
-  tag: midbrown
+  tag: botbrown
 - id: Wonderland Room/Panel_fireplace_fire
   color: red
   tag: mid bot red
@@ -2103,14 +2151,14 @@
   subtag: bot
   link: xru LAKE
 - id: Ceiling Room/Panel_red_bot_3
-  color: blue
-  tag: blue mid red bot
-  subtag: mid
-  link: xur HOURS
-- id: Ceiling Room/Panel_blue_mid_3
   color: red
   tag: blue mid red bot
   subtag: bot
+  link: xur HOURS
+- id: Ceiling Room/Panel_blue_mid_3
+  color: blue
+  tag: blue mid red bot
+  subtag: mid
   link: xur HOURS
 - id: Ceiling Room/Panel_red_top_4
   color: red
@@ -2284,18 +2332,22 @@
 - id: Chemistry Room/Panel_blue_bot_5
   color: blue
   tag: double botblue
+  subtag: left
   link: holo SALT
 - id: Chemistry Room/Panel_blue_bot_6
   color: blue
   tag: double botblue
+  subtag: right
   link: holo SALT
 - id: Chemistry Room/Panel_blue_top_1
   color: blue
   tag: double topblue
+  subtag: left
   link: exp CHEMISTRY
 - id: Chemistry Room/Panel_blue_top_2
   color: blue
   tag: double topblue
+  subtag: right
   link: exp CHEMISTRY
 - id: Chemistry Room/Panel_long_bot_1
   color:
@@ -2371,6 +2423,7 @@
 - id: Chemistry Room/Panel_physics_9
   color: purple
   tag: double midpurp
+  subtag: left
   link: change GRAVITY
 - id: Chemistry Room/Panel_physics_10
   color: yellow
@@ -2390,6 +2443,7 @@
 - id: Chemistry Room/Panel_biology_4
   color: red
   tag: double botred
+  subtag: right
   link: mero SPINE
 - id: Chemistry Room/Panel_biology_5
   color: red
@@ -2403,6 +2457,7 @@
 - id: Chemistry Room/Panel_biology_8
   color: red
   tag: double botred
+  subtag: left
   link: mero SPINE
 - id: Chemistry Room/Panel_biology_9
   color: purple
@@ -2410,6 +2465,7 @@
 - id: Chemistry Room/Panel_biology_10
   color: purple
   tag: double midpurp
+  subtag: right
   link: change GRAVITY
 - id: Challenge Room/Panel_challenge_challenge
   color: white
@@ -2436,6 +2492,7 @@
 - id: Challenge Room/Panel_strawberries_mold
   color: brown
   tag: double botbrown
+  subtag: left
   link: time MOLD
 - id: Challenge Room/Panel_grub_burger
   color:
@@ -2445,6 +2502,7 @@
 - id: Challenge Room/Panel_bread_mold
   color: brown
   tag: double botbrown
+  subtag: right
   link: time MOLD
 - id: Challenge Room/Panel_color_gray
   color: gray
@@ -2508,18 +2566,22 @@
 - id: Open Areas/Panel_rise_horizon
   color: blue
   tag: double topblue
+  subtag: left
   link: expand HORIZON
 - id: Open Areas/Panel_rise_sunrise
   color: blue
   tag: double topblue
+  subtag: left
   link: expand SUNRISE
 - id: Open Areas/Panel_son_horizon
   color: blue
   tag: double topblue
+  subtag: right
   link: expand HORIZON
 - id: Open Areas/Panel_son_sunrise
   color: blue
   tag: double topblue
+  subtag: right
   link: expand SUNRISE
 - id: Open Areas/Panel_smile_smile
   color: white

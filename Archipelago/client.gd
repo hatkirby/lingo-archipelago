@@ -10,6 +10,12 @@ const color_items = [
 	"White", "Black", "Red", "Blue", "Green", "Brown", "Gray", "Orange", "Purple", "Yellow"
 ]
 
+const kTHE_END = 0
+const kTHE_MASTER = 1
+
+const kNO_PANEL_SHUFFLE = 0
+const kREARRANGE_PANELS = 1
+
 var _client = WebSocketClient.new()
 var _last_state = WebSocketPeer.STATE_CLOSED
 var _should_process = false
@@ -41,6 +47,8 @@ var _death_link = false
 var _victory_condition = 0  # THE END, THE MASTER
 var _door_shuffle = false
 var _color_shuffle = false
+var _panel_shuffle = 0  # none, rearrange
+var _slot_seed = 0
 
 var _map_loaded = false
 var _held_items = []
@@ -165,6 +173,10 @@ func _on_data():
 				_color_shuffle = _slot_data["shuffle_colors"]
 			if _slot_data.has("shuffle_doors"):
 				_door_shuffle = (_slot_data["shuffle_doors"] > 0)
+			if _slot_data.has("shuffle_panels"):
+				_panel_shuffle = _slot_data["shuffle_panels"]
+			if _slot_data.has("seed"):
+				_slot_seed = _slot_data["seed"]
 
 			_localdata_file = "user://archipelago/%s_%d" % [_seed, _slot]
 			var ap_file = File.new()

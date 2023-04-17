@@ -38,9 +38,60 @@ func _load():
 				"answer_correct", location, "handle_correct"
 			)
 
+	# Randomize the panels, if necessary.
+	var rng = RandomNumberGenerator.new()
+	rng.seed = apclient._slot_seed
+
+	var gamedata = apclient.get_node("Gamedata")
+	if apclient._panel_shuffle == apclient.kREARRANGE_PANELS:
+		var panel_pools = {}
+		for panel in gamedata.panels:
+			if not panel_pools.has(panel["tag"]):
+				panel_pools[panel["tag"]] = {}
+			var pool = panel_pools[panel["tag"]]
+			var subtag = "default"
+			if panel.has("subtag"):
+				subtag = panel["subtag"]
+			if not pool.has(subtag):
+				pool[subtag] = []
+
+			var panel_node = panels_parent.get_node(panel["id"])
+			pool[subtag].append(
+				{
+					"id": panel["id"],
+					"hint": panel_node.text,
+					"answer": panel_node.answer,
+					"link": panel["link"]
+				}
+			)
+
+		for tag in panel_pools.keys():
+			if tag == "forbid":
+				continue
+
+			var pool = panel_pools[tag]
+			for subtag in pool.keys():
+				pool[subtag].sort_custom(self, "sort_by_link")
+
+			var count = pool[pool.keys()[0]].size()
+			var iota = range(0, count)
+			var order = []
+			while not iota.empty():
+				var i = rng.randi_range(0, iota.size() - 1)
+				order.append(iota[i])
+				iota.remove(i)
+
+			for subtag in pool.keys():
+				for i in range(0, count):
+					var source = pool[subtag][i]
+					var target = pool[subtag][order[i]]
+					var target_panel_node = panels_parent.get_node(target["id"])
+
+					target_panel_node.text = source["hint"]
+					target_panel_node.answer = source["answer"]
+
 	# Attach a script to every panel so that we can do things like conditionally
 	# disable them.
-	var gamedata = apclient.get_node("Gamedata")
 	var panel_script = ResourceLoader.load("user://maps/Archipelago/panel.gd")
 	for panel in gamedata.panels:
 		var panel_node = panels_parent.get_node(panel["id"])
@@ -75,3 +126,7 @@ func _load():
 	# Process any items received while the map was loading, and send the checks
 	# from the save load.
 	apclient.mapFinishedLoading()
+
+
+func sort_by_link(a, b):
+	return a["link"] < b["link"]
