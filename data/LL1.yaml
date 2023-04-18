@@ -2294,7 +2294,7 @@
   tag: topyellow
 # Forbid these three for now because one is hidden
 - id: Chemistry Room/Panel_open
-  color: black
+  color: white
   tag: forbid
 - id: Chemistry Room/Panel_close
   color: black

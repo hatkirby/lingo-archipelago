@@ -90,6 +90,52 @@ func _load():
 					target_panel_node.text = source["hint"]
 					target_panel_node.answer = source["answer"]
 
+	# Randomize the paintings, if necessary.
+	if apclient._painting_shuffle:
+		var pd_script = ResourceLoader.load("user://maps/Archipelago/paintingdata.gd")
+		var pd = pd_script.new()
+		pd.set_name("AP_Paintings")
+		self.add_child(pd)
+
+		var all_paintings = pd.kALL_PAINTINGS
+
+		var classes = {}
+		for painting in apclient._paintings_mapping.values():
+			if not classes.has(painting):
+				var i = rng.randi_range(0, all_paintings.size() - 1)
+				var chosen = all_paintings[i]
+				classes[painting] = chosen
+				all_paintings.remove(i)
+
+		var randomized = []
+		for painting in apclient._paintings_mapping.values():
+			var painting_class = classes[painting]
+			instantiate_painting(painting, painting_class)
+			randomized.append(painting)
+
+		for source_painting in apclient._paintings_mapping.keys():
+			var target_painting = apclient._paintings_mapping[source_painting]
+			var painting_class = classes[target_painting]
+			var new_source = instantiate_painting(source_painting, painting_class)
+			new_source.target = pd.get_node(target_painting).get_node("Script")
+			randomized.append(source_painting)
+
+		var remaining_size = classes.size() / 2
+		if remaining_size >= all_paintings.size():
+			remaining_size = all_paintings.size()
+		var remaining = []
+		for i in range(0, remaining_size):
+			var j = rng.randi_range(0, all_paintings.size() - 1)
+			remaining.append(all_paintings[j])
+			all_paintings.remove(j)
+
+		for painting in apclient._paintings.keys():
+			if randomized.has(painting):
+				continue
+
+			var chosen_painting = remaining[rng.randi_range(0, remaining.size() - 1)]
+			instantiate_painting(painting, chosen_painting)
+
 	# Attach a script to every panel so that we can do things like conditionally
 	# disable them.
 	var panel_script = ResourceLoader.load("user://maps/Archipelago/panel.gd")
@@ -130,3 +176,33 @@ func _load():
 
 func sort_by_link(a, b):
 	return a["link"] < b["link"]
+
+
+func instantiate_painting(name, scene):
+	var apclient = global.get_node("Archipelago")
+
+	var scene_path = "res://nodes/paintings/%s.tscn" % scene
+	var painting_scene = load(scene_path)
+	var new_painting = painting_scene.instance()
+	new_painting.set_name(name)
+
+	var old_painting = self.get_node("Decorations/Paintings").get_node(name)
+	new_painting.translation = old_painting.translation
+	new_painting.rotation = old_painting.rotation
+
+	var mypainting_script = ResourceLoader.load("user://maps/Archipelago/mypainting.gd")
+	var mps_inst = mypainting_script.new()
+	mps_inst.set_name("Script")
+
+	var pconfig = apclient._paintings[name]
+	mps_inst.orientation = pconfig["orientation"]
+	if pconfig["move"]:
+		mps_inst.move = true
+		mps_inst.move_to_x = old_painting.move_to_x
+		mps_inst.move_to_z = old_painting.move_to_z
+		mps_inst.key = old_painting.key
+
+	self.get_node("AP_Paintings").add_child(new_painting)
+	new_painting.add_child(mps_inst)
+	old_painting.queue_free()
+	return mps_inst

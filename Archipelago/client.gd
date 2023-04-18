@@ -42,12 +42,15 @@ var _mentioned_doors = []
 var _painting_ids_by_item = {}
 var _mentioned_paintings = []
 var _panel_ids_by_location = {}
+var _paintings = {}
+var _paintings_mapping = {}
 var _localdata_file = ""
 var _death_link = false
 var _victory_condition = 0  # THE END, THE MASTER
 var _door_shuffle = false
 var _color_shuffle = false
 var _panel_shuffle = 0  # none, rearrange
+var _painting_shuffle = false
 var _slot_seed = 0
 
 var _map_loaded = false
@@ -162,6 +165,8 @@ func _on_data():
 						_mentioned_paintings.append(painting)
 			if _slot_data.has("panel_ids_by_location_id"):
 				_panel_ids_by_location = _slot_data["panel_ids_by_location_id"]
+			if _slot_data.has("paintings"):
+				_paintings = _slot_data["paintings"]
 
 			_death_link = _slot_data.has("death_link") and _slot_data["death_link"]
 			if _death_link:
@@ -173,10 +178,14 @@ func _on_data():
 				_color_shuffle = _slot_data["shuffle_colors"]
 			if _slot_data.has("shuffle_doors"):
 				_door_shuffle = (_slot_data["shuffle_doors"] > 0)
+			if _slot_data.has("shuffle_paintings"):
+				_painting_shuffle = (_slot_data["shuffle_paintings"] > 0)
 			if _slot_data.has("shuffle_panels"):
 				_panel_shuffle = _slot_data["shuffle_panels"]
 			if _slot_data.has("seed"):
 				_slot_seed = _slot_data["seed"]
+			if _slot_data.has("painting_entrance_to_exit"):
+				_paintings_mapping = _slot_data["painting_entrance_to_exit"]
 
 			_localdata_file = "user://archipelago/%s_%d" % [_seed, _slot]
 			var ap_file = File.new()
@@ -411,9 +420,18 @@ func processItem(item, index, from):
 			doorsNode.get_node(door_id).openDoor()
 
 	if _painting_ids_by_item.has(stringified):
-		var paintingsNode = get_tree().get_root().get_node("Spatial/Decorations/Paintings")
+		var real_parent_node = get_tree().get_root().get_node("Spatial/Decorations/Paintings")
+		var fake_parent_node = get_tree().get_root().get_node("Spatial/AP_Paintings")
+
 		for painting_id in _painting_ids_by_item[stringified]:
-			paintingsNode.get_node(painting_id).movePainting()
+			var painting_node = real_parent_node.get_node_or_null(painting_id)
+			if painting_node != null:
+				painting_node.movePainting()
+
+			if _painting_shuffle:
+				painting_node = fake_parent_node.get_node_or_null(painting_id)
+				if painting_node != null:
+					painting_node.get_node("Script").movePainting()
 
 	# Handle progressively opening up the tower.
 	if _item_name_to_id["Progressive Orange Tower"] == item and _tower_floors < orange_tower.size():
