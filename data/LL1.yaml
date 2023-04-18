@@ -22,7 +22,7 @@
   tag: topwhite
 - id: Entry Room/Panel_low_low
   color: white
-  tag: botwhite
+  tag: forbid # This is a midwhite pretending to be a botwhite
 - id: Entry Room/Panel_forward_forward
   color: white
   tag: midwhite
@@ -635,7 +635,7 @@
   tag: botblack
 - id: Shuffle Room/Panel_secret_secret
   color: white
-  tag: midwhite # This one is... weird because it's actually on the bottom
+  tag: forbid # This one is... weird because it's actually on the bottom
 - id: Shuffle Room/Panel_clockwise_counterclockwise
   color: black
   tag: botblack
