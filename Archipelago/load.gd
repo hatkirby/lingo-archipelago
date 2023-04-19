@@ -18,6 +18,20 @@ func _load():
 		if "answer" in node:
 			node.answer = apclient.ap_user
 
+	# Handle our other static panels.
+	set_static_panel("Entry Room/Panel_write_write", "seed")
+	set_static_panel("Entry Room/Panel_same_same", str(apclient._slot_seed))
+	set_static_panel("Entry Room/Panel_type_type", "victory")
+
+	var victory_condition = "unknown"
+	if apclient._victory_condition == apclient.kTHE_END:
+		victory_condition = "the end"
+	elif apclient._victory_condition == apclient.kTHE_MASTER:
+		victory_condition = "the master"
+
+	set_static_panel("Entry Room/Panel_this_this", victory_condition)
+	set_static_panel("Entry Room/Panel_hidden_hidden", "hewwo")
+
 	# This is the best time to create the location nodes, since the map is now
 	# loaded but the panels haven't been solved from the save file yet.
 	var panels_parent = self.get_node("Panels")
@@ -176,6 +190,16 @@ func _load():
 
 func sort_by_link(a, b):
 	return a["link"] < b["link"]
+
+
+func set_static_panel(name, question, answer = ""):
+	if answer == "":
+		answer = question
+
+	var node = self.get_node("Panels").get_node(name)
+
+	node.text = question
+	node.answer = answer
 
 
 func instantiate_painting(name, scene):
