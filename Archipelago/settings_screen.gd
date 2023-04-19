@@ -22,6 +22,8 @@ func _ready():
 		installScriptExtension("user://maps/Archipelago/doorControl.gd")
 		installScriptExtension("user://maps/Archipelago/load.gd")
 		installScriptExtension("user://maps/Archipelago/painting_eye.gd")
+		installScriptExtension("user://maps/Archipelago/panelLevelSwitch.gd")
+		installScriptExtension("user://maps/Archipelago/panelEnd.gd")
 
 	global.get_node("Archipelago").connect("client_connected", self, "connectionSuccessful")
 
