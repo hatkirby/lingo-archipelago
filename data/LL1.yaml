@@ -1,22 +1,22 @@
 ---
 - id: Entry Room/Panel_hi_hi
   color: white
-  tag: forbid
+  tag: midwhite
 - id: Entry Room/Panel_type_type
   color: white
-  tag: forbid
+  tag: midwhite
 - id: Entry Room/Panel_this_this
   color: white
-  tag: forbid
+  tag: midwhite
 - id: Entry Room/Panel_write_write
   color: white
-  tag: forbid
+  tag: midwhite
 - id: Entry Room/Panel_same_same
   color: white
-  tag: forbid
+  tag: midwhite
 - id: Entry Room/Panel_hidden_hidden
   color: white
-  tag: forbid
+  tag: midwhite
 - id: Entry Room/Panel_hi_high
   color: white
   tag: topwhite
