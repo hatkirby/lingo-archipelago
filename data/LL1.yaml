@@ -287,19 +287,27 @@
   tag: midred
 - id: Palindrome Room/Panel_solos_solos
   color: black
-  tag: midblack
+  tag: palindrome
+  copy_to_sign:
+    - sign5
+    - sign6
 - id: Palindrome Room/Panel_solos_solos_2
   color: white
   tag: midwhite
+  copy_to_sign:
+    - sign1
+    - sign2
 - id: Palindrome Room/Panel_racecar_racecar
   color: black
-  tag: forbid # The signs make this and LEVEL too hard for now
+  tag: palindrome
+  copy_to_sign: sign4
 - id: Palindrome Room/Panel_racecar_racecar_2
   color: white
   tag: midwhite
+  copy_to_sign: sign3
 - id: Palindrome Room/Panel_level_level
   color: black
-  tag: forbid
+  tag: midblack
 - id: Palindrome Room/Panel_level_level_2
   color: white
   tag: midwhite

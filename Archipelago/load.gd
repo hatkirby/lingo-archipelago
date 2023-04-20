@@ -61,7 +61,8 @@ func _load():
 					"id": panel["id"],
 					"hint": panel_node.text,
 					"answer": panel_node.answer,
-					"link": panel["link"]
+					"link": panel["link"],
+					"copy_to_sign": panel["copy_to_sign"]
 				}
 			)
 
@@ -89,6 +90,9 @@ func _load():
 
 					target_panel_node.text = source["hint"]
 					target_panel_node.answer = source["answer"]
+
+					for sign_name in target["copy_to_sign"]:
+						self.get_node("Decorations/PanelSign").get_node(sign_name).value = source["hint"]
 
 	# Handle our other static panels after panel randomization, so that the old
 	# values can enter the pool, if necessary.

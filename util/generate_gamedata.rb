@@ -22,7 +22,13 @@ end.map do |panel|
     ret["link"] = "\"#{panel["link"]}\""
   end
   if panel.include? "copy_to_sign"
-    ret["copy_to_sign"] = "\"#{panel["copy_to_sign"]}\""
+    copytos = []
+    if panel["copy_to_sign"].kind_of? String
+      copytos = [panel["copy_to_sign"]]
+    else
+      copytos = panel["copy_to_sign"]
+    end
+    ret["copy_to_sign"] = "[\"" + copytos.join("\",\"") + "\"]"
   end
     ret
 end.map do |panel|
