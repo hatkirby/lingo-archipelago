@@ -1454,10 +1454,10 @@
 - id: Backside Room/Panel_fourth_fourth
   color: white
   tag: forbid
-# We will forbid this one because it is hidden
+# We are displacing this panel in front of the black wall
 - id: Backside Room/Panel_zero_zero
-  color: white
-  tag: forbid
+  color: black
+  tag: midblack
 - id: Backside Room/Panel_one_one
   color: white
   tag: midwhite

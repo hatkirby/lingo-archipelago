@@ -44,6 +44,12 @@ func _load():
 
 	var gamedata = apclient.get_node("Gamedata")
 	if apclient._panel_shuffle == apclient.kREARRANGE_PANELS:
+		# Move ZERO in front of the black wall, and replace the puzzle because
+		# it has to be a black puzzle now.
+		self.get_node("Panels/Backside Room/Panel_zero_zero").translation.z = 16.499
+		set_static_panel("Backside Room/Panel_zero_zero", "reknits", "stinker")
+
+		# Do the actual shuffling.
 		var panel_pools = {}
 		for panel in gamedata.panels:
 			if not panel_pools.has(panel["tag"]):
