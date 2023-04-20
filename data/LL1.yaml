@@ -1185,7 +1185,7 @@
   tag: midbrown
 - id: Painting Room/Panel_eon_one
   color: yellow
-  tag: forbid # because of ORDER
+  tag: midyellow
 - id: Painting Room/Panel_to_two
   color: red
   tag: midred
@@ -1200,7 +1200,7 @@
   tag: botblue
 - id: Painting Room/Panel_path_road
   color: brown
-  tag: forbid # because of ORDER
+  tag: botbrown
 - id: Painting Room/Panel_park_drive
   color: black
   tag: botblack
@@ -1215,7 +1215,7 @@
   tag: midblue
 - id: Painting Room/Panel_any_many
   color: blue
-  tag: forbid # because of ORDER
+  tag: midblue
 - id: Painting Room/Panel_man_many
   color: blue
   tag: midblue
@@ -1230,7 +1230,7 @@
   tag: midyellow
 - id: Painting Room/Panel_send_use_turns
   color: orange
-  tag: forbid # because of ORDER
+  tag: midorange
 - id: Painting Room/Panel_trust_06890
   color: orange
   tag: midorange

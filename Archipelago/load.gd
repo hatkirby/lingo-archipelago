@@ -100,6 +100,17 @@ func _load():
 					for sign_name in target["copy_to_sign"]:
 						self.get_node("Decorations/PanelSign").get_node(sign_name).value = source["hint"]
 
+		# Change the answer to the final puzzle in the art gallery based on the
+		# puzzles that were shuffled into the constituent places.
+		var new_answer = panels_parent.get_node("Painting Room/Panel_eon_one").answer
+		new_answer += " "
+		new_answer += panels_parent.get_node("Painting Room/Panel_path_road").answer
+		new_answer += " "
+		new_answer += panels_parent.get_node("Painting Room/Panel_any_many").answer
+		new_answer += " "
+		new_answer += panels_parent.get_node("Painting Room/Panel_send_use_turns").answer
+		panels_parent.get_node("Painting Room/Panel_order_onepathmanyturns").answer = new_answer
+
 	# Handle our other static panels after panel randomization, so that the old
 	# values can enter the pool, if necessary.
 	set_static_panel("Entry Room/Panel_hi_hi", "hi")
