@@ -455,6 +455,9 @@ func processItem(item, index, from):
 		if _item_id_to_name.has(item):
 			item_name = _item_id_to_name[item]
 
+			if item_name == "Progressive Orange Tower":
+				item_name = "Progressive Orange Tower (%s Floor)" % orange_tower[_tower_floors - 1]
+
 		var player_name = "Unknown"
 		if _player_name_by_slot.has(from):
 			player_name = _player_name_by_slot[from]
