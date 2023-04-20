@@ -26,6 +26,7 @@ func _ready():
 		installScriptExtension("user://maps/Archipelago/panelEnd.gd")
 
 	global.get_node("Archipelago").connect("client_connected", self, "connectionSuccessful")
+	global.get_node("Archipelago").connect("could_not_connect", self, "connectionUnsuccessful")
 
 	# Populate textboxes with AP settings.
 	self.get_node("Panel/server_box").text = global.get_node("Archipelago").ap_server
@@ -62,3 +63,11 @@ func connectionSuccessful():
 	global.map = "level1"
 	global.save_file = apclient.getSaveFileName()
 	var _discard = get_tree().change_scene("res://scenes/load_screen.tscn")
+
+
+func connectionUnsuccessful(error_message):
+	var popup = self.get_node("Panel/AcceptDialog")
+	popup.window_title = "Could not connect to Archipelago"
+	popup.dialog_text = error_message
+	popup.popup_exclusive = true
+	popup.popup_centered()

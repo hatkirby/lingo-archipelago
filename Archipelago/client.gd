@@ -17,14 +17,16 @@ const kNO_PANEL_SHUFFLE = 0
 const kREARRANGE_PANELS = 1
 
 var _client = WebSocketClient.new()
-var _last_state = WebSocketPeer.STATE_CLOSED
 var _should_process = false
+var _initiated_disconnect = false
 
 var _datapackages = {}
 var _item_id_to_name = {}  # All games
 var _location_id_to_name = {}  # All games
 var _item_name_to_id = {}  # LINGO only
 var _location_name_to_id = {}  # LINGO only
+
+var _remote_version = {"major": 0, "minor": 0, "build": 0}
 
 const uuid_util = preload("user://maps/Archipelago/vendor/uuid.gd")
 
@@ -60,6 +62,7 @@ var _last_new_item = -1
 var _tower_floors = 0
 var _has_colors = ["white"]
 
+signal could_not_connect
 signal client_connected
 signal evaluate_solvability
 
@@ -88,15 +91,33 @@ func _init():
 
 func _ready():
 	_client.connect("connection_closed", self, "_closed")
-	_client.connect("connection_error", self, "_closed")
+	_client.connect("connection_failed", self, "_closed")
+	_client.connect("server_disconnected", self, "_closed")
+	_client.connect("connection_error", self, "_errored")
 	_client.connect("connection_established", self, "_connected")
 	_client.connect("data_received", self, "_on_data")
 
 
-func _closed(was_clean = false):
-	global._print("Closed, clean: " + was_clean)
+func _errored():
+	global._print("AP connection failed")
 	_should_process = false
 	_authenticated = false
+
+	emit_signal(
+		"could_not_connect",
+		"Could not connect to Archipelago. Check that your server and port are correct. See the error log for more information."
+	)
+
+
+func _closed():
+	global._print("Connection closed")
+	_should_process = false
+	_authenticated = false
+
+	if not _initiated_disconnect:
+		emit_signal("could_not_connect", "Disconnected from Archipelago")
+
+	_initiated_disconnect = false
 
 
 func _connected(_proto = ""):
@@ -117,6 +138,7 @@ func _on_data():
 
 		if cmd == "RoomInfo":
 			_seed = message["seed_name"]
+			_remote_version = message["version"]
 
 			var needed_games = []
 			for game in message["datapackage_checksums"].keys():
@@ -204,6 +226,42 @@ func _on_data():
 			emit_signal("client_connected")
 
 		elif cmd == "ConnectionRefused":
+			var error_message = ""
+			for error in message["errors"]:
+				var submsg = ""
+				if error == "InvalidSlot":
+					submsg = "Invalid player name."
+				elif error == "InvalidGame":
+					submsg = "The specified player is not playing Lingo."
+				elif error == "IncompatibleVersion":
+					submsg = (
+						"The Archipelago server is not the correct version for this client. Expected v%d.%d.%d. Found v%d.%d.%d."
+						% [
+							ap_version["major"],
+							ap_version["minor"],
+							ap_version["build"],
+							_remote_version["major"],
+							_remote_version["minor"],
+							_remote_version["build"]
+						]
+					)
+				elif error == "InvalidPassword":
+					submsg = "Incorrect password."
+				elif error == "InvalidItemsHandling":
+					submsg = "Invalid item handling flag. This is a bug with the client. Please report it to the lingo-archipelago GitHub."
+
+				if submsg != "":
+					if error_message != "":
+						error_message += " "
+					error_message += submsg
+
+			if error_message == "":
+				error_message = "Unknown error."
+
+			_initiated_disconnect = true
+			_client.disconnect_from_host()
+
+			emit_signal("could_not_connect", error_message)
 			global._print("Connection to AP refused")
 			global._print(message)
 
@@ -325,9 +383,12 @@ func getSaveFileName():
 
 
 func connectToServer():
+	_initiated_disconnect = false
+
 	var url = "ws://" + ap_server
 	var err = _client.connect_to_url(url)
 	if err != OK:
+		emit_signal("could_not_connect", "Could not connect to Archipelago. Error code: %d." % err)
 		global._print("Could not connect to AP: " + err)
 		return
 	_should_process = true

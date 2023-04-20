@@ -205,6 +205,9 @@ func _load():
 	messages.set_name("AP_Messages")
 	self.add_child(messages)
 
+	# Hook up the scene to be able to handle connection failures.
+	apclient.connect("could_not_connect", self, "archipelago_disconnected")
+
 	# Proceed with the rest of the load.
 	global._print("Hooked Load End")
 	._load()
@@ -256,3 +259,8 @@ func instantiate_painting(name, scene):
 	new_painting.add_child(mps_inst)
 	old_painting.queue_free()
 	return mps_inst
+
+
+func archipelago_disconnected(reason):
+	var messages_node = self.get_node("AP_Messages")
+	messages_node.show_message(reason)

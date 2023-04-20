@@ -73,31 +73,34 @@ text = "BACK"
 script = ExtResource( 4 )
 
 [node name="credit2" parent="Panel" instance=ExtResource( 1 )]
-margin_left = 267.0
-margin_top = 347.0
-margin_right = 857.0
-margin_bottom = 411.0
+margin_left = 75.0
+margin_top = 346.0
+margin_right = 665.0
+margin_bottom = 410.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 1 )
 text = "SERVER"
+align = 2
 
 [node name="credit3" parent="Panel" instance=ExtResource( 1 )]
-margin_left = 263.0
-margin_top = 515.0
-margin_right = 853.0
-margin_bottom = 579.0
+margin_left = 75.0
+margin_top = 519.0
+margin_right = 665.0
+margin_bottom = 583.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 1 )
 text = "PLAYER"
+align = 2
 
 [node name="credit4" parent="Panel" instance=ExtResource( 1 )]
-margin_left = 199.0
-margin_top = 691.0
-margin_right = 789.0
-margin_bottom = 755.0
+margin_left = 75.0
+margin_top = 704.0
+margin_right = 665.0
+margin_bottom = 768.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 1 )
 text = "PASSWORD"
+align = 2
 
 [node name="server_box" type="LineEdit" parent="Panel"]
 margin_left = 682.0
@@ -128,6 +131,10 @@ custom_colors/selection_color = Color( 0.482353, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_styles/focus = SubResource( 2 )
 align = 1
+
+[node name="AcceptDialog" type="AcceptDialog" parent="Panel"]
+margin_right = 83.0
+margin_bottom = 58.0
 
 [connection signal="pressed" from="Panel/connect_button" to="Panel/connect_button" method="_connect_pressed"]
 [connection signal="pressed" from="Panel/quit_button" to="Panel/quit_button" method="_back_pressed"]
