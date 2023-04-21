@@ -148,7 +148,7 @@ func _load():
 				all_paintings.remove(i)
 
 		var randomized = []
-		for painting in apclient._paintings_mapping.values():
+		for painting in classes.keys():
 			var painting_class = classes[painting]
 			instantiate_painting(painting, painting_class)
 			randomized.append(painting)
