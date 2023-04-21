@@ -29,3 +29,7 @@ selected in the level selection screen, so it is safe to play the game normally 
 
 **Note**: Running the randomizer modifies the game's memory. If you want to play the base game after playing the randomizer,
 you need to restart Lingo first.
+
+## Running fron source
+
+The randomizer is almost ready to run from source. The only step that is required is to compile the LL1.yaml datafile into gamedata.gd, which needs to be played in the Archipelago folder. The generate_gamedata.rb script in the util folder can do this for you. The first argument is the path to the datafile, and the second argument is the path to the output file.
