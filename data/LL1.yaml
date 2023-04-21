@@ -1441,19 +1441,19 @@
 - id: Backside Room/Panel_farther_far
   color: red
   tag: midred
-# We will forbid these four for now because the fourth is hidden
 - id: Backside Room/Panel_first_first
   color: white
-  tag: forbid
+  tag: midwhite
 - id: Backside Room/Panel_second_second
   color: white
-  tag: forbid
+  tag: midwhite
 - id: Backside Room/Panel_third_third
   color: white
-  tag: forbid
+  tag: midwhite
+# We are displacing this panel in front of the wall.
 - id: Backside Room/Panel_fourth_fourth
   color: white
-  tag: forbid
+  tag: midwhite
 # We are displacing this panel in front of the black wall
 - id: Backside Room/Panel_zero_zero
   color: black
@@ -2300,16 +2300,16 @@
 - id: Ceiling Room/Panel_answer_4
   color: yellow
   tag: topyellow
-# Forbid these three for now because one is hidden
+# We are displacing this panel in front of the wall.
 - id: Chemistry Room/Panel_open
   color: white
-  tag: forbid
+  tag: midwhite
 - id: Chemistry Room/Panel_close
   color: black
-  tag: forbid
+  tag: botblack
 - id: Chemistry Room/Panel_ahead
   color: black
-  tag: forbid
+  tag: botblack
 - id: Chemistry Room/Panel_yellow_bot_1
   color: yellow
   tag: botyellow

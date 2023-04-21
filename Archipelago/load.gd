@@ -44,10 +44,14 @@ func _load():
 
 	var gamedata = apclient.get_node("Gamedata")
 	if apclient._panel_shuffle == apclient.kREARRANGE_PANELS:
-		# Move ZERO in front of the black wall, and replace the puzzle because
-		# it has to be a black puzzle now.
+		# Move mandatory wall-snipes in front of their respective walls. In
+		# the case of ZERO, we need to change it to be a black puzzle because
+		# the wall is black.
 		self.get_node("Panels/Backside Room/Panel_zero_zero").translation.z = 16.499
 		set_static_panel("Backside Room/Panel_zero_zero", "reknits", "stinker")
+
+		self.get_node("Panels/Backside Room/Panel_fourth_fourth").translation.z = -65.001
+		self.get_node("Panels/Chemistry Room/Panel_open").translation.x = -87.001
 
 		# Do the actual shuffling.
 		var panel_pools = {}
