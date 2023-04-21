@@ -33,3 +33,45 @@ you need to restart Lingo first.
 ## Running fron source
 
 The randomizer is almost ready to run from source. The only step that is required is to compile the LL1.yaml datafile into gamedata.gd, which needs to be played in the Archipelago folder. The generate_gamedata.rb script in the util folder can do this for you. The first argument is the path to the datafile, and the second argument is the path to the output file.
+
+## Frequently Asked Questions
+
+### Is my progress saved locally?
+
+Lingo autosaves your progress every time you solve a puzzle. The randomizer generates a savefile name based on your Multiworld seed and slot number, so you should be able to seamlessly switch between multiworlds and even slots within a multiworld.
+
+If you play the base game again, you will see one or more save files with a long name that begins with "zzAP_". These are the saves for your multiworlds. They can be safely deleted after you have completed the associated multiworld. It is not recommended to load these save files outside of the randomizer.
+
+A connection to Archipelago is required to resume playing a multiworld. This is because the set of items you have received is not stored locally. This may be changed in the future.
+
+### How do I solve the YOU puzzle in Champion's rest?
+
+The solution to this puzzle is set to your slot name.
+
+### What about wall snipes?
+
+"Wall sniping" refers to the fact that you are able to solve puzzles on the other side of opaque walls. This feature is
+not affected by randomization, but you are almost never required to perform a wall snipe. The exceptions to this are:
+
+* In the Courtyard, there is a row of four puzzles that say FIRST, SECOND, THIRD, and FOURTH. FOURTH is behind an opaque
+  wall, but its existence can be inferred from the others. Solving this puzzle while standing in the Courtyard is in
+  logic.
+    * As an aside, this snipe is different from the others in that it is possible to see the face of the panel by going
+      through the nearby door (if it is open), entering the area from the roof, or entering the area through a painting
+      using painting shuffle. Solving the panel in either of those ways is not in logic (particularly in the painting
+      shuffle case, where you may not have access to the Courtyard itself).
+* In the maze outside The Lab, there is a hidden OPEN puzzle within a wall that ordinarily opens the entrance to lab.
+  Its existence can be inferred from the nearby black puzzles with the solutions "OPEN" and "BEHIND". Solving this
+  puzzle while standing in the OPEN BEHIND room is in logic.
+* In the hallway outside The Undeterred (blue room), there is a row of doors that reveal numbered puzzles. These puzzles
+  number from one to nine. There is also a zero puzzle hidden behind a wall. Its existence can be inferred from the
+  presence of the other numbers. ZERO is actually behind both a black wall and a white door. The white door opens after
+  all of the NINEs have been collected (or upon receiving the appropriate item, in door shuffle mode), revealing the
+  black wall. Solving the ZERO puzzle through the black wall is in logic, but solving it while the white door is still
+  present is not in logic.
+
+Any other snipe is considered out of logic. This includes sniping The Bearer's MIDDLE while standing outside The Bold,
+sniping The Colorful without opening all of the color doors, and sniping WELCOME from next to WELCOME BACK.
+
+Because these puzzles are invisible to the player, they are not affected by panel shuffling. Additionally, they are all
+white puzzles, so they are not affected by color shuffling.
