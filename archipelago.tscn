@@ -108,9 +108,11 @@ margin_top = 295.0
 margin_right = 1324.0
 margin_bottom = 445.0
 custom_colors/selection_color = Color( 0.482353, 0, 0, 1 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_styles/focus = SubResource( 2 )
 align = 1
+caret_blink = true
 
 [node name="player_box" type="LineEdit" parent="Panel"]
 margin_left = 682.0
@@ -118,9 +120,11 @@ margin_top = 477.0
 margin_right = 1324.0
 margin_bottom = 627.0
 custom_colors/selection_color = Color( 0.482353, 0, 0, 1 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_styles/focus = SubResource( 2 )
 align = 1
+caret_blink = true
 
 [node name="password_box" type="LineEdit" parent="Panel"]
 margin_left = 682.0
@@ -128,9 +132,11 @@ margin_top = 659.0
 margin_right = 1324.0
 margin_bottom = 809.0
 custom_colors/selection_color = Color( 0.482353, 0, 0, 1 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_styles/focus = SubResource( 2 )
 align = 1
+caret_blink = true
 
 [node name="AcceptDialog" type="AcceptDialog" parent="Panel"]
 margin_right = 83.0
