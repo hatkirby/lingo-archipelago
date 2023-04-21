@@ -34,7 +34,33 @@ you need to restart Lingo first.
 
 The randomizer is almost ready to run from source. The only step that is required is to compile the LL1.yaml datafile into gamedata.gd, which needs to be played in the Archipelago folder. The generate_gamedata.rb script in the util folder can do this for you. The first argument is the path to the datafile, and the second argument is the path to the output file.
 
+## Features
+
+There are a couple of modes of randomization currently available, and you can pick and choose which ones you would like to use.
+
+- **Door shuffle**: There are many doors in the game, which are opened by completing a set of panels. With door shuffle on, the doors become items and only open up once you receive the corresponding item. The panel sets that would ordinarily open the doors become locations.
+- **Color shuffle**: There are ten different colours of puzzle in the game, each representing a different mechanic. With color shuffle on, you would start with only access to white puzzles. Puzzles of other colours will require you to receive an item in order to solve them (e.g. you can't solve any red puzzles until you receive the "Red" item).
+- **Panel shuffle**: Panel shuffling replaces the puzzles on each panel with different ones. So far, the only mode of panel shuffling is "rearrange" mode, which simply shuffles the already-existing puzzles from the base game onto different panels.
+- **Painting shuffle**: This randomizes the appearance of the paintings in the game, as well as which of them are warps, and the locations that they warp you to. It is the equivalent of an entrance randomizer in another game.
+
 ## Frequently Asked Questions
+
+### What are location checks in this game?
+
+Puzzle sets that ordinarily open doors in the base game are almost always location checks, even if you do not have door shuffle on. Achievement panels (ones starting with "THE", including "THE END") are also checks. There are also a few other panels that are location checks:
+
+- THE EYES / THEY SEE in Crossroads
+- OUT / OUT in the Wheelbarrow Hallway
+- UNDISTRACTED / UNDISTRACTED in the Wheelbarrow Hallway
+- CLOCKWISE / COUNTERCLOCKWISE in the Welcome Back Area
+- RAINY / RAINBOW in the rainbow room next to The Undeterred (blue room)
+- PARANOID / PARANOID in the Directional Gallery
+- WADED + WEE / WARTS in the Directional Gallery
+- YOU / \[your name\] in Champion's Rest
+
+These may change in the future.
+
+**Note**: In the second room, you ordinarily only have to solve HI / HIGH to open the door. This is modified in the randomizer so that you have to solve both puzzles to receive a location check.
 
 ### Is my progress saved locally?
 
@@ -44,7 +70,7 @@ If you play the base game again, you will see one or more save files with a long
 
 A connection to Archipelago is required to resume playing a multiworld. This is because the set of items you have received is not stored locally. This may be changed in the future.
 
-### How do I solve the YOU puzzle in Champion's rest?
+### How do I solve the YOU puzzle in Champion's Rest?
 
 The solution to this puzzle is set to your slot name.
 
