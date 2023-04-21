@@ -1456,7 +1456,7 @@
   tag: forbid
 # This is a mandatory wall-snipe, so we will not shuffle it.
 - id: Backside Room/Panel_zero_zero
-  color: black
+  color: white
   tag: forbid
 - id: Backside Room/Panel_one_one
   color: white
