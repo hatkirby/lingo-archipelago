@@ -1450,14 +1450,14 @@
 - id: Backside Room/Panel_third_third
   color: white
   tag: midwhite
-# We are displacing this panel in front of the wall.
+# This is a mandatory wall-snipe, so we will not shuffle it.
 - id: Backside Room/Panel_fourth_fourth
   color: white
-  tag: midwhite
-# We are displacing this panel in front of the black wall
+  tag: forbid
+# This is a mandatory wall-snipe, so we will not shuffle it.
 - id: Backside Room/Panel_zero_zero
   color: black
-  tag: midblack
+  tag: forbid
 - id: Backside Room/Panel_one_one
   color: white
   tag: midwhite
@@ -2300,10 +2300,10 @@
 - id: Ceiling Room/Panel_answer_4
   color: yellow
   tag: topyellow
-# We are displacing this panel in front of the wall.
+# This is a mandatory wall-snipe, so we will not shuffle it.
 - id: Chemistry Room/Panel_open
   color: white
-  tag: midwhite
+  tag: forbid
 - id: Chemistry Room/Panel_close
   color: black
   tag: botblack
