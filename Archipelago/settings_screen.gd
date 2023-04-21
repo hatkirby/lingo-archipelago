@@ -66,6 +66,8 @@ func connectionSuccessful():
 
 
 func connectionUnsuccessful(error_message):
+	self.get_node("Panel/connect_button").disabled = false
+
 	var popup = self.get_node("Panel/AcceptDialog")
 	popup.window_title = "Could not connect to Archipelago"
 	popup.dialog_text = error_message

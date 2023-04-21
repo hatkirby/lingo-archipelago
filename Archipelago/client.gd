@@ -124,6 +124,11 @@ func _connected(_proto = ""):
 	global._print("Connected!")
 
 
+func disconnect_from_ap():
+	_initiated_disconnect = true
+	_client.disconnect_from_host()
+
+
 func _on_data():
 	var packet = _client.get_peer(1).get_packet()
 	global._print("Got data from server: " + packet.get_string_from_utf8())
@@ -388,7 +393,13 @@ func connectToServer():
 	var url = "ws://" + ap_server
 	var err = _client.connect_to_url(url)
 	if err != OK:
-		emit_signal("could_not_connect", "Could not connect to Archipelago. Error code: %d." % err)
+		emit_signal(
+			"could_not_connect",
+			(
+				"Could not connect to Archipelago. Check that your server and port are correct. See the error log for more information. Error code: %d."
+				% err
+			)
+		)
 		global._print("Could not connect to AP: " + err)
 		return
 	_should_process = true
