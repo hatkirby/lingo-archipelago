@@ -118,7 +118,7 @@ func _load():
 	# Handle our other static panels after panel randomization, so that the old
 	# values can enter the pool, if necessary.
 	set_static_panel("Entry Room/Panel_hi_hi", "hi")
-	set_static_panel("Entry Room/Panel_write_write", "seed")
+	set_static_panel("Entry Room/Panel_write_write", apclient.my_version)
 	set_static_panel("Entry Room/Panel_same_same", str(apclient._slot_seed))
 	set_static_panel("Entry Room/Panel_type_type", "victory")
 
