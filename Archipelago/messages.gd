@@ -1,5 +1,7 @@
 extends Node
 
+var _message_queue = []
+
 
 func _ready():
 	var label = Label.new()
@@ -22,14 +24,31 @@ func _ready():
 
 func showMessage(text):
 	var label = self.get_node("label")
+	if label.text.count("\n") >= 9:
+		_message_queue.append(text)
+		return
+
 	if !label.text == "":
 		label.text += "\n"
-	label.text += text
+		label.text += text
+		return
 
-	yield(get_tree().create_timer(10.0), "timeout")
+	label.text = text
 
-	var newline = label.text.find("\n")
-	if newline == -1:
-		label.text = ""
-	else:
-		label.text = label.text.substr(newline + 1)
+	var timeout = 10.0
+	while label.text != "":
+		yield(get_tree().create_timer(timeout), "timeout")
+
+		var newline = label.text.find("\n")
+		if newline == -1:
+			label.text = ""
+		else:
+			label.text = label.text.substr(newline + 1)
+
+		if !_message_queue.empty():
+			var next_msg = _message_queue.pop_front()
+			label.text += "\n"
+			label.text += next_msg
+
+		if timeout > 4:
+			timeout -= 3
