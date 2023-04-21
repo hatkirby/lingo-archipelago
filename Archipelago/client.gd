@@ -98,10 +98,15 @@ func _ready():
 	_client.connect("data_received", self, "_on_data")
 
 
-func _errored():
-	global._print("AP connection failed")
+func _reset_state():
 	_should_process = false
 	_authenticated = false
+	_map_loaded = false
+
+
+func _errored():
+	global._print("AP connection failed")
+	_reset_state()
 
 	emit_signal(
 		"could_not_connect",
@@ -109,10 +114,9 @@ func _errored():
 	)
 
 
-func _closed():
+func _closed(_was_clean = true):
 	global._print("Connection closed")
-	_should_process = false
-	_authenticated = false
+	_reset_state()
 
 	if not _initiated_disconnect:
 		emit_signal("could_not_connect", "Disconnected from Archipelago")
