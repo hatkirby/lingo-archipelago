@@ -200,6 +200,12 @@ func _load():
 	messages.set_name("AP_Messages")
 	self.add_child(messages)
 
+	# Create the effects node.
+	var effects_script = ResourceLoader.load("user://maps/Archipelago/effects.gd")
+	var effects = effects_script.new()
+	effects.set_name("AP_Effects")
+	self.add_child(effects)
+
 	# Hook up the scene to be able to handle connection failures.
 	apclient.connect("could_not_connect", self, "archipelago_disconnected")
 

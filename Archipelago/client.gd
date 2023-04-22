@@ -523,7 +523,7 @@ func processItem(item, index, from):
 			_has_colors.append(lcol)
 			emit_signal("evaluate_solvability")
 
-	# Show a message about the item if it's new.
+	# Show a message about the item if it's new. Also apply effects here.
 	if index != null and index > _last_new_item:
 		_last_new_item = index
 		saveLocaldata()
@@ -544,6 +544,12 @@ func processItem(item, index, from):
 			messages_node.showMessage("Found %s" % item_name)
 		else:
 			messages_node.showMessage("Received %s from %s" % [item_name, player_name])
+
+		var effects_node = get_tree().get_root().get_node("Spatial/AP_Effects")
+		if item_name == "Slowness Trap":
+			effects_node.trigger_slowness_trap()
+		if item_name == "Iceland Trap":
+			effects_node.trigger_iceland_trap()
 
 
 func doorIsVanilla(door):
