@@ -50,6 +50,7 @@ There are a couple of modes of randomization currently available, and you can pi
 Puzzle sets that ordinarily open doors in the base game are almost always location checks, even if you do not have door shuffle on. Achievement panels (ones starting with "THE", including "THE END") are also checks. There are also a few other panels that are location checks:
 
 - THE EYES / THEY SEE in Crossroads
+- HIDE / SEEK (x4) in Hedge Maze
 - OUT / OUT in the Wheelbarrow Hallway
 - UNDISTRACTED / UNDISTRACTED in the Wheelbarrow Hallway
 - CLOCKWISE / COUNTERCLOCKWISE in the Welcome Back Area
