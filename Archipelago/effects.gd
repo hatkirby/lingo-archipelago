@@ -86,4 +86,5 @@ func _process_effects():
 					orig_env
 				)
 
+	self.get_node("label").text = ""
 	effect_running = false
