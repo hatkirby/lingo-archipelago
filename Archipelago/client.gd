@@ -219,7 +219,7 @@ func _on_data():
 			if _slot_data.has("painting_entrance_to_exit"):
 				_paintings_mapping = _slot_data["painting_entrance_to_exit"]
 
-			_localdata_file = "user://archipelago/%s_%d" % [_seed, _slot]
+			_localdata_file = "user://archipelago_data/%s_%d" % [_seed, _slot]
 			var ap_file = File.new()
 			if ap_file.file_exists(_localdata_file):
 				ap_file.open(_localdata_file, File.READ)
@@ -374,7 +374,7 @@ func saveSettings():
 func saveLocaldata():
 	# Save the MW/slot specific settings to disk.
 	var dir = Directory.new()
-	var path = "user://archipelago"
+	var path = "user://archipelago_data"
 	if dir.dir_exists(path):
 		pass
 	else:
