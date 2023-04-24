@@ -33,7 +33,12 @@ func _load():
 		location.total = panels.size()
 
 		for panel in panels:
-			var that_panel = panels_parent.get_node(panel)
+			var that_panel
+			if panel.begins_with("EndPanel"):
+				that_panel = self.get_node("Decorations").get_node(panel)
+			else:
+				that_panel = panels_parent.get_node(panel)
+
 			that_panel.get_node("Viewport/GUI/Panel/TextEdit").connect(
 				"answer_correct", location, "handle_correct"
 			)
