@@ -22,10 +22,9 @@ func _load():
 	# loaded but the panels haven't been solved from the save file yet.
 	var panels_parent = self.get_node("Panels")
 	var location_script = ResourceLoader.load("user://maps/Archipelago/location.gd")
-	for location_name in apclient._location_name_to_id:
+	for location_id in apclient._panel_ids_by_location.keys():
 		var location = location_script.new()
-		location.ap_name = location_name
-		location.ap_id = apclient._location_name_to_id[location_name]
+		location.ap_id = int(location_id)
 		location.name = "AP_location_" + location.ap_id
 		self.add_child(location)
 

@@ -22,6 +22,7 @@ var _should_process = false
 var _initiated_disconnect = false
 
 var _datapackages = {}
+var _pending_packages = []
 var _item_id_to_name = {}  # All games
 var _location_id_to_name = {}  # All games
 var _item_name_to_id = {}  # LINGO only
@@ -159,7 +160,9 @@ func _on_data():
 					needed_games.append(game)
 
 			if !needed_games.empty():
-				requestDatapackages(needed_games)
+				_pending_packages = needed_games
+				var cur_needed = _pending_packages.pop_front()
+				requestDatapackages([cur_needed])
 			else:
 				connectToRoom()
 
@@ -167,8 +170,13 @@ func _on_data():
 			for game in message["data"]["games"].keys():
 				_datapackages[game] = message["data"]["games"][game]
 			saveSettings()
-			processDatapackages()
-			connectToRoom()
+
+			if !_pending_packages.empty():
+				var cur_needed = _pending_packages.pop_front()
+				requestDatapackages([cur_needed])
+			else:
+				processDatapackages()
+				connectToRoom()
 
 		elif cmd == "Connected":
 			_authenticated = true
