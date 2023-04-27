@@ -4,7 +4,7 @@ var ap_server = ""
 var ap_user = ""
 var ap_pass = ""
 
-const my_version = "0.2.2"
+const my_version = "0.2.3"
 const ap_version = {"major": 0, "minor": 4, "build": 0, "class": "Version"}
 const orange_tower = ["Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh"]
 const color_items = [
