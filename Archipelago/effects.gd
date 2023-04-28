@@ -49,7 +49,7 @@ func trigger_iceland_trap():
 			load("res://environments/level_iceland.tres")
 		)
 
-	iceland_remaining += 30
+	iceland_remaining += 60
 
 	if not effect_running:
 		_process_effects()
