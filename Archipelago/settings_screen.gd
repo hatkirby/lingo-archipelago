@@ -22,6 +22,7 @@ func _ready():
 		installScriptExtension("user://maps/Archipelago/doorControl.gd")
 		installScriptExtension("user://maps/Archipelago/load.gd")
 		installScriptExtension("user://maps/Archipelago/painting_eye.gd")
+		installScriptExtension("user://maps/Archipelago/painting_scenery.gd")
 		installScriptExtension("user://maps/Archipelago/panelLevelSwitch.gd")
 		installScriptExtension("user://maps/Archipelago/panelEnd.gd")
 		installScriptExtension("user://maps/Archipelago/pause_menu.gd")

@@ -175,6 +175,33 @@ func _load():
 			var chosen_painting = remaining[rng.randi_range(0, remaining.size() - 1)]
 			instantiate_painting(painting, chosen_painting)
 
+	# If door shuffle is on, we need to make some changes to the Art Gallery.
+	# The player should always have access to the backroom, but they shouldn't
+	# have access to ORDER until getting the fifth floor, so will move the
+	# backroom door. Also, the paintings in the backroom should only show up as
+	# the player gets the progressive art gallery items.
+	if apclient._door_shuffle:
+		var backroom_door = get_node("Doors/Tower Room Area Doors/Door_painting_backroom")
+		backroom_door.translation.x = 97
+		backroom_door.translation.y = 0
+		backroom_door.translation.z = 39
+		backroom_door.scale.x = 2
+		backroom_door.scale.y = 2.5
+		backroom_door.scale.z = 1
+
+		for i in range(2, 6):
+			var painting_path = "Decorations/Paintings/scenery_painting_%db" % i
+			var painting_node = get_node(painting_path)
+			var rotate = painting_node.rotate
+			var target = painting_node.target
+			painting_node.set_script(load("res://scripts/painting_eye.gd"))
+			painting_node.rotate = rotate
+			painting_node.target = target
+			painting_node.move_to_x = painting_node.translation.x
+			painting_node.move_to_z = painting_node.translation.z
+			painting_node.translation.x = 88
+			painting_node.translation.z = 39
+
 	# Attach a script to every panel so that we can do things like conditionally
 	# disable them.
 	var panel_script = ResourceLoader.load("user://maps/Archipelago/panel.gd")

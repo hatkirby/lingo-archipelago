@@ -6,10 +6,35 @@ var ap_pass = ""
 
 const my_version = "0.2.3"
 const ap_version = {"major": 0, "minor": 4, "build": 0, "class": "Version"}
-const orange_tower = ["Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh"]
 const color_items = [
 	"White", "Black", "Red", "Blue", "Green", "Brown", "Gray", "Orange", "Purple", "Yellow"
 ]
+const progressive_items = {
+	"Progressive Orange Tower":
+	[
+		{"item": "Orange Tower - Second Floor", "display": "Second Floor"},
+		{"item": "Orange Tower - Third Floor", "display": "Third Floor"},
+		{"item": "Orange Tower - Fourth Floor", "display": "Fourth Floor"},
+		{"item": "Orange Tower - Fifth Floor", "display": "Fifth Floor"},
+		{"item": "Orange Tower - Sixth Floor", "display": "Sixth Floor"},
+		{"item": "Orange Tower - Seventh Floor", "display": "Seventh Floor"},
+	],
+	"Progressive Art Gallery":
+	[
+		{"item": "Art Gallery - Second Floor", "display": "Second Floor"},
+		{"item": "Art Gallery - Third Floor", "display": "Third Floor"},
+		{"item": "Art Gallery - Fourth Floor", "display": "Fourth Floor"},
+		{"item": "Art Gallery - Fifth Floor", "display": "Fifth Floor"},
+		{"item": "Art Gallery - Exit", "display": "Exit"},
+	],
+	"Progressive Hallway Room":
+	[
+		{"item": "Outside The Agreeable - Hallway Door", "display": "First Door"},
+		{"item": "Hallway Room (2) - Exit", "display": "Second Door"},
+		{"item": "Hallway Room (3) - Exit", "display": "Third Door"},
+		{"item": "Hallway Room (4) - Exit", "display": "Fourth Door"},
+	]
+}
 
 const kTHE_END = 0
 const kTHE_MASTER = 1
@@ -61,7 +86,7 @@ var _map_loaded = false
 var _held_items = []
 var _held_locations = []
 var _last_new_item = -1
-var _tower_floors = 0
+var _progressive_progress = {}
 var _has_colors = ["white"]
 
 signal could_not_connect
@@ -287,7 +312,7 @@ func _on_data():
 			if message["index"] == 0:
 				# We are being sent all of our items, so lets reset any progress
 				# on progressive items.
-				_tower_floors = 0
+				_progressive_progress.clear()
 				_held_items = []
 
 			var i = 0
@@ -526,12 +551,20 @@ func processItem(item, index, from, flags):
 				if painting_node != null:
 					painting_node.get_node("Script").movePainting()
 
-	# Handle progressively opening up the tower.
-	if _item_name_to_id["Progressive Orange Tower"] == item and _tower_floors < orange_tower.size():
-		var subitem_name = "Orange Tower - %s Floor" % orange_tower[_tower_floors]
-		global._print(subitem_name)
-		processItem(_item_name_to_id[subitem_name], null, null, null)
-		_tower_floors += 1
+	# Handle progressive items.
+	var item_name = "Unknown"
+	if _item_id_to_name.has(item):
+		item_name = _item_id_to_name[item]
+
+	if item_name in progressive_items.keys():
+		if not item_name in _progressive_progress:
+			_progressive_progress[item_name] = 0
+
+		if _progressive_progress[item_name] < progressive_items[item_name].size():
+			var subitem_name = progressive_items[item_name][_progressive_progress[item_name]]["item"]
+			global._print(subitem_name)
+			processItem(_item_name_to_id[subitem_name], null, null, null)
+			_progressive_progress[item_name] += 1
 
 	if _color_shuffle and color_items.has(_item_id_to_name[item]):
 		var lcol = _item_id_to_name[item].to_lower()
@@ -544,12 +577,9 @@ func processItem(item, index, from, flags):
 		_last_new_item = index
 		saveLocaldata()
 
-		var item_name = "Unknown"
-		if _item_id_to_name.has(item):
-			item_name = _item_id_to_name[item]
-
-			if item_name == "Progressive Orange Tower":
-				item_name = "Progressive Orange Tower (%s Floor)" % orange_tower[_tower_floors - 1]
+		if item_name in progressive_items:
+			var subitem = progressive_items[item_name][_progressive_progress[item_name] - 1]
+			item_name += " (%s)" % subitem["display"]
 
 		var player_name = "Unknown"
 		if _player_name_by_slot.has(from):
