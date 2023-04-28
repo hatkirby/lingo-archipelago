@@ -38,6 +38,15 @@ func _ready():
 	# Show client version.
 	self.get_node("Panel/title").text = "ARCHIPELAGO (%s)" % apclient.my_version
 
+	# Increase font size in text boxes.
+	var field_font = DynamicFont.new()
+	field_font.font_data = load("res://fonts/CutiveMono_Regular.ttf")
+	field_font.size = 36
+
+	self.get_node("Panel/server_box").add_font_override("font", field_font)
+	self.get_node("Panel/player_box").add_font_override("font", field_font)
+	self.get_node("Panel/password_box").add_font_override("font", field_font)
+
 
 # Adapted from https://gitlab.com/Delta-V-Modding/Mods/-/blob/main/game/ModLoader.gd
 func installScriptExtension(childScriptPath: String):
