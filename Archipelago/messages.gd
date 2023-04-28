@@ -1,54 +1,60 @@
 extends Node
 
 var _message_queue = []
+var _font
+var _container
+var _ordered_labels = []
 
 
 func _ready():
-	var label = Label.new()
-	label.set_name("label")
-	label.margin_right = 1920.0
-	label.margin_bottom = 1080.0 - 20
-	label.margin_left = 20.0
-	label.align = Label.ALIGN_LEFT
-	label.valign = Label.VALIGN_BOTTOM
+	_container = VBoxContainer.new()
+	_container.set_name("Container")
+	_container.anchor_bottom = 1
+	_container.margin_left = 20.0
+	_container.margin_right = 1920.0
+	_container.margin_top = 0.0
+	_container.margin_bottom = -20.0
+	_container.alignment = BoxContainer.ALIGN_END
+	_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	self.add_child(_container)
 
-	var dynamic_font = DynamicFont.new()
-	dynamic_font.font_data = load("res://fonts/Lingo.ttf")
-	dynamic_font.size = 36
-	dynamic_font.outline_color = Color(0, 0, 0, 1)
-	dynamic_font.outline_size = 2
-	label.add_font_override("font", dynamic_font)
+	_font = DynamicFont.new()
+	_font.font_data = load("res://fonts/Lingo.ttf")
+	_font.size = 36
+	_font.outline_color = Color(0, 0, 0, 1)
+	_font.outline_size = 2
 
-	add_child(label)
+
+func _add_message(text):
+	var new_label = RichTextLabel.new()
+	new_label.push_font(_font)
+	new_label.append_bbcode(text)
+	new_label.fit_content_height = true
+
+	_container.add_child(new_label)
+	_ordered_labels.push_back(new_label)
 
 
 func showMessage(text):
-	var label = self.get_node("label")
-	if label.text.count("\n") >= 9:
+	if _ordered_labels.size() >= 9:
 		_message_queue.append(text)
 		return
 
-	if !label.text == "":
-		label.text += "\n"
-		label.text += text
+	_add_message(text)
+
+	if _ordered_labels.size() > 1:
 		return
 
-	label.text = text
-
 	var timeout = 10.0
-	while label.text != "":
+	while !_ordered_labels.empty():
 		yield(get_tree().create_timer(timeout), "timeout")
 
-		var newline = label.text.find("\n")
-		if newline == -1:
-			label.text = ""
-		else:
-			label.text = label.text.substr(newline + 1)
+		var to_remove = _ordered_labels.pop_front()
+		to_remove.queue_free()
 
 		if !_message_queue.empty():
 			var next_msg = _message_queue.pop_front()
-			label.text += "\n"
-			label.text += next_msg
+			_add_message(next_msg)
 
 		if timeout > 4:
 			timeout -= 3

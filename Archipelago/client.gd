@@ -293,13 +293,14 @@ func _on_data():
 			var i = 0
 			for item in message["items"]:
 				if _map_loaded:
-					processItem(item["item"], message["index"] + i, item["player"])
+					processItem(item["item"], message["index"] + i, item["player"], item["flags"])
 				else:
 					_held_items.append(
 						{
 							"item": item["item"],
 							"index": message["index"] + i,
-							"from": item["player"]
+							"from": item["player"],
+							"flags": item["flags"]
 						}
 					)
 				i += 1
@@ -324,6 +325,8 @@ func _on_data():
 			if _player_name_by_slot.has(message["receiving"]):
 				player_name = _player_name_by_slot[message["receiving"]]
 
+			var item_color = colorForItemType(message["item"]["flags"])
+
 			var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
 			if message["type"] == "Hint":
 				var is_for = ""
@@ -331,11 +334,16 @@ func _on_data():
 					is_for = " for %s" % player_name
 				if !message.has("found") || !message["found"]:
 					messages_node.showMessage(
-						"Hint: %s%s is on %s" % [item_name, is_for, location_name]
+						(
+							"Hint: [color=%s]%s[/color]%s is on %s"
+							% [item_color, item_name, is_for, location_name]
+						)
 					)
 			else:
 				if message["receiving"] != _slot:
-					messages_node.showMessage("Sent %s to %s" % [item_name, player_name])
+					messages_node.showMessage(
+						"Sent [color=%s]%s[/color] to %s" % [item_color, item_name, player_name]
+					)
 
 		elif cmd == "Bounced":
 			if (
@@ -486,7 +494,7 @@ func mapFinishedLoading():
 		emit_signal("evaluate_solvability")
 
 		for item in _held_items:
-			processItem(item["item"], item["index"], item["from"])
+			processItem(item["item"], item["index"], item["from"], item["flags"])
 
 		sendMessage([{"cmd": "LocationChecks", "locations": _held_locations}])
 
@@ -495,7 +503,7 @@ func mapFinishedLoading():
 		_held_locations = []
 
 
-func processItem(item, index, from):
+func processItem(item, index, from, flags):
 	global._print(item)
 
 	var stringified = String(item)
@@ -522,7 +530,7 @@ func processItem(item, index, from):
 	if _item_name_to_id["Progressive Orange Tower"] == item and _tower_floors < orange_tower.size():
 		var subitem_name = "Orange Tower - %s Floor" % orange_tower[_tower_floors]
 		global._print(subitem_name)
-		processItem(_item_name_to_id[subitem_name], null, null)
+		processItem(_item_name_to_id[subitem_name], null, null, null)
 		_tower_floors += 1
 
 	if _color_shuffle and color_items.has(_item_id_to_name[item]):
@@ -547,11 +555,15 @@ func processItem(item, index, from):
 		if _player_name_by_slot.has(from):
 			player_name = _player_name_by_slot[from]
 
+		var item_color = colorForItemType(flags)
+
 		var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
 		if from == _slot:
-			messages_node.showMessage("Found %s" % item_name)
+			messages_node.showMessage("Found [color=%s]%s[/color]" % [item_color, item_name])
 		else:
-			messages_node.showMessage("Received %s from %s" % [item_name, player_name])
+			messages_node.showMessage(
+				"Received [color=%s]%s[/color] from %s" % [item_color, item_name, player_name]
+			)
 
 		var effects_node = get_tree().get_root().get_node("Spatial/AP_Effects")
 		if item_name == "Slowness Trap":
@@ -566,3 +578,15 @@ func doorIsVanilla(door):
 
 func paintingIsVanilla(painting):
 	return !_mentioned_paintings.has(painting)
+
+
+func colorForItemType(flags):
+	var int_flags = int(flags)
+	if int_flags & 1:  # progression
+		return "#bc51e0"
+	elif int_flags & 2:  # useful
+		return "#2b67ff"
+	elif int_flags & 4:  # trap
+		return "#d63a22"
+	else:  # filler
+		return "#14de9e"
