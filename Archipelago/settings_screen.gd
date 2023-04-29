@@ -6,6 +6,10 @@ func _ready():
 	get_tree().get_root().set_disable_input(false)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+	# Increase the WebSocket input buffer size so that we can download large
+	# data packages.
+	ProjectSettings.set_setting("network/limits/websocket_client/max_in_buffer_kb", 8192)
+
 	# Create the global AP client, if it doesn't already exist.
 	if not global.has_node("Archipelago"):
 		var apclient_script = ResourceLoader.load("user://maps/Archipelago/client.gd")

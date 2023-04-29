@@ -35,7 +35,6 @@ const progressive_items = {
 		{"item": "Hallway Room (4) - Exit", "display": "Fourth Door"},
 	]
 }
-const filtered_games = ["Ocarina of Time", "Factorio", "Lufia II Ancient Cave"]
 
 const kTHE_END = 0
 const kTHE_MASTER = 1
@@ -180,17 +179,9 @@ func _on_data():
 
 			var needed_games = []
 			for game in message["datapackage_checksums"].keys():
-				# Due to a limitation with Godot 3.x, downloading a datapackage
-				# that is too large will silently fail and prevent us from
-				# finishing the connection process. So we will hardcode the
-				# names of games that are likely to cause connection problems,
-				# and not download those datapackages. Which is not ideal.
 				if (
-					(
-						!_datapackages.has(game)
-						or _datapackages[game]["checksum"] != message["datapackage_checksums"][game]
-					)
-					and not filtered_games.has(game)
+					!_datapackages.has(game)
+					or _datapackages[game]["checksum"] != message["datapackage_checksums"][game]
 				):
 					needed_games.append(game)
 
