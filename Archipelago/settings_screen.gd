@@ -30,6 +30,7 @@ func _ready():
 	var apclient = global.get_node("Archipelago")
 	apclient.connect("client_connected", self, "connectionSuccessful")
 	apclient.connect("could_not_connect", self, "connectionUnsuccessful")
+	apclient.connect("connect_status", self, "connectionStatus")
 
 	# Populate textboxes with AP settings.
 	self.get_node("Panel/server_box").text = apclient.ap_server
@@ -70,6 +71,15 @@ func installScriptExtension(childScriptPath: String):
 	childScript.take_over_path(parentScriptPath)
 
 
+func connectionStatus(message):
+	var popup = self.get_node("Panel/AcceptDialog")
+	popup.window_title = "Connecting to Archipelago"
+	popup.dialog_text = message
+	popup.popup_exclusive = true
+	popup.get_ok().visible = false
+	popup.popup_centered()
+
+
 func connectionSuccessful():
 	var apclient = global.get_node("Archipelago")
 
@@ -87,4 +97,5 @@ func connectionUnsuccessful(error_message):
 	popup.window_title = "Could not connect to Archipelago"
 	popup.dialog_text = error_message
 	popup.popup_exclusive = true
+	popup.get_ok().visible = true
 	popup.popup_centered()

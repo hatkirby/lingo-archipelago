@@ -91,6 +91,7 @@ var _progressive_progress = {}
 var _has_colors = ["white"]
 
 signal could_not_connect
+signal connect_status
 signal client_connected
 signal evaluate_solvability
 
@@ -459,6 +460,8 @@ func connectToServer():
 		return
 	_should_process = true
 
+	emit_signal("connect_status", "Connecting...")
+
 
 func sendMessage(msg):
 	var payload = JSON.print(msg)
@@ -467,6 +470,8 @@ func sendMessage(msg):
 
 
 func requestDatapackages(games):
+	emit_signal("connect_status", "Downloading %s data package..." % games[0])
+
 	sendMessage([{"cmd": "GetDataPackage", "games": games}])
 
 
@@ -486,6 +491,8 @@ func processDatapackages():
 
 
 func connectToRoom():
+	emit_signal("connect_status", "Authenticating...")
+
 	sendMessage(
 		[
 			{
