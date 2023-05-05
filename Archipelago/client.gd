@@ -45,6 +45,7 @@ const kREARRANGE_PANELS = 1
 var _client = WebSocketClient.new()
 var _should_process = false
 var _initiated_disconnect = false
+var _try_wss = false
 
 var _datapackages = {}
 var _pending_packages = []
@@ -134,13 +135,17 @@ func _reset_state():
 
 
 func _errored():
-	global._print("AP connection failed")
-	_reset_state()
+	if _try_wss:
+		global._print("Could not connect to AP with ws://, now trying wss://")
+		connectToServer()
+	else:
+		global._print("AP connection failed")
+		_reset_state()
 
-	emit_signal(
-		"could_not_connect",
-		"Could not connect to Archipelago. Check that your server and port are correct. See the error log for more information."
-	)
+		emit_signal(
+			"could_not_connect",
+			"Could not connect to Archipelago. Check that your server and port are correct. See the error log for more information."
+		)
 
 
 func _closed(_was_clean = true):
@@ -155,6 +160,7 @@ func _closed(_was_clean = true):
 
 func _connected(_proto = ""):
 	global._print("Connected!")
+	_try_wss = false
 
 
 func disconnect_from_ap():
@@ -440,7 +446,17 @@ func getSaveFileName():
 func connectToServer():
 	_initiated_disconnect = false
 
-	var url = "ws://" + ap_server
+	var url = ""
+	if ap_server.begins_with("ws://") or ap_server.begins_with("wss://"):
+		url = ap_server
+		_try_wss = false
+	elif _try_wss:
+		url = "wss://" + ap_server
+		_try_wss = false
+	else:
+		url = "ws://" + ap_server
+		_try_wss = true
+
 	var err = _client.connect_to_url(url)
 	if err != OK:
 		emit_signal(
