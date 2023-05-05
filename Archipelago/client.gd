@@ -80,6 +80,7 @@ var _door_shuffle = false
 var _color_shuffle = false
 var _panel_shuffle = 0  # none, rearrange
 var _painting_shuffle = false
+var _mastery_achievements = 21
 var _slot_seed = 0
 
 var _map_loaded = false
@@ -252,6 +253,8 @@ func _on_data():
 				_slot_seed = _slot_data["seed"]
 			if _slot_data.has("painting_entrance_to_exit"):
 				_paintings_mapping = _slot_data["painting_entrance_to_exit"]
+			if _slot_data.has("mastery_achievements"):
+				_mastery_achievements = _slot_data["mastery_achievements"]
 
 			_localdata_file = "user://archipelago_data/%s_%d" % [_seed, _slot]
 			var ap_file = File.new()

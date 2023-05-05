@@ -58,6 +58,19 @@ func _load():
 
 	wanderer_achieve.translation = Vector3(-51, -33, 35)  # way under the map
 
+	# Set up The Master to be variable.
+	var old_master_cdp = get_node("CountdownPanels/CountdownPanel_countdown_16")
+	var cdp_auto_scene = load("res://nodes/panel_countdown_auto.tscn")
+	var new_master_cdp = cdp_auto_scene.instance()
+	new_master_cdp.name = "AP_variable_master"
+	new_master_cdp.replace_with = old_master_cdp.replace_with
+	new_master_cdp.panels = "../../Panels/Countdown Panels"
+	new_master_cdp.maxlength = apclient._mastery_achievements
+	new_master_cdp.translation = old_master_cdp.translation
+	new_master_cdp.rotation = old_master_cdp.rotation
+	get_node("CountdownPanels").add_child(new_master_cdp)
+	old_master_cdp.queue_free()
+
 	# This is the best time to create the location nodes, since the map is now
 	# loaded but the panels haven't been solved from the save file yet.
 	var panels_parent = self.get_node("Panels")
