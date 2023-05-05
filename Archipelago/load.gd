@@ -18,6 +18,46 @@ func _load():
 		if "answer" in node:
 			node.answer = apclient.ap_user
 
+	# Create "The Wanderer".
+	set_gridmap_tile(-4.5, 6.5, 56.5, "MeshInstance4")
+	set_gridmap_tile(-3.5, 6.5, 56.5, "MeshInstance18")
+	set_gridmap_tile(-3.5, 6.5, 57.5, "MeshInstance5")
+
+	var door_scene = load("res://nodes/door.tscn")
+	var door_script = load("user://maps/Archipelago/doorControl.gd")
+	var wanderer_entrance = door_scene.instance()
+	wanderer_entrance.name = "Door_wanderer_entrance"
+	wanderer_entrance.translation = Vector3(7.5, 5, 53)
+	wanderer_entrance.rotation = Vector3(0, -PI / 2, 0)
+	wanderer_entrance.scale = Vector3(1, 1.5, 1)
+	wanderer_entrance.set_script(door_script)
+	wanderer_entrance.panels.append("../../../Panels/Tower Room/Panel_wanderlust_1234567890")
+	get_node("Doors/Tower Room Area Doors").add_child(wanderer_entrance)
+
+	var wanderer_achieve = get_node("Panels/Tower Room/Panel_1234567890_wanderlust")
+	wanderer_achieve.get_parent().remove_child(wanderer_achieve)
+	get_node("Panels/Countdown Panels").add_child(wanderer_achieve)
+
+	var countdown_scene = load("res://nodes/panel_countdown.tscn")
+	var wanderer_cdp = countdown_scene.instance()
+	wanderer_cdp.name = "CountdownPanel_wanderer"
+	wanderer_cdp.panels = [
+		"../../Panels/Tower Room/Panel_wanderlust_1234567890",
+		"../../Panels/Orange Room/Panel_lust",
+		"../../Panels/Orange Room/Panel_read",
+		"../../Panels/Orange Room/Panel_sew",
+		"../../Panels/Orange Room/Panel_dead",
+		"../../Panels/Orange Room/Panel_learn",
+		"../../Panels/Orange Room/Panel_dust",
+		"../../Panels/Orange Room/Panel_star",
+		"../../Panels/Orange Room/Panel_wander"
+	]
+	wanderer_cdp.translation = wanderer_achieve.translation
+	wanderer_cdp.rotation = wanderer_achieve.rotation
+	get_node("CountdownPanels").add_child(wanderer_cdp)
+
+	wanderer_achieve.translation = Vector3(-51, -33, 35)  # way under the map
+
 	# This is the best time to create the location nodes, since the map is now
 	# loaded but the panels haven't been solved from the save file yet.
 	var panels_parent = self.get_node("Panels")
@@ -128,6 +168,17 @@ func _load():
 	set_static_panel("Entry Room/Panel_hi_high", "goode", "good")
 	set_static_panel("Entry Room/Panel_low_low", "serendipity", "luck")
 	set_static_panel("Shuffle Room/Panel_secret_secret", "trans rights", "human rights")
+
+	# Finish up with The Wanderer.
+	wanderer_achieve.text = "12345656"
+	wanderer_achieve.answer = "the wanderer"
+	wanderer_achieve.achieved_text = "the wanderer"
+
+	wanderer_cdp.replace_with = "../../Panels/Countdown Panels/Panel_1234567890_wanderlust"
+
+	get_node("Doors/Tower Room Area Doors/Door_wanderlust_start").panels = [
+		"../../../Panels/Countdown Panels/Panel_1234567890_wanderlust"
+	]
 
 	# Randomize the paintings, if necessary.
 	if apclient._painting_shuffle:
@@ -291,6 +342,14 @@ func instantiate_painting(name, scene):
 	new_painting.add_child(mps_inst)
 	old_painting.queue_free()
 	return mps_inst
+
+
+func set_gridmap_tile(x, y, z, tile):
+	var gridmap = self.get_node("GridMap")
+	var mesh_library = gridmap.mesh_library
+	var mapvec = gridmap.world_to_map(gridmap.to_local(Vector3(x, y, z)))
+
+	gridmap.set_cell_item(mapvec.x, mapvec.y, mapvec.z, mesh_library.find_item_by_name(tile))
 
 
 func archipelago_disconnected(reason):

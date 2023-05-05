@@ -1101,7 +1101,7 @@
 - id: Orange Room/Panel_wander
   color: orange
   tag: midorange
-- id: Tower Room/Panel_1234567890_wanderlust
+- id: Countdown Panels/Panel_1234567890_wanderlust
   color: orange
   tag: midorange
 - id: Tower Room/Panel_wanderlust_1234567890
