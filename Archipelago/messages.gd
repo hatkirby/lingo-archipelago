@@ -50,7 +50,9 @@ func showMessage(text):
 		yield(get_tree().create_timer(timeout), "timeout")
 
 		var to_remove = _ordered_labels.pop_front()
-		to_remove.queue_free()
+		var to_tween = get_tree().create_tween().bind_node(to_remove)
+		to_tween.tween_property(to_remove, "modulate:a", 0.0, 0.5)
+		to_tween.tween_callback(to_remove, "queue_free")
 
 		if !_message_queue.empty():
 			var next_msg = _message_queue.pop_front()
