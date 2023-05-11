@@ -29,6 +29,7 @@ func _ready():
 		installScriptExtension("user://maps/Archipelago/painting_scenery.gd")
 		installScriptExtension("user://maps/Archipelago/panelLevelSwitch.gd")
 		installScriptExtension("user://maps/Archipelago/panelEnd.gd")
+		installScriptExtension("user://maps/Archipelago/panelInput.gd")
 		installScriptExtension("user://maps/Archipelago/pause_menu.gd")
 
 	var apclient = global.get_node("Archipelago")
