@@ -362,7 +362,7 @@ func _on_data():
 
 			var item_color = colorForItemType(message["item"]["flags"])
 
-			var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
+			var messages_node = get_tree().get_root().get_node("Spatial/Messages")
 			if message["type"] == "Hint":
 				var is_for = ""
 				if message["receiving"] != _slot:
@@ -387,7 +387,7 @@ func _on_data():
 				and message.has("data")
 				and message["tags"].has("DeathLink")
 			):
-				var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
+				var messages_node = get_tree().get_root().get_node("Spatial/Messages")
 				var first_sentence = "Received Death"
 				var second_sentence = ""
 				if message["data"].has("source"):
@@ -613,7 +613,7 @@ func processItem(item, index, from, flags):
 
 		var item_color = colorForItemType(flags)
 
-		var messages_node = get_tree().get_root().get_node("Spatial/AP_Messages")
+		var messages_node = get_tree().get_root().get_node("Spatial/Messages")
 		if from == _slot:
 			messages_node.showMessage("Found [color=%s]%s[/color]" % [item_color, item_name])
 		else:

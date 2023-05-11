@@ -289,12 +289,6 @@ func _load():
 			"answer_correct", apclient, "completedGoal"
 		)
 
-	# Create the messages node.
-	var messages_script = ResourceLoader.load("user://maps/Archipelago/messages.gd")
-	var messages = messages_script.new()
-	messages.set_name("AP_Messages")
-	self.add_child(messages)
-
 	# Create the effects node.
 	var effects_script = ResourceLoader.load("user://maps/Archipelago/effects.gd")
 	var effects = effects_script.new()
@@ -366,5 +360,5 @@ func set_gridmap_tile(x, y, z, tile):
 
 
 func archipelago_disconnected(reason):
-	var messages_node = self.get_node("AP_Messages")
+	var messages_node = self.get_node("Messages")
 	messages_node.show_message(reason)
