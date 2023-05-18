@@ -244,6 +244,8 @@ func _load():
 	# have access to ORDER until getting the fifth floor, so will move the
 	# backroom door. Also, the paintings in the backroom should only show up as
 	# the player gets the progressive art gallery items.
+	#
+	# We also need to add an extra door to The Fearless.
 	if apclient._door_shuffle:
 		var backroom_door = get_node("Doors/Tower Room Area Doors/Door_painting_backroom")
 		backroom_door.translation.x = 97
@@ -265,6 +267,11 @@ func _load():
 			painting_node.move_to_z = painting_node.translation.z
 			painting_node.translation.x = 88
 			painting_node.translation.z = 39
+		
+		var fearless_door = get_node("Doors/Naps Room Doors/Door_hider_5").duplicate()
+		fearless_door.name = "Door_hider_new1"
+		fearless_door.translation.y = 5
+		get_node("Doors/Naps Room Doors").add_child(fearless_door)
 
 	# Attach a script to every panel so that we can do things like conditionally
 	# disable them.

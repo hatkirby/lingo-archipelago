@@ -33,6 +33,11 @@ const progressive_items = {
 		{"item": "Hallway Room (2) - Exit", "display": "Second Door"},
 		{"item": "Hallway Room (3) - Exit", "display": "Third Door"},
 		{"item": "Hallway Room (4) - Exit", "display": "Fourth Door"},
+	],
+	"Progressive Fearless":
+	[
+		{"item": "The Fearless (First Floor) - Second Floor", "display": "Second Floor"},
+		{"item": "The Fearless (Second Floor) - Third Floor", "display": "Third Floor"},
 	]
 }
 
