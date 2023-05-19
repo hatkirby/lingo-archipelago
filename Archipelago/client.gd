@@ -397,7 +397,7 @@ func _on_data():
 				var second_sentence = ""
 				if message["data"].has("source"):
 					first_sentence = "Received Death from %s" % message["data"]["source"]
-				if message["data"].has("cause"):
+				if message["data"].has("cause") and message["data"]["cause"] != "":
 					second_sentence = ". Reason: %s" % message["data"]["cause"]
 				messages_node.showMessage(first_sentence + second_sentence)
 
