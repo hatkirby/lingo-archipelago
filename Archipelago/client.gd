@@ -549,6 +549,9 @@ func setValue(key, value):
 func completedGoal():
 	sendMessage([{"cmd": "StatusUpdate", "status": 30}])  # CLIENT_GOAL
 
+	var messages_node = get_tree().get_root().get_node("Spatial/Messages")
+	messages_node.showMessage("You have completed your goal!")
+
 
 func mapFinishedLoading():
 	if !_map_loaded:
