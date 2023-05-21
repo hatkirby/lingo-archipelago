@@ -540,6 +540,12 @@ func sendLocation(loc_id):
 		_held_locations.append(loc_id)
 
 
+func setValue(key, value):
+	sendMessage(
+		[{"cmd": "Set", "key": key, "operations": [{"operation": "replace", "value": value}]}]
+	)
+
+
 func completedGoal():
 	sendMessage([{"cmd": "StatusUpdate", "status": 30}])  # CLIENT_GOAL
 

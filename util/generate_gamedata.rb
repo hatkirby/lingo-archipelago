@@ -30,6 +30,9 @@ end.map do |panel|
     end
     ret["copy_to_sign"] = "[\"" + copytos.join("\",\"") + "\"]"
   end
+  if panel.include? "achievement"
+    ret["achievement"] = "\"#{panel["achievement"]}\""
+  end
     ret
 end.map do |panel|
   "{" + panel.to_a.map do |element|

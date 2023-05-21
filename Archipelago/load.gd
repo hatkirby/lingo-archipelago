@@ -267,11 +267,21 @@ func _load():
 			painting_node.move_to_z = painting_node.translation.z
 			painting_node.translation.x = 88
 			painting_node.translation.z = 39
-		
+
 		var fearless_door = get_node("Doors/Naps Room Doors/Door_hider_5").duplicate()
 		fearless_door.name = "Door_hider_new1"
 		fearless_door.translation.y = 5
 		get_node("Doors/Naps Room Doors").add_child(fearless_door)
+
+	# Set up notifiers for each achievement panel, for the tracker.
+	var notifier_script = ResourceLoader.load("user://maps/Archipelago/notifier.gd")
+	for panel in gamedata.panels:
+		if "achievement" in panel:
+			var panel_node = panels_parent.get_node(panel["id"])
+			var script_instance = notifier_script.new()
+			script_instance.name = "Achievement_Notifier"
+			script_instance.key = "Achievement|%s" % panel["achievement"]
+			panel_node.add_child(script_instance)
 
 	# Attach a script to every panel so that we can do things like conditionally
 	# disable them.

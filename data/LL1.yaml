@@ -1104,6 +1104,7 @@
 - id: Countdown Panels/Panel_1234567890_wanderlust
   color: orange
   tag: midorange
+  achievement: The Wanderer
 - id: Tower Room/Panel_wanderlust_1234567890
   color: orange
   tag: midorange
@@ -2636,75 +2637,98 @@
 - id: Countdown Panels/Panel_traveled_traveled
   color: white
   tag: forbid
+  achievement: The Traveled
 - id: Countdown Panels/Panel_disagreeable_agreeable
   color: black
   tag: forbid
+  achievement: The Agreeable
 - id: Countdown Panels/Panel_seeker_seeker
   color: white
   tag: forbid
+  achievement: The Seeker
 - id: Countdown Panels/Panel_tenacious_tenacious
   color: white
   tag: forbid
+  achievement: The Tenacious
 - id: Countdown Panels/Panel_perceptive_perceptive
   color: white
   tag: forbid
+  achievement: The Perceptive
 - id: Countdown Panels/Panel_emboldened_bold
   color: red
   tag: forbid
+  achievement: The Bold
 - id: Countdown Panels/Panel_deterred_undeterred
   color: blue
   tag: forbid
+  achievement: The Undeterred
 - id: Countdown Panels/Panel_illuminated_initiated
   color: purple
   tag: forbid
+  achievement: The Initiated
 - id: Countdown Panels/Panel_discerning_scramble
   color: yellow
   tag: forbid
+  achievement: The Discerning
 - id: Countdown Panels/Panel_intelligent_wise
   color: brown
   tag: forbid
+  achievement: The Wise
 - id: Countdown Panels/Panel_optimistic_optimistic
   color: white
   tag: forbid
+  achievement: The Optimistic
 - id: Countdown Panels/Panel_wondrous_wondrous
   color: white
   tag: forbid
+  achievement: The Wondrous
 - id: Countdown Panels/Panel_steady_steady
   color: white
   tag: forbid
+  achievement: The Steady
 - id: Countdown Panels/Panel_bearer_bearer
   color: white
   tag: forbid
+  achievement: The Bearer
 - id: Countdown Panels/Panel_colorful_colorful
   color: white
   tag: forbid
+  achievement: The Colorful
 - id: Countdown Panels/Panel_observant_observant
   color: white
   tag: forbid
+  achievement: The Observant
 - id: Countdown Panels/Panel_master_master
   color: white
   tag: forbid
 - id: Countdown Panels/Panel_grandfathered_red
   color: red
   tag: forbid
+  achievement: The Red
 - id: Countdown Panels/Panel_ecstatic_ecstatic
   color: yellow
   tag: forbid
+  achievement: The Ecstatic
 - id: Countdown Panels/Panel_artistic_artistic
   color: blue
   tag: forbid
+  achievement: The Artistic
 - id: Countdown Panels/Panel_incomparable_incomparable
   color: white
   tag: forbid
+  achievement: The Incomparable
 - id: Countdown Panels/Panel_fearless_fearless
   color: white
   tag: forbid
+  achievement: The Fearless
 - id: Countdown Panels/Panel_scientific_scientific
   color: purple
   tag: forbid
+  achievement: The Scientific
 - id: Countdown Panels/Panel_challenged_unchallenged
   color: black
   tag: forbid
+  achievement: The Unchallenged
 - id: Master Room/Panel_mastery_mastery
   color: white
   tag: midwhite
