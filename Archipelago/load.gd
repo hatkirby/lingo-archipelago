@@ -324,6 +324,15 @@ func _load():
 	apclient.mapFinishedLoading()
 
 
+func _load_user_textures():
+	# We are using this function as a hook to process queued Iceland Traps
+	# because it happens after the environment gets set.
+	var effects_node = get_tree().get_root().get_node("Spatial/AP_Effects")
+	effects_node.activate()
+
+	._load_user_textures()
+
+
 func sort_by_link(a, b):
 	return a["link"] < b["link"]
 

@@ -1,8 +1,10 @@
 extends Node
 
+var activated = false
 var effect_running = false
 var slowness_remaining = 0
 var iceland_remaining = 0
+var queued_iceland = 0
 
 var orig_env
 var orig_walk
@@ -31,6 +33,15 @@ func _ready():
 	add_child(label)
 
 
+func activate():
+	activated = true
+
+	for _i in range(0, queued_iceland):
+		trigger_iceland_trap()
+
+	queued_iceland = 0
+
+
 func trigger_slowness_trap():
 	if slowness_remaining == 0:
 		var player = get_tree().get_root().get_node("Spatial/player")
@@ -44,6 +55,10 @@ func trigger_slowness_trap():
 
 
 func trigger_iceland_trap():
+	if not activated:
+		queued_iceland += 1
+		return
+
 	if iceland_remaining == 0:
 		get_tree().get_root().get_node("Spatial/player/pivot/camera").set_environment(
 			load("res://environments/level_iceland.tres")
