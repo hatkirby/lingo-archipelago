@@ -1,5 +1,21 @@
 extends "res://scripts/load.gd"
 
+const EXCLUDED_PAINTINGS = [
+	"ascension.tscn",
+	"ascension_ne.tscn",
+	"ascension_nw.tscn",
+	"ascension_se.tscn",
+	"ascension_sw.tscn",
+	"frame.tscn",
+	"scenery_0.tscn",
+	"scenery_1.tscn",
+	"scenery_2.tscn",
+	"scenery_3.tscn",
+	"scenery_4.tscn",
+	"scenery_5.tscn",
+	"pilgrim.tscn"
+]
+
 
 func _load():
 	global._print("Hooked Load Start")
@@ -195,12 +211,20 @@ func _load():
 
 	# Randomize the paintings, if necessary.
 	if apclient._painting_shuffle:
-		var pd_script = ResourceLoader.load("user://maps/Archipelago/paintingdata.gd")
-		var pd = pd_script.new()
+		var paintings_dir = Directory.new()
+		var all_paintings = []
+		if paintings_dir.open("res://nodes/paintings") == OK:
+			paintings_dir.list_dir_begin()
+			var file_name = paintings_dir.get_next()
+			while file_name != "":
+				if file_name.ends_with(".tscn") and not EXCLUDED_PAINTINGS.has(file_name):
+					all_paintings.append(file_name.trim_suffix(".tscn"))
+				file_name = paintings_dir.get_next()
+			paintings_dir.list_dir_end()
+
+		var pd = Node.new()
 		pd.set_name("AP_Paintings")
 		self.add_child(pd)
-
-		var all_paintings = pd.kALL_PAINTINGS
 
 		var classes = {}
 		for painting in apclient._paintings_mapping.values():
