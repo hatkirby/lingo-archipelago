@@ -579,7 +579,7 @@ func processItem(item, index, from, flags):
 
 	if _painting_ids_by_item.has(stringified):
 		var real_parent_node = get_tree().get_root().get_node("Spatial/Decorations/Paintings")
-		var fake_parent_node = get_tree().get_root().get_node("Spatial/AP_Paintings")
+		var fake_parent_node = get_tree().get_root().get_node_or_null("Spatial/AP_Paintings")
 
 		for painting_id in _painting_ids_by_item[stringified]:
 			var painting_node = real_parent_node.get_node_or_null(painting_id)
