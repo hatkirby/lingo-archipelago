@@ -95,6 +95,7 @@ var _held_locations = []
 var _last_new_item = -1
 var _progressive_progress = {}
 var _has_colors = ["white"]
+var _received_indexes = []
 
 signal could_not_connect
 signal connect_status
@@ -324,12 +325,6 @@ func _on_data():
 			global._print(message)
 
 		elif cmd == "ReceivedItems":
-			if message["index"] == 0:
-				# We are being sent all of our items, so lets reset any progress
-				# on progressive items.
-				_progressive_progress.clear()
-				_held_items = []
-
 			var i = 0
 			for item in message["items"]:
 				if _map_loaded:
@@ -555,6 +550,8 @@ func completedGoal():
 
 func mapFinishedLoading():
 	if !_map_loaded:
+		_received_indexes.clear()
+		_progressive_progress.clear()
 		_has_colors = ["white"]
 		emit_signal("evaluate_solvability")
 
@@ -569,6 +566,13 @@ func mapFinishedLoading():
 
 
 func processItem(item, index, from, flags):
+	if index != null:
+		if _received_indexes.has(index):
+			# Do not re-process items.
+			return
+
+		_received_indexes.append(index)
+
 	global._print(item)
 
 	var stringified = String(item)
