@@ -144,6 +144,11 @@ func _load():
 		# Make The Wondrous's FIRE solely midred.
 		set_gridmap_tile(-76.5, 1.5, -73.5, "MeshInstance18")
 
+		# Reduce double/triple length puzzles in Knight/Night.
+		set_gridmap_tile(24.5, 1.5, 11.5, "MeshInstance18")
+		set_gridmap_tile(25.5, 1.5, 11.5, "MeshInstance18")
+		set_gridmap_tile(47.5, 1.5, 11.5, "MeshInstance18")
+
 	if apclient._panel_shuffle == apclient.kREARRANGE_PANELS:
 		# Do the actual shuffling.
 		var panel_pools = {}
