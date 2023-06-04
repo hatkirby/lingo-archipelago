@@ -1702,7 +1702,7 @@
   tag: botbrown
 - id: Wonderland Room/Panel_fireplace_fire
   color: red
-  tag: mid bot red
+  tag: midred
 - id: Panel Room/Panel_broomed_bedroom
   color: yellow
   tag: midyellow

@@ -141,6 +141,9 @@ func _load():
 		set_small_gridmap_tile(-76.25, 1.25, 16.75, "SmallMeshInstance5")
 		set_small_gridmap_tile(-76.75, 1.25, 16.75, "SmallMeshInstance5")
 
+		# Make The Wondrous's FIRE solely midred.
+		set_gridmap_tile(-76.5, 1.5, -73.5, "MeshInstance18")
+
 	if apclient._panel_shuffle == apclient.kREARRANGE_PANELS:
 		# Do the actual shuffling.
 		var panel_pools = {}
