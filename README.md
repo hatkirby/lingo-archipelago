@@ -67,6 +67,8 @@ These may change in the future.
 
 Lingo autosaves your progress every time you solve a puzzle. The randomizer generates a savefile name based on your Multiworld seed and slot number, so you should be able to seamlessly switch between multiworlds and even slots within a multiworld.
 
+The exception to this is different rooms created from the same multiworld seed. The client is unable to tell rooms in a seed apart (this is a limitation of the Archipelago API), so the client will use the same save file for the same slot in different rooms on the same seed. You can work around this by manually moving or removing the save file from the level1 save file directory.
+
 If you play the base game again, you will see one or more save files with a long name that begins with "zzAP_". These are the saves for your multiworlds. They can be safely deleted after you have completed the associated multiworld. It is not recommended to load these save files outside of the randomizer.
 
 A connection to Archipelago is required to resume playing a multiworld. This is because the set of items you have received is not stored locally. This may be changed in the future.
@@ -100,5 +102,4 @@ not affected by randomization, but you are almost never required to perform a wa
 Any other snipe is considered out of logic. This includes sniping The Bearer's MIDDLE while standing outside The Bold,
 sniping The Colorful without opening all of the color doors, and sniping WELCOME from next to WELCOME BACK.
 
-Because these puzzles are invisible to the player, they are not affected by panel shuffling. Additionally, they are all
-white puzzles, so they are not affected by color shuffling.
+When panel shuffle is enabled, these puzzles are made visible to the player, because it would otherwise be impossible to solve them. Thus, when panel shuffle is enabled, no sniping is ever required.
