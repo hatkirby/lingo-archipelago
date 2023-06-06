@@ -111,22 +111,22 @@ func _load():
 				"answer_correct", location, "handle_correct"
 			)
 
+	# HOT CRUSTS should be at eye-level, have a yellow block behind it, and
+	# not vanish when solved.
+	var hotcrusts = panels_parent.get_node("Shuffle Room/Panel_shortcuts")
+	hotcrusts.translation.y = 1.5
+	hotcrusts.get_node("Viewport/GUI/Panel/TextEdit").disconnect(
+		"answer_correct", hotcrusts, "handle_correct"
+	)
+
+	set_gridmap_tile(-20.5, 1.5, -79.5, "MeshInstance9")
+
 	# Randomize the panels, if necessary.
 	var rng = RandomNumberGenerator.new()
 	rng.seed = apclient._slot_seed
 
 	var gamedata = apclient.get_node("Gamedata")
 	if apclient._panel_shuffle != apclient.kNO_PANEL_SHUFFLE:
-		# HOT CRUSTS should be at eye-level, have a yellow block behind it, and
-		# not vanish when solved.
-		var hotcrusts = panels_parent.get_node("Shuffle Room/Panel_shortcuts")
-		hotcrusts.translation.y = 1.5
-		hotcrusts.get_node("Viewport/GUI/Panel/TextEdit").disconnect(
-			"answer_correct", hotcrusts, "handle_correct"
-		)
-
-		set_gridmap_tile(-20.5, 1.5, -79.5, "MeshInstance9")
-
 		# Remove opaque wall in front of FOURTH.
 		set_gridmap_tile(-71.5, 1.5, -64.5, "MeshInstance18")
 
