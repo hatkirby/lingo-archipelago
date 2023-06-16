@@ -644,6 +644,8 @@ func processItem(item, index, from, flags):
 			effects_node.trigger_slowness_trap()
 		if item_name == "Iceland Trap":
 			effects_node.trigger_iceland_trap()
+		if item_name == "Atbash Trap":
+			effects_node.trigger_atbash_trap()
 
 
 func doorIsVanilla(door):
@@ -652,6 +654,10 @@ func doorIsVanilla(door):
 
 func paintingIsVanilla(painting):
 	return !_mentioned_paintings.has(painting)
+
+
+func evaluateSolvability():
+	emit_signal("evaluate_solvability")
 
 
 func colorForItemType(flags):

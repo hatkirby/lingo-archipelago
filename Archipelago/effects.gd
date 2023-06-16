@@ -4,6 +4,7 @@ var activated = false
 var effect_running = false
 var slowness_remaining = 0
 var iceland_remaining = 0
+var atbash_remaining = 0
 var queued_iceland = 0
 
 var orig_env
@@ -70,10 +71,23 @@ func trigger_iceland_trap():
 		_process_effects()
 
 
+func trigger_atbash_trap():
+	if atbash_remaining == 0:
+		atbash_remaining += 60
+
+		var apclient = global.get_node("Archipelago")
+		apclient.evaluateSolvability()
+	else:
+		atbash_remaining += 60
+
+	if not effect_running:
+		_process_effects()
+
+
 func _process_effects():
 	effect_running = true
 
-	while slowness_remaining > 0 or iceland_remaining > 0:
+	while slowness_remaining > 0 or iceland_remaining > 0 or atbash_remaining > 0:
 		var text = ""
 		if slowness_remaining > 0:
 			text += "Slowness: %d seconds" % slowness_remaining
@@ -81,6 +95,10 @@ func _process_effects():
 			if not text.empty():
 				text += "\n"
 			text += "Iceland: %d seconds" % iceland_remaining
+		if atbash_remaining > 0:
+			if not text.empty():
+				text += "\n"
+			text += "Atbash: %d seconds" % atbash_remaining
 		self.get_node("label").text = text
 
 		yield(get_tree().create_timer(1.0), "timeout")
@@ -100,6 +118,13 @@ func _process_effects():
 				get_tree().get_root().get_node("Spatial/player/pivot/camera").set_environment(
 					orig_env
 				)
+
+		if atbash_remaining > 0:
+			atbash_remaining -= 1
+
+			if atbash_remaining == 0:
+				var apclient = global.get_node("Archipelago")
+				apclient.evaluateSolvability()
 
 	self.get_node("label").text = ""
 	effect_running = false
