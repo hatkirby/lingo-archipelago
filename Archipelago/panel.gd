@@ -21,6 +21,15 @@ func _ready():
 		else:
 			atbash_text += old_char
 
+	self.get_parent().get_node("Viewport/GUI/Panel/TextEdit").connect(
+		"answer_correct", self, "answer_correct"
+	)
+
+
+func answer_correct():
+	var effects = get_tree().get_root().get_node("Spatial/AP_Effects")
+	effects.deactivate_atbash_trap()
+
 
 func evaluate_solvability():
 	var apclient = global.get_node("Archipelago")
@@ -36,7 +45,7 @@ func evaluate_solvability():
 				solvable = false
 
 	if solvable:
-		if effects.atbash_remaining > 0:
+		if effects.atbash_activated:
 			self.get_parent().get_node("Viewport/GUI/Panel/Label").text = atbash_text
 		else:
 			self.get_parent().get_node("Viewport/GUI/Panel/Label").text = orig_text
