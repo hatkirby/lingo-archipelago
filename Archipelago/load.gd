@@ -146,6 +146,10 @@ func _load():
 		for z in range(0, 3):
 			set_gridmap_tile(-95.5 - x, -3.5, -44.5 - z, "MeshInstance4")
 
+	# Block visibility of RAINY from the roof.
+	set_gridmap_tile(-88.5, 4.5, -41.5, "MeshInstance8")
+	set_gridmap_tile(-89.5, 4.5, -41.5, "MeshInstance4")
+
 	if apclient._panel_shuffle != apclient.kNO_PANEL_SHUFFLE:
 		# Make The Wondrous's FIRE solely midred.
 		set_gridmap_tile(-76.5, 1.5, -73.5, "MeshInstance18")
