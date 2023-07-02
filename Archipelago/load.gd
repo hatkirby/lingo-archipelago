@@ -126,21 +126,22 @@ func _load():
 	rng.seed = apclient._slot_seed
 
 	var gamedata = apclient.get_node("Gamedata")
+
+	# Remove opaque wall in front of FOURTH.
+	set_gridmap_tile(-71.5, 1.5, -64.5, "MeshInstance18")
+
+	# Move The Lab's OPEN out of the wall.
+	panels_parent.get_node("Chemistry Room/Panel_open").translation.x = -87.001
+
+	# Move ZERO out of the wall and change the wall to be white.
+	panels_parent.get_node("Backside Room/Panel_zero_zero").translation.z = 16.499
+
+	set_small_gridmap_tile(-76.25, 1.75, 16.75, "SmallMeshInstance5")
+	set_small_gridmap_tile(-76.75, 1.75, 16.75, "SmallMeshInstance5")
+	set_small_gridmap_tile(-76.25, 1.25, 16.75, "SmallMeshInstance5")
+	set_small_gridmap_tile(-76.75, 1.25, 16.75, "SmallMeshInstance5")
+
 	if apclient._panel_shuffle != apclient.kNO_PANEL_SHUFFLE:
-		# Remove opaque wall in front of FOURTH.
-		set_gridmap_tile(-71.5, 1.5, -64.5, "MeshInstance18")
-
-		# Move The Lab's OPEN out of the wall.
-		panels_parent.get_node("Chemistry Room/Panel_open").translation.x = -87.001
-
-		# Move ZERO out of the wall and change the wall to be white.
-		panels_parent.get_node("Backside Room/Panel_zero_zero").translation.z = 16.499
-
-		set_small_gridmap_tile(-76.25, 1.75, 16.75, "SmallMeshInstance5")
-		set_small_gridmap_tile(-76.75, 1.75, 16.75, "SmallMeshInstance5")
-		set_small_gridmap_tile(-76.25, 1.25, 16.75, "SmallMeshInstance5")
-		set_small_gridmap_tile(-76.75, 1.25, 16.75, "SmallMeshInstance5")
-
 		# Make The Wondrous's FIRE solely midred.
 		set_gridmap_tile(-76.5, 1.5, -73.5, "MeshInstance18")
 
