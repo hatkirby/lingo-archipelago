@@ -141,6 +141,11 @@ func _load():
 	set_small_gridmap_tile(-76.25, 1.25, 16.75, "SmallMeshInstance5")
 	set_small_gridmap_tile(-76.75, 1.25, 16.75, "SmallMeshInstance5")
 
+	# Block the roof access to The Wondrous.
+	for x in range(0, 3):
+		for z in range(0, 3):
+			set_gridmap_tile(-95.5 - x, -3.5, -44.5 - z, "MeshInstance4")
+
 	if apclient._panel_shuffle != apclient.kNO_PANEL_SHUFFLE:
 		# Make The Wondrous's FIRE solely midred.
 		set_gridmap_tile(-76.5, 1.5, -73.5, "MeshInstance18")
