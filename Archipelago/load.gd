@@ -121,6 +121,10 @@ func _load():
 
 	set_gridmap_tile(-20.5, 1.5, -79.5, "MeshInstance9")
 
+	# TRANS RIGHTS should be bottom white, like it used to be.
+	var trans_rights = panels_parent.get_node("Shuffle Room/Panel_secret_secret")
+	trans_rights.translation.y = 0.5
+
 	# Randomize the panels, if necessary.
 	var rng = RandomNumberGenerator.new()
 	rng.seed = apclient._slot_seed
