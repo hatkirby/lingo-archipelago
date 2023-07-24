@@ -537,7 +537,13 @@ func sendLocation(loc_id):
 
 func setValue(key, value):
 	sendMessage(
-		[{"cmd": "Set", "key": key, "operations": [{"operation": "replace", "value": value}]}]
+		[
+			{
+				"cmd": "Set",
+				"key": "Lingo_%d_%s" % [_slot, key],
+				"operations": [{"operation": "replace", "value": value}]
+			}
+		]
 	)
 
 
