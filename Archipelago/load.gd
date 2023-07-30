@@ -87,6 +87,10 @@ func _load():
 	get_node("CountdownPanels").add_child(new_master_cdp)
 	old_master_cdp.queue_free()
 
+	# Configure AN OTHER WAY.
+	var another_cdp = get_node("CountdownPanels/CountdownPanel_level2_0")
+	another_cdp.maxlength = (apclient._level_2_requirement - 1)
+
 	# This is the best time to create the location nodes, since the map is now
 	# loaded but the panels haven't been solved from the save file yet.
 	var panels_parent = self.get_node("Panels")
@@ -238,6 +242,8 @@ func _load():
 		victory_condition = "the end"
 	elif apclient._victory_condition == apclient.kTHE_MASTER:
 		victory_condition = "the master"
+	elif apclient._victory_condition == apclient.kLEVEL_2:
+		victory_condition = "level 2"
 
 	set_static_panel("Entry Room/Panel_this_this", victory_condition)
 	set_static_panel("Entry Room/Panel_hidden_hidden", "hewwo")
@@ -366,9 +372,14 @@ func _load():
 		apclient.connect("evaluate_solvability", script_instance, "evaluate_solvability")
 
 	# Hook up the goal panel.
-	if apclient._victory_condition == 1:
+	if apclient._victory_condition == apclient.kTHE_MASTER:
 		var the_master = self.get_node("Panels/Countdown Panels/Panel_master_master")
 		the_master.get_node("Viewport/GUI/Panel/TextEdit").connect(
+			"answer_correct", apclient, "completedGoal"
+		)
+	elif apclient._victory_condition == apclient.kLEVEL_2:
+		var level_2 = self.get_node("Decorations/EndPanel/Panel_level_2")
+		level_2.get_node("Viewport/GUI/Panel/TextEdit").connect(
 			"answer_correct", apclient, "completedGoal"
 		)
 	else:

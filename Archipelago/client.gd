@@ -43,6 +43,7 @@ const progressive_items = {
 
 const kTHE_END = 0
 const kTHE_MASTER = 1
+const kLEVEL_2 = 2
 
 const kNO_PANEL_SHUFFLE = 0
 const kREARRANGE_PANELS = 1
@@ -81,12 +82,13 @@ var _paintings = {}
 var _paintings_mapping = {}
 var _localdata_file = ""
 var _death_link = false
-var _victory_condition = 0  # THE END, THE MASTER
+var _victory_condition = 0  # THE END, THE MASTER, LEVEL 2
 var _door_shuffle = false
 var _color_shuffle = false
 var _panel_shuffle = 0  # none, rearrange
 var _painting_shuffle = false
 var _mastery_achievements = 21
+var _level_2_requirement = 223
 var _slot_seed = 0
 
 var _map_loaded = false
@@ -267,6 +269,8 @@ func _on_data():
 				_paintings_mapping = _slot_data["painting_entrance_to_exit"]
 			if _slot_data.has("mastery_achievements"):
 				_mastery_achievements = _slot_data["mastery_achievements"]
+			if _slot_data.has("level_2_requirement"):
+				_level_2_requirement = _slot_data["level_2_requirement"]
 
 			_localdata_file = "user://archipelago_data/%s_%d" % [_seed, _slot]
 			var ap_file = File.new()
