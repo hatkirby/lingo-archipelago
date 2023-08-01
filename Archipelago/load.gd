@@ -93,27 +93,31 @@ func _load():
 
 	# This is the best time to create the location nodes, since the map is now
 	# loaded but the panels haven't been solved from the save file yet.
+	var gamedata = apclient.get_node("Gamedata")
 	var panels_parent = self.get_node("Panels")
 	var location_script = ResourceLoader.load("user://maps/Archipelago/location.gd")
-	for location_id in apclient._panel_ids_by_location.keys():
-		var location = location_script.new()
-		location.ap_id = int(location_id)
-		location.name = "AP_location_" + location.ap_id
-		self.add_child(location)
+	for location_id in gamedata.panel_ids_by_location_id.keys():
+		if apclient._location_name_to_id.has(location_id):
+			var location = location_script.new()
+			location.ap_id = int(apclient._location_name_to_id[location_id])
+			location.name = "AP_location_%d" % location.ap_id
+			self.add_child(location)
 
-		var panels = apclient._panel_ids_by_location[String(location.ap_id)]
-		location.total = panels.size()
+			var panels = gamedata.panel_ids_by_location_id[location_id]
+			location.total = panels.size()
 
-		for panel in panels:
-			var that_panel
-			if panel.begins_with("EndPanel"):
-				that_panel = self.get_node("Decorations").get_node(panel)
-			else:
-				that_panel = panels_parent.get_node(panel)
+			for panel in panels:
+				var that_panel
+				if panel.begins_with("EndPanel"):
+					that_panel = self.get_node("Decorations").get_node(panel)
+				else:
+					that_panel = panels_parent.get_node(panel)
 
-			that_panel.get_node("Viewport/GUI/Panel/TextEdit").connect(
-				"answer_correct", location, "handle_correct"
-			)
+				that_panel.get_node("Viewport/GUI/Panel/TextEdit").connect(
+					"answer_correct", location, "handle_correct"
+				)
+		else:
+			global._print("Could not find location ID for %s" % location_id)
 
 	# HOT CRUSTS should be at eye-level, have a yellow block behind it, and
 	# not vanish when solved.
@@ -132,8 +136,6 @@ func _load():
 	# Randomize the panels, if necessary.
 	var rng = RandomNumberGenerator.new()
 	rng.seed = apclient._slot_seed
-
-	var gamedata = apclient.get_node("Gamedata")
 
 	# Remove opaque wall in front of FOURTH.
 	set_gridmap_tile(-71.5, 1.5, -64.5, "MeshInstance18")
@@ -309,7 +311,7 @@ func _load():
 			remaining.append(all_paintings[j])
 			all_paintings.remove(j)
 
-		for painting in apclient._paintings.keys():
+		for painting in gamedata.paintings.keys():
 			if randomized.has(painting):
 				continue
 
@@ -364,7 +366,11 @@ func _load():
 	# disable them.
 	var panel_script = ResourceLoader.load("user://maps/Archipelago/panel.gd")
 	for panel in gamedata.panels:
-		var panel_node = panels_parent.get_node(panel["id"])
+		var panel_node
+		if panel["id"].begins_with("EndPanel"):
+			panel_node = self.get_node("Decorations").get_node(panel["id"])
+		else:
+			panel_node = panels_parent.get_node(panel["id"])
 		var script_instance = panel_script.new()
 		script_instance.name = "AP_Panel"
 		script_instance.data = panel
@@ -445,7 +451,8 @@ func instantiate_painting(name, scene):
 	var mps_inst = mypainting_script.new()
 	mps_inst.set_name("Script")
 
-	var pconfig = apclient._paintings[name]
+	var gamedata = apclient.get_node("Gamedata")
+	var pconfig = gamedata.paintings[name]
 	mps_inst.orientation = pconfig["orientation"]
 	if pconfig["move"]:
 		mps_inst.move = true

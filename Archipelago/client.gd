@@ -73,12 +73,6 @@ var _players = []
 var _player_name_by_slot = {}
 var _checked_locations = []
 var _slot_data = {}
-var _door_ids_by_item = {}
-var _mentioned_doors = []
-var _painting_ids_by_item = {}
-var _mentioned_paintings = []
-var _panel_ids_by_location = {}
-var _paintings = {}
 var _paintings_mapping = {}
 var _localdata_file = ""
 var _death_link = false
@@ -230,25 +224,6 @@ func _on_data():
 			for player in _players:
 				_player_name_by_slot[player["slot"]] = player["alias"]
 
-			if _slot_data.has("door_ids_by_item_id"):
-				_door_ids_by_item = _slot_data["door_ids_by_item_id"]
-
-				_mentioned_doors = []
-				for item in _door_ids_by_item.values():
-					for door in item:
-						_mentioned_doors.append(door)
-			if _slot_data.has("painting_ids_by_item_id"):
-				_painting_ids_by_item = _slot_data["painting_ids_by_item_id"]
-
-				_mentioned_paintings = []
-				for item in _painting_ids_by_item.values():
-					for painting in item:
-						_mentioned_paintings.append(painting)
-			if _slot_data.has("panel_ids_by_location_id"):
-				_panel_ids_by_location = _slot_data["panel_ids_by_location_id"]
-			if _slot_data.has("paintings"):
-				_paintings = _slot_data["paintings"]
-
 			_death_link = _slot_data.has("death_link") and _slot_data["death_link"]
 			if _death_link:
 				sendConnectUpdate(["DeathLink"])
@@ -260,7 +235,7 @@ func _on_data():
 			if _slot_data.has("shuffle_doors"):
 				_door_shuffle = (_slot_data["shuffle_doors"] > 0)
 			if _slot_data.has("shuffle_paintings"):
-				_painting_shuffle = (_slot_data["shuffle_paintings"] > 0)
+				_painting_shuffle = _slot_data["shuffle_paintings"]
 			if _slot_data.has("shuffle_panels"):
 				_panel_shuffle = _slot_data["shuffle_panels"]
 			if _slot_data.has("seed"):
@@ -585,17 +560,21 @@ func processItem(item, index, from, flags):
 
 	global._print(item)
 
-	var stringified = String(item)
-	if _door_ids_by_item.has(stringified):
+	var gamedata = $Gamedata
+	var item_name = "Unknown"
+	if _item_id_to_name.has(item):
+		item_name = _item_id_to_name[item]
+
+	if gamedata.door_ids_by_item_id.has(item_name):
 		var doorsNode = get_tree().get_root().get_node("Spatial/Doors")
-		for door_id in _door_ids_by_item[stringified]:
+		for door_id in gamedata.door_ids_by_item_id[item_name]:
 			doorsNode.get_node(door_id).openDoor()
 
-	if _painting_ids_by_item.has(stringified):
+	if gamedata.painting_ids_by_item_id.has(item_name):
 		var real_parent_node = get_tree().get_root().get_node("Spatial/Decorations/Paintings")
 		var fake_parent_node = get_tree().get_root().get_node_or_null("Spatial/AP_Paintings")
 
-		for painting_id in _painting_ids_by_item[stringified]:
+		for painting_id in gamedata.painting_ids_by_item_id[item_name]:
 			var painting_node = real_parent_node.get_node_or_null(painting_id)
 			if painting_node != null:
 				painting_node.movePainting()
@@ -606,10 +585,6 @@ func processItem(item, index, from, flags):
 					painting_node.get_node("Script").movePainting()
 
 	# Handle progressive items.
-	var item_name = "Unknown"
-	if _item_id_to_name.has(item):
-		item_name = _item_id_to_name[item]
-
 	if item_name in progressive_items.keys():
 		if not item_name in _progressive_progress:
 			_progressive_progress[item_name] = 0
@@ -659,11 +634,11 @@ func processItem(item, index, from, flags):
 
 
 func doorIsVanilla(door):
-	return !_mentioned_doors.has(door)
+	return !$Gamedata.mentioned_doors.has(door)
 
 
 func paintingIsVanilla(painting):
-	return !_mentioned_paintings.has(painting)
+	return !$Gamedata.mentioned_paintings.has(painting)
 
 
 func evaluateSolvability():
