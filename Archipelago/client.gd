@@ -134,6 +134,7 @@ func _reset_state():
 	_should_process = false
 	_authenticated = false
 	_map_loaded = false
+	_try_wss = false
 
 
 func _errored():
