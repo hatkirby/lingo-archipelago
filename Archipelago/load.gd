@@ -89,7 +89,23 @@ func _load():
 
 	# Configure AN OTHER WAY.
 	var another_cdp = get_node("CountdownPanels/CountdownPanel_level2_0")
-	another_cdp.maxlength = (apclient._level_2_requirement - 1)
+
+	if apclient._victory_condition == apclient.kLEVEL_2:
+		var new_another_cdp = cdp_auto_scene.instance()
+		new_another_cdp.name = "AP_variable_another"
+		new_another_cdp.replace_with = another_cdp.replace_with
+		new_another_cdp.panels = another_cdp.panels
+		new_another_cdp.translation = another_cdp.translation
+		new_another_cdp.rotation = another_cdp.rotation
+		new_another_cdp.maxlength = (apclient._level_2_requirement - 1)
+		new_another_cdp.nested = true
+		get_node("CountdownPanels").add_child(new_another_cdp)
+		another_cdp.queue_free()
+	else:
+		var another_replacement = another_cdp.get_node(another_cdp.replace_with)
+		another_replacement.translation = another_cdp.translation
+		another_replacement.rotation = another_cdp.rotation
+		another_cdp.queue_free()
 
 	# This is the best time to create the location nodes, since the map is now
 	# loaded but the panels haven't been solved from the save file yet.
@@ -182,14 +198,19 @@ func _load():
 			if not pool.has(subtag):
 				pool[subtag] = []
 
-			var panel_node = panels_parent.get_node(panel["id"])
+			var panel_node
+			if panel["id"].begins_with("EndPanel"):
+				panel_node = self.get_node("Decorations").get_node(panel["id"])
+			else:
+				panel_node = panels_parent.get_node(panel["id"])
+
 			pool[subtag].append(
 				{
 					"id": panel["id"],
 					"hint": panel_node.text,
 					"answer": panel_node.answer,
-					"link": panel["link"],
-					"copy_to_sign": panel["copy_to_sign"]
+					"link": panel["link"] if panel.has("link") else "",
+					"copy_to_sign": panel["copy_to_sign"] if panel.has("copy_to_sign") else ""
 				}
 			)
 
