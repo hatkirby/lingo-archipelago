@@ -63,6 +63,8 @@ These may change in the future.
 
 **Note**: In the second room, you ordinarily only have to solve HI / HIGH to open the door. This is modified in the randomizer so that you have to solve both puzzles to receive a location check.
 
+LEVEL 2 (the panel that unlocks Level 2) is a check. If Level 2 is selected as your victory condition, you will be required to solve the provided number of puzzles before you can get access to the LEVEL 2 panel. If Level 2 is not your victory condition, the LEVEL 2 room is automatically available as soon as you reach Second Room.
+
 ### Is my progress saved locally?
 
 Lingo autosaves your progress every time you solve a puzzle. The randomizer generates a savefile name based on your Multiworld seed and slot number, so you should be able to seamlessly switch between multiworlds and even slots within a multiworld.
