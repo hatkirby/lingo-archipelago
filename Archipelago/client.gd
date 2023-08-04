@@ -249,6 +249,8 @@ func _on_data():
 			if _slot_data.has("level_2_requirement"):
 				_level_2_requirement = _slot_data["level_2_requirement"]
 
+			_puzzle_skips = 0
+
 			_localdata_file = "user://archipelago_data/%s_%d" % [_seed, _slot]
 			var ap_file = File.new()
 			if ap_file.file_exists(_localdata_file):
@@ -260,6 +262,9 @@ func _on_data():
 					_last_new_item = localdata[0]
 				else:
 					_last_new_item = -1
+
+				if localdata.size() > 1:
+					_puzzle_skips = localdata[1]
 
 			requestSync()
 
@@ -415,7 +420,7 @@ func saveLocaldata():
 	var file = File.new()
 	file.open(_localdata_file, File.WRITE)
 
-	var data = [_last_new_item]
+	var data = [_last_new_item, _puzzle_skips]
 	file.store_var(data, true)
 	file.close()
 
@@ -540,7 +545,6 @@ func mapFinishedLoading():
 		_received_indexes.clear()
 		_progressive_progress.clear()
 		_has_colors = ["white"]
-		_puzzle_skips = 0
 		emit_signal("evaluate_solvability")
 
 		for item in _held_items:
@@ -637,6 +641,8 @@ func processItem(item, index, from, flags):
 		if item_name == "Puzzle Skip":
 			_puzzle_skips += 1
 
+			saveLocaldata()
+
 
 func doorIsVanilla(door):
 	return !$Gamedata.mentioned_doors.has(door)
@@ -656,6 +662,8 @@ func getAvailablePuzzleSkips():
 
 func usePuzzleSkip():
 	_puzzle_skips -= 1
+
+	saveLocaldata()
 
 
 func colorForItemType(flags):
