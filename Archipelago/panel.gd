@@ -4,6 +4,7 @@ var data = {}
 var orig_text = ""
 var atbash_text = ""
 var orig_color = Color(0, 0, 0, 0)
+var solvable = true
 
 const kAtbashPre = "abcdefghijklmnopqrstuvwxyz1234567890+-"
 const kAtbashPost = "zyxwvutsrqponmlkjihgfedcba0987654321-+"
@@ -35,7 +36,7 @@ func evaluate_solvability():
 	var apclient = global.get_node("Archipelago")
 	var effects = get_tree().get_root().get_node("Spatial/AP_Effects")
 
-	var solvable = true
+	solvable = true
 	var missing = []
 
 	if apclient._color_shuffle:

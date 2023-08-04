@@ -92,6 +92,7 @@ var _last_new_item = -1
 var _progressive_progress = {}
 var _has_colors = ["white"]
 var _received_indexes = []
+var _puzzle_skips = 0
 
 signal could_not_connect
 signal connect_status
@@ -539,6 +540,7 @@ func mapFinishedLoading():
 		_received_indexes.clear()
 		_progressive_progress.clear()
 		_has_colors = ["white"]
+		_puzzle_skips = 0
 		emit_signal("evaluate_solvability")
 
 		for item in _held_items:
@@ -632,6 +634,8 @@ func processItem(item, index, from, flags):
 			effects_node.trigger_iceland_trap()
 		if item_name == "Atbash Trap":
 			effects_node.trigger_atbash_trap()
+		if item_name == "Puzzle Skip":
+			_puzzle_skips += 1
 
 
 func doorIsVanilla(door):
@@ -644,6 +648,14 @@ func paintingIsVanilla(painting):
 
 func evaluateSolvability():
 	emit_signal("evaluate_solvability")
+
+
+func getAvailablePuzzleSkips():
+	return _puzzle_skips
+
+
+func usePuzzleSkip():
+	_puzzle_skips -= 1
 
 
 func colorForItemType(flags):
