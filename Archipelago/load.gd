@@ -100,6 +100,7 @@ func _load():
 		new_another_cdp.maxlength = (apclient._level_2_requirement - 1)
 		new_another_cdp.nested = true
 		get_node("CountdownPanels").add_child(new_another_cdp)
+		another_cdp.replace_with = ""
 		another_cdp.queue_free()
 	else:
 		var another_replacement = another_cdp.get_node(another_cdp.replace_with)
