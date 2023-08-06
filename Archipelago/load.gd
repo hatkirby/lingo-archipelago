@@ -506,4 +506,4 @@ func set_small_gridmap_tile(x, y, z, tile):
 
 func archipelago_disconnected(reason):
 	var messages_node = self.get_node("Messages")
-	messages_node.show_message(reason)
+	messages_node.showMessage(reason)
