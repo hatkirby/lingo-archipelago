@@ -153,6 +153,8 @@ func _process_effects():
 		if skip_available:
 			var apclient = global.get_node("Archipelago")
 			if apclient.getAvailablePuzzleSkips() > 0:
+				if not text.empty():
+					text += "\n"
 				text += "Press P to skip puzzle (%d available)" % apclient.getAvailablePuzzleSkips()
 		if slowness_remaining > 0:
 			if not text.empty():
