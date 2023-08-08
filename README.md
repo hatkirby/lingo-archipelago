@@ -89,3 +89,26 @@ reveals them so that a snipe is not necessary.
 Because of this, all wall snipes are considered out of logic. This includes sniping The Bearer's MIDDLE while standing
 outside The Bold, sniping The Colorful without opening all of the color doors, and sniping WELCOME from next to WELCOME
 BACK.
+
+### What about the pilgrimage?
+
+The intended method of reaching the Pilgrim Room in the base game is known as "doing a pilgrimage". It involves entering
+each sunwarp in order without using any non-painting warps in between. This is difficult to map out properly in AP logic,
+so we only consider one specific path through the map to be the canonical pilgrimage route. Accessing the Pilgrim Room by
+pilgrimage is only in logic if this specific route is available to you:
+
+* From the Starting Room, proceed through the Second Room and into the Hub Room. Enter the first sunwarp.
+* From the Crossroads, use the front tower entrance (the one nearest The Discerning; not the one next to Sword/Words). Go
+  through the Hot Crusts Door and enter the second sunwarp.
+* Enter the third sunwarp immediately after.
+* Proceed past The Initiated and through the shortcut door back to the Hub Room. Go through the shortcut door to the
+  tower's first floor and enter the fourth sunwarp.
+* Use the shortcut to the Directional Gallery (the one outside The Undeterred; not the one further down the hallway where
+  the Number Hunt is), pass through the Salt Pepper Door, and return to the Hub Room. Use the nearby entrance to the
+  Crossroads and proceed to the fifth sunwarp.
+* Use the door that takes you to The Steady, and then the one that takes you to The Bearer, and then the one that takes you
+  to The Initiated. Return to the Hub Room once more, and enter The Tenacious via the shortcut that opens upon solving the
+  palindromes. Use the top-right door to access the area Outside the Agreeable, and enter the final sunwarp.
+
+This route can be seen [starting at 2:47 in this video](https://youtu.be/8GfuDRRswdA?t=167). Note that this will almost
+never be required if door shuffle is enabled, as one of the other entrances to the room will usually be available sooner.
