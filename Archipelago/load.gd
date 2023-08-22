@@ -118,6 +118,7 @@ func _load():
 			var location = location_script.new()
 			location.ap_id = int(apclient._location_name_to_id[location_id])
 			location.name = "AP_location_%d" % location.ap_id
+			location.classification = gamedata.classification_by_location_id[location_id]
 			self.add_child(location)
 
 			var panels = gamedata.panel_ids_by_location_id[location_id]

@@ -4,6 +4,10 @@ require 'yaml'
 configpath = ARGV[0]
 outputpath = ARGV[1]
 
+CLASSIFICATION_NORMAL = 1
+CLASSIFICATION_REDUCED = 2
+CLASSIFICATION_INSANITY = 4
+
 panel_to_id = {}
 door_groups = {}
 
@@ -11,6 +15,7 @@ panel_output = []
 door_ids_by_item_id = {}
 painting_ids_by_item_id = {}
 panel_ids_by_location_id = {}
+classification_by_location_id = {}
 mentioned_doors = Set[]
 mentioned_paintings = Set[]
 painting_output = {}
@@ -54,8 +59,17 @@ config.each do |room_name, room_data|
       end
       panel_output << ret
 
+      panel_ids_by_location_id[full_name] = [panel["id"]]
+
+      classification_by_location_id[full_name] ||= 0
+      classification_by_location_id[full_name] += CLASSIFICATION_INSANITY
+
       if panel.include? "check" and panel["check"]
-        panel_ids_by_location_id[full_name] = [panel["id"]]
+        classification_by_location_id[full_name] += CLASSIFICATION_NORMAL
+
+        unless panel.include? "exclude_reduce" and panel["exclude_reduce"]
+          classification_by_location_id[full_name] += CLASSIFICATION_REDUCED
+        end
       end
     end
   end
@@ -104,6 +118,13 @@ config.each do |room_name, room_data|
             other_name = "#{panel_identifier["room"]} - #{panel_identifier["panel"]}"
           end
           panel_to_id[other_name]
+        end
+
+        classification_by_location_id[chosen_name] ||= 0
+        classification_by_location_id[chosen_name] += CLASSIFICATION_NORMAL
+
+        if door.include? "include_reduce" and door["include_reduce"]
+          classification_by_location_id[chosen_name] += CLASSIFICATION_REDUCED
         end
       end
 
@@ -188,6 +209,10 @@ File.open(outputpath, "w") do |f|
   f.write "]\nvar paintings = {"
   f.write(painting_output.map do |painting_id, painting|
     "\"#{painting_id}\":{\"orientation\":\"#{painting["orientation"]}\",\"move\":#{painting.include? "move" and painting["move"]}}"
+  end.join(","))
+  f.write "}\nvar classification_by_location_id = {"
+  f.write(classification_by_location_id.map do |location_id, classification|
+    "\"#{location_id}\":#{classification}"
   end.join(","))
   f.write "}"
 end

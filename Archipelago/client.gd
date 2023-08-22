@@ -48,6 +48,14 @@ const kLEVEL_2 = 2
 const kNO_PANEL_SHUFFLE = 0
 const kREARRANGE_PANELS = 1
 
+const kCLASSIFICATION_LOCAL_NORMAL = 1
+const kCLASSIFICATION_LOCAL_REDUCED = 2
+const kCLASSIFICATION_LOCAL_INSANITY = 4
+
+const kCLASSIFICATION_REMOTE_NORMAL = 0
+const kCLASSIFICATION_REMOTE_REDUCED = 1
+const kCLASSIFICATION_REMOTE_INSANITY = 2
+
 var _client = WebSocketClient.new()
 var _should_process = false
 var _initiated_disconnect = false
@@ -83,6 +91,7 @@ var _panel_shuffle = 0  # none, rearrange
 var _painting_shuffle = false
 var _mastery_achievements = 21
 var _level_2_requirement = 223
+var _location_classification_bit = 0
 var _slot_seed = 0
 
 var _map_loaded = false
@@ -248,6 +257,13 @@ func _on_data():
 				_mastery_achievements = _slot_data["mastery_achievements"]
 			if _slot_data.has("level_2_requirement"):
 				_level_2_requirement = _slot_data["level_2_requirement"]
+			if _slot_data.has("location_checks"):
+				if _slot_data["location_checks"] == kCLASSIFICATION_REMOTE_NORMAL:
+					_location_classification_bit = kCLASSIFICATION_LOCAL_NORMAL
+				elif _slot_data["location_checks"] == kCLASSIFICATION_REMOTE_REDUCED:
+					_location_classification_bit = kCLASSIFICATION_LOCAL_REDUCED
+				elif _slot_data["location_checks"] == kCLASSIFICATION_REMOTE_INSANITY:
+					_location_classification_bit = kCLASSIFICATION_LOCAL_INSANITY
 
 			_puzzle_skips = 0
 
