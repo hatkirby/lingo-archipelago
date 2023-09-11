@@ -114,28 +114,25 @@ func _load():
 	var panels_parent = self.get_node("Panels")
 	var location_script = ResourceLoader.load("user://maps/Archipelago/location.gd")
 	for location_id in gamedata.panel_ids_by_location_id.keys():
-		if apclient._location_name_to_id.has(location_id):
-			var location = location_script.new()
-			location.ap_id = int(apclient._location_name_to_id[location_id])
-			location.name = "AP_location_%d" % location.ap_id
-			location.classification = gamedata.classification_by_location_id[location_id]
-			self.add_child(location)
+		var location = location_script.new()
+		location.ap_id = location_id
+		location.name = "AP_location_%d" % location.ap_id
+		location.classification = gamedata.classification_by_location_id[location_id]
+		self.add_child(location)
 
-			var panels = gamedata.panel_ids_by_location_id[location_id]
-			location.total = panels.size()
+		var panels = gamedata.panel_ids_by_location_id[location_id]
+		location.total = panels.size()
 
-			for panel in panels:
-				var that_panel
-				if panel.begins_with("EndPanel"):
-					that_panel = self.get_node("Decorations").get_node(panel)
-				else:
-					that_panel = panels_parent.get_node(panel)
+		for panel in panels:
+			var that_panel
+			if panel.begins_with("EndPanel"):
+				that_panel = self.get_node("Decorations").get_node(panel)
+			else:
+				that_panel = panels_parent.get_node(panel)
 
-				that_panel.get_node("Viewport/GUI/Panel/TextEdit").connect(
-					"answer_correct", location, "handle_correct"
-				)
-		else:
-			global._print("Could not find location ID for %s" % location_id)
+			that_panel.get_node("Viewport/GUI/Panel/TextEdit").connect(
+				"answer_correct", location, "handle_correct"
+			)
 
 	# HOT CRUSTS should be at eye-level, have a yellow block behind it, and
 	# not vanish when solved.

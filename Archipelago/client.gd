@@ -588,16 +588,16 @@ func processItem(item, index, from, flags):
 	if _item_id_to_name.has(item):
 		item_name = _item_id_to_name[item]
 
-	if gamedata.door_ids_by_item_id.has(item_name):
+	if gamedata.door_ids_by_item_id.has(int(item)):
 		var doorsNode = get_tree().get_root().get_node("Spatial/Doors")
-		for door_id in gamedata.door_ids_by_item_id[item_name]:
+		for door_id in gamedata.door_ids_by_item_id[int(item)]:
 			doorsNode.get_node(door_id).openDoor()
 
-	if gamedata.painting_ids_by_item_id.has(item_name):
+	if gamedata.painting_ids_by_item_id.has(int(item)):
 		var real_parent_node = get_tree().get_root().get_node("Spatial/Decorations/Paintings")
 		var fake_parent_node = get_tree().get_root().get_node_or_null("Spatial/AP_Paintings")
 
-		for painting_id in gamedata.painting_ids_by_item_id[item_name]:
+		for painting_id in gamedata.painting_ids_by_item_id[int(item)]:
 			var painting_node = real_parent_node.get_node_or_null(painting_id)
 			if painting_node != null:
 				painting_node.movePainting()

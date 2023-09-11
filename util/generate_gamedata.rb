@@ -2,7 +2,8 @@ require 'set'
 require 'yaml'
 
 configpath = ARGV[0]
-outputpath = ARGV[1]
+idspath = ARGV[1]
+outputpath = ARGV[2]
 
 CLASSIFICATION_NORMAL = 1
 CLASSIFICATION_REDUCED = 2
@@ -20,10 +21,14 @@ mentioned_doors = Set[]
 mentioned_paintings = Set[]
 painting_output = {}
 
+ids_config = YAML.load_file(idspath)
+
 config = YAML.load_file(configpath)
 config.each do |room_name, room_data|
   if room_data.include? "panels"
     room_data["panels"].each do |panel_name, panel|
+      location_id = ids_config["panels"][room_name][panel_name]
+
       full_name = "#{room_name} - #{panel_name}"
       panel_to_id[full_name] = panel["id"]
 
@@ -59,16 +64,16 @@ config.each do |room_name, room_data|
       end
       panel_output << ret
 
-      panel_ids_by_location_id[full_name] = [panel["id"]]
+      panel_ids_by_location_id[location_id] = [panel["id"]]
 
-      classification_by_location_id[full_name] ||= 0
-      classification_by_location_id[full_name] += CLASSIFICATION_INSANITY
+      classification_by_location_id[location_id] ||= 0
+      classification_by_location_id[location_id] += CLASSIFICATION_INSANITY
 
       if panel.include? "check" and panel["check"]
-        classification_by_location_id[full_name] += CLASSIFICATION_NORMAL
+        classification_by_location_id[location_id] += CLASSIFICATION_NORMAL
 
         unless panel.include? "exclude_reduce" and panel["exclude_reduce"]
-          classification_by_location_id[full_name] += CLASSIFICATION_REDUCED
+          classification_by_location_id[location_id] += CLASSIFICATION_REDUCED
         end
       end
     end
@@ -90,27 +95,9 @@ config.each do |room_name, room_data|
          not (door.include? "event" and door["event"]) and
          door.include? "panels" then
 
-        chosen_name = full_name
-        if door.include? "location_name"
-          chosen_name = door["location_name"]
-        else
-          panels_per_room = {}
-          door["panels"].each do |panel_identifier|
-            if panel_identifier.kind_of? String
-              panels_per_room[room_name] ||= []
-              panels_per_room[room_name] << panel_identifier
-            else
-              panels_per_room[panel_identifier["room"]] ||= []
-              panels_per_room[panel_identifier["room"]] << panel_identifier["panel"]
-            end
-          end
+        location_id = ids_config["doors"][room_name][door_name]["location"]
 
-          chosen_name = panels_per_room.map do |room_name, panels|
-            room_name + " - " + panels.join(", ")
-          end.join(" and ")
-        end
-
-        panel_ids_by_location_id[chosen_name] = door["panels"].map do |panel_identifier|
+        panel_ids_by_location_id[location_id] = door["panels"].map do |panel_identifier|
           other_name = ""
           if panel_identifier.kind_of? String
             other_name = "#{room_name} - #{panel_identifier}"
@@ -120,21 +107,18 @@ config.each do |room_name, room_data|
           panel_to_id[other_name]
         end
 
-        classification_by_location_id[chosen_name] ||= 0
-        classification_by_location_id[chosen_name] += CLASSIFICATION_NORMAL
+        classification_by_location_id[location_id] ||= 0
+        classification_by_location_id[location_id] += CLASSIFICATION_NORMAL
 
         if door.include? "include_reduce" and door["include_reduce"]
-          classification_by_location_id[chosen_name] += CLASSIFICATION_REDUCED
+          classification_by_location_id[location_id] += CLASSIFICATION_REDUCED
         end
       end
 
       if not (door.include? "skip_item" and door["skip_item"]) and
          not (door.include? "event" and door["event"]) then
 
-        chosen_name = full_name
-        if door.include? "item_name"
-          chosen_name = door["item_name"]
-        end
+        item_id = ids_config["doors"][room_name][door_name]["item"]
 
         if door.include? "id"
           internal_door_ids = []
@@ -149,7 +133,7 @@ config.each do |room_name, room_data|
             door_groups[door["group"]].merge(internal_door_ids)
           end
 
-          door_ids_by_item_id[chosen_name] = internal_door_ids
+          door_ids_by_item_id[item_id] = internal_door_ids
           mentioned_doors.merge(internal_door_ids)
         end
 
@@ -161,7 +145,7 @@ config.each do |room_name, room_data|
             internal_painting_ids = door["painting_id"]
           end
 
-          painting_ids_by_item_id[chosen_name] = internal_painting_ids
+          painting_ids_by_item_id[item_id] = internal_painting_ids
           mentioned_paintings.merge(internal_painting_ids)
         end
       end
@@ -170,7 +154,8 @@ config.each do |room_name, room_data|
 end
 
 door_groups.each do |group_name, door_ids|
-  door_ids_by_item_id[group_name] = door_ids.to_a
+  item_id = ids_config["door_groups"][group_name]
+  door_ids_by_item_id[item_id] = door_ids.to_a
 end
 
 File.open(outputpath, "w") do |f|
@@ -182,19 +167,19 @@ File.open(outputpath, "w") do |f|
   end.join(","))
   f.write "]\nvar door_ids_by_item_id = {"
   f.write(door_ids_by_item_id.map do |item_id, door_ids|
-    "\"#{item_id}\":[" + door_ids.map do |door_id|
+    "#{item_id}:[" + door_ids.map do |door_id|
       "\"#{door_id}\""
     end.join(",") + "]"
   end.join(","))
   f.write "}\nvar painting_ids_by_item_id = {"
   f.write(painting_ids_by_item_id.map do |item_id, painting_ids|
-    "\"#{item_id}\":[" + painting_ids.map do |painting_id|
+    "#{item_id}:[" + painting_ids.map do |painting_id|
       "\"#{painting_id}\""
     end.join(",") + "]"
   end.join(","))
   f.write "}\nvar panel_ids_by_location_id = {"
   f.write(panel_ids_by_location_id.map do |location_id, panel_ids|
-    "\"#{location_id}\":[" + panel_ids.map do |panel_id|
+    "#{location_id}:[" + panel_ids.map do |panel_id|
       "\"#{panel_id}\""
     end.join(",") + "]"
   end.join(","))
@@ -212,7 +197,7 @@ File.open(outputpath, "w") do |f|
   end.join(","))
   f.write "}\nvar classification_by_location_id = {"
   f.write(classification_by_location_id.map do |location_id, classification|
-    "\"#{location_id}\":#{classification}"
+    "#{location_id}:#{classification}"
   end.join(","))
   f.write "}"
 end
