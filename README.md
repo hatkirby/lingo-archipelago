@@ -7,7 +7,7 @@ This is a project that modifies the game [Lingo](https://lingothegame.com/) so t
 
 1. Download the Lingo Archipelago Randomizer from [the releases page](https://github.com/hatkirby/lingo-archipelago/releases).
 2. Open up Lingo, go to settings, and click View Game Data. This should open up a folder in Windows Explorer.
-3. Unzip the contents of the randomizer into the "maps" folder.
+3. Unzip the contents of the randomizer into the "maps" folder. You may need to create the "maps" folder if you have not played a custom Lingo map before.
 4. Installation complete! You may have to click Return to go back to the main menu and then click Settings again in
    order to get the randomizer to show up in the level selection list.
 
