@@ -92,6 +92,7 @@ var _painting_shuffle = false
 var _mastery_achievements = 21
 var _level_2_requirement = 223
 var _location_classification_bit = 0
+var _early_color_hallways = false
 var _slot_seed = 0
 
 var _map_loaded = false
@@ -264,6 +265,8 @@ func _on_data():
 					_location_classification_bit = kCLASSIFICATION_LOCAL_REDUCED
 				elif _slot_data["location_checks"] == kCLASSIFICATION_REMOTE_INSANITY:
 					_location_classification_bit = kCLASSIFICATION_LOCAL_INSANITY
+			if _slot_data.has("early_color_hallways"):
+				_early_color_hallways = _slot_data["early_color_hallways"]
 
 			_puzzle_skips = 0
 

@@ -6,6 +6,7 @@ const EXCLUDED_PAINTINGS = [
 	"ascension_nw.tscn",
 	"ascension_se.tscn",
 	"ascension_sw.tscn",
+	"dan_L1_gate.tscn",
 	"frame.tscn",
 	"scenery_0.tscn",
 	"scenery_1.tscn",
@@ -284,6 +285,36 @@ func _load():
 		"../../../Panels/Countdown Panels/Panel_1234567890_wanderlust"
 	]
 
+	if apclient._early_color_hallways:
+		var painting_scene = load("res://nodes/paintings/dan_L1_gate.tscn")
+		var mypainting_script = ResourceLoader.load("user://maps/Archipelago/mypainting.gd")
+
+		var exit_painting = painting_scene.instance()
+		exit_painting.set_name("color_exit_painting")
+		exit_painting.translation.x = -98.75
+		exit_painting.translation.y = 1
+		exit_painting.translation.z = 3.5
+		exit_painting.rotation_degrees.y = -90
+
+		var exit_mps = mypainting_script.new()
+		exit_mps.set_name("Script")
+		exit_mps.orientation = "west"
+		exit_painting.add_child(exit_mps)
+		$Decorations/Paintings.add_child(exit_painting)
+
+		var enter_painting = painting_scene.instance()
+		enter_painting.set_name("color_enter_painting")
+		enter_painting.translation.x = 4.5
+		enter_painting.translation.y = 1
+		enter_painting.translation.z = 6.75
+
+		var enter_mps = mypainting_script.new()
+		enter_mps.set_name("Script")
+		enter_mps.orientation = "south"
+		enter_mps.target = exit_mps
+		enter_painting.add_child(enter_mps)
+		$Decorations/Paintings.add_child(enter_painting)
+
 	# Randomize the paintings, if necessary.
 	if apclient._painting_shuffle:
 		var paintings_dir = Directory.new()
@@ -326,7 +357,7 @@ func _load():
 		if remaining_size >= all_paintings.size():
 			remaining_size = all_paintings.size()
 		var remaining = []
-		for i in range(0, remaining_size):
+		for _i in range(0, remaining_size):
 			var j = rng.randi_range(0, all_paintings.size() - 1)
 			remaining.append(all_paintings[j])
 			all_paintings.remove(j)
@@ -463,26 +494,29 @@ func instantiate_painting(name, scene):
 	var new_painting = painting_scene.instance()
 	new_painting.set_name(name)
 
-	var old_painting = self.get_node("Decorations/Paintings").get_node(name)
-	new_painting.translation = old_painting.translation
-	new_painting.rotation = old_painting.rotation
+	var old_painting = self.get_node("Decorations/Paintings").get_node_or_null(name)
+	if old_painting != null:
+		new_painting.translation = old_painting.translation
+		new_painting.rotation = old_painting.rotation
 
 	var mypainting_script = ResourceLoader.load("user://maps/Archipelago/mypainting.gd")
 	var mps_inst = mypainting_script.new()
 	mps_inst.set_name("Script")
 
 	var gamedata = apclient.get_node("Gamedata")
-	var pconfig = gamedata.paintings[name]
-	mps_inst.orientation = pconfig["orientation"]
-	if pconfig["move"]:
-		mps_inst.move = true
-		mps_inst.move_to_x = old_painting.move_to_x
-		mps_inst.move_to_z = old_painting.move_to_z
-		mps_inst.key = old_painting.key
+	if gamedata.paintings.has(name):
+		var pconfig = gamedata.paintings[name]
+		mps_inst.orientation = pconfig["orientation"]
+		if pconfig["move"]:
+			mps_inst.move = true
+			mps_inst.move_to_x = old_painting.move_to_x
+			mps_inst.move_to_z = old_painting.move_to_z
+			mps_inst.key = old_painting.key
 
 	self.get_node("AP_Paintings").add_child(new_painting)
 	new_painting.add_child(mps_inst)
-	old_painting.queue_free()
+	if old_painting != null:
+		old_painting.queue_free()
 	return mps_inst
 
 
